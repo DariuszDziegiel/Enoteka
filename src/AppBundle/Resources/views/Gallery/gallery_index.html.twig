@@ -1,0 +1,58 @@
+{% extends "@App/layout.html.twig" %}
+
+{% block css %}
+    {#<link rel="stylesheet" href="{{ asset('vendor/fullpage.js/dist/jquery.fullpage.min.css') }}">#}
+    <link rel="stylesheet" href="{{ asset('vendor/slick-carousel/slick/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/slick-carousel/slick/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/Gallery/css/gallery.css') }}">
+{% endblock %}
+
+{% block js %}
+    <script src="{{ asset('vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('vendor/slick-carousel/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery_lazyload/jquery.lazyload.js') }}"></script>
+    {#<script src="{{ asset('vendor/fullpage.js/dist/jquery.fullpage.min.js') }}"></script>#}
+    <script src="{{ asset('bundles/app/Gallery/js/gallery.min.js') }}"></script>
+{% endblock %}
+
+{% block seo_title %}{{ 'gallery'| trans }}{% endblock %}
+
+{% block content %}
+    <div class="loading-gallery-overlay">
+        <div class="loading-gallery-txt">
+            <img src="{{ asset('images/loading_circle.gif') }}" alt="">
+            <br />
+            {{ 'images_loading'| trans }}
+        </div>
+    </div>
+    <div class="gallery-slider">
+        {% for image in cmsGalleryFiles %}
+            {# @var image \AdminBundle\Entity\CmsGalleryFile #}
+            {# @var cmsGallery \AdminBundle\Entity\CmsGallery #}
+            <div class="gallery-slide">
+                <img src="{{ asset('thumb.php') }}?src={{ asset(cmsGallery.filesDir ~ image.fileName) }}&h=960"
+                     data-original="{{ asset('thumb.php') }}?src={{ asset(cmsGallery.filesDir ~ image.fileName) }}&h=960"
+                     class="img-responsive lazy-load"
+                >
+            </div>
+        {% endfor %}
+    </div>
+    <div class="gallery-categories-menu">
+        <div class="container">
+            <ul class="gallery-categories-list">
+                {% if cmsGalleries is not empty %}
+                    {% for gallery in cmsGalleries %}
+                        {# @var gallery \AdminBundle\Entity\CmsGallery #}
+                        <li {% if cmsGallery.id == gallery.id %}class="gallery-category-active"{% endif %}>
+                            <a href="{{ path('gallery_details', {'slug': gallery.getSlug() }) }}">{{ gallery.getTitle()| raw }}</a>
+                        </li>
+                    {% endfor %}
+                    <li>
+                        <a href="{{ path('gallery_virtual_tour') }}">{{ 'virtual_tour'| trans }}</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+

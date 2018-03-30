@@ -1,0 +1,34 @@
+(function (Translator) {
+    // it
+    Translator.add("Page", "Pagina", "messages", "it");
+    Translator.add(", Display", ", Mostra", "messages", "it");
+    Translator.add("of %count%", "di %count%", "messages", "it");
+    Translator.add("Items per page", "Elementi per pagina", "messages", "it");
+    Translator.add("Select visible", "Seleziona visibili", "messages", "it");
+    Translator.add("Select all", "Seleziona tutti", "messages", "it");
+    Translator.add("Deselect visible", "Deseleziona visibili", "messages", "it");
+    Translator.add("Deselect all", "Deseleziona tutti", "messages", "it");
+    Translator.add("Actions", "Azioni", "messages", "it");
+    Translator.add("Submit Action", "Esegui", "messages", "it");
+    Translator.add("From:", "Da:", "messages", "it");
+    Translator.add("To:", "A:", "messages", "it");
+    Translator.add("eq", "Uguale a", "messages", "it");
+    Translator.add("neq", "Diverso da", "messages", "it");
+    Translator.add("lt", "Minore di", "messages", "it");
+    Translator.add("lte", "Minore o uguale a", "messages", "it");
+    Translator.add("gt", "Maggiore di", "messages", "it");
+    Translator.add("gte", "Maggiore o uguale a", "messages", "it");
+    Translator.add("req", "Espressione regolare", "messages", "it");
+    Translator.add("like", "Contiene", "messages", "it");
+    Translator.add("nlike", "Non contiene", "messages", "it");
+    Translator.add("rlike", "Comincia per", "messages", "it");
+    Translator.add("llike", "Finisce per", "messages", "it");
+    Translator.add("btw", "Compreso tra esclusivo", "messages", "it");
+    Translator.add("btwe", "Compreso tra inclusivo", "messages", "it");
+    Translator.add("isNull", "Non \u00e8 definito", "messages", "it");
+    Translator.add("isNotNull", "E' definito", "messages", "it");
+    Translator.add("%count% Results, ", "%count% Risultato, |%count% Risultati, ", "messages", "it");
+    Translator.add("Search", "Ricerca", "messages", "it");
+    Translator.add("Reset", "Reimposta", "messages", "it");
+    Translator.add("Order by", "Ordina per", "messages", "it");
+})(Translator);

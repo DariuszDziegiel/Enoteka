@@ -1,0 +1,31 @@
+(function (Translator) {
+    // nl
+    Translator.add("Page", "Pagina", "messages", "nl");
+    Translator.add(", Display", ", Toon", "messages", "nl");
+    Translator.add("of %count%", "van %count%", "messages", "nl");
+    Translator.add("Items per page", "Items per pagina", "messages", "nl");
+    Translator.add("Select visible", "Selecteer zichtbare", "messages", "nl");
+    Translator.add("Select all", "Selecteer alle", "messages", "nl");
+    Translator.add("Deselect visible", "Wis zichtbare", "messages", "nl");
+    Translator.add("Deselect all", "Wis alle", "messages", "nl");
+    Translator.add("Action", "Actie", "messages", "nl");
+    Translator.add("Submit Action", "Actie toepassen", "messages", "nl");
+    Translator.add("From:", "Van:", "messages", "nl");
+    Translator.add("To:", "Tot:", "messages", "nl");
+    Translator.add("eq", "Gelijk aan", "messages", "nl");
+    Translator.add("neq", "Niet gelijk aan", "messages", "nl");
+    Translator.add("lt", "Lager dan", "messages", "nl");
+    Translator.add("lte", "Lager of gelijk aan", "messages", "nl");
+    Translator.add("gt", "Groter dan", "messages", "nl");
+    Translator.add("gte", "Groter of gelijk aan", "messages", "nl");
+    Translator.add("req", "Reguliere expressie", "messages", "nl");
+    Translator.add("like", "Bevat", "messages", "nl");
+    Translator.add("nlike", "Bevat niet", "messages", "nl");
+    Translator.add("rlike", "Start met", "messages", "nl");
+    Translator.add("llike", "Eindigt met", "messages", "nl");
+    Translator.add("btw", "Tussen (exclusief)", "messages", "nl");
+    Translator.add("btwe", "Tussen (inclusief)", "messages", "nl");
+    Translator.add("isNull", "Is niet gedefinieerd", "messages", "nl");
+    Translator.add("isNotNull", "Is gedefinieerd", "messages", "nl");
+    Translator.add("%count% Results, ", "%count% rijen, |%count% rijen, ", "messages", "nl");
+})(Translator);

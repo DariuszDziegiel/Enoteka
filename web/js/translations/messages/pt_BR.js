@@ -1,0 +1,38 @@
+(function (Translator) {
+    // pt_BR
+    Translator.add("eq", "Igual", "messages", "pt_BR");
+    Translator.add("neq", "N\u00e3o igual", "messages", "pt_BR");
+    Translator.add("lt", "Menor que", "messages", "pt_BR");
+    Translator.add("lte", "Menor que ou igual a", "messages", "pt_BR");
+    Translator.add("gt", "Maior que", "messages", "pt_BR");
+    Translator.add("gte", "Maior que ou igual a", "messages", "pt_BR");
+    Translator.add("req", "Express\u00e3o regular", "messages", "pt_BR");
+    Translator.add("like", "Contem", "messages", "pt_BR");
+    Translator.add("nlike", "N\u00e3o contem", "messages", "pt_BR");
+    Translator.add("rlike", "Inicia com", "messages", "pt_BR");
+    Translator.add("llike", "Termina com", "messages", "pt_BR");
+    Translator.add("btw", "Entre exclusivo", "messages", "pt_BR");
+    Translator.add("btwe", "Entre inclusivo", "messages", "pt_BR");
+    Translator.add("isNull", "N\u00e3o est\u00e1 definido", "messages", "pt_BR");
+    Translator.add("isNotNull", "Est\u00e1 definido", "messages", "pt_BR");
+    Translator.add("%count% Results, ", "%count% Resultado, |%count% Resultados, ", "messages", "pt_BR");
+    Translator.add("Page", "P\u00e1gina", "messages", "pt_BR");
+    Translator.add(", Display", ", Mostrar", "messages", "pt_BR");
+    Translator.add("of %count%", "de %count%", "messages", "pt_BR");
+    Translator.add("Items per page", "Registros por p\u00e1gina", "messages", "pt_BR");
+    Translator.add("Select visible", "Selecionar vis\u00edvel", "messages", "pt_BR");
+    Translator.add("Select all", "Selecionar tudo", "messages", "pt_BR");
+    Translator.add("Deselect visible", "Desmarcar vis\u00edvel", "messages", "pt_BR");
+    Translator.add("Deselect all", "Desmarcar tudo", "messages", "pt_BR");
+    Translator.add("Action", "A\u00e7\u00e3o", "messages", "pt_BR");
+    Translator.add("Submit Action", "Enviar", "messages", "pt_BR");
+    Translator.add("From:", "De:", "messages", "pt_BR");
+    Translator.add("To:", "Para:", "messages", "pt_BR");
+    Translator.add("Reset", "Resetar", "messages", "pt_BR");
+    Translator.add("Actions", "A\u00e7\u00f5es", "messages", "pt_BR");
+    Translator.add("Order by", "Ordenar por", "messages", "pt_BR");
+    Translator.add("Export", "Exportar", "messages", "pt_BR");
+    Translator.add("No result", "Nenhum resultado", "messages", "pt_BR");
+    Translator.add("Do you want to %title% this row?", "Deseja realmente %title% esta linha?", "messages", "pt_BR");
+    Translator.add("No data", "Nenhum dado", "messages", "pt_BR");
+})(Translator);

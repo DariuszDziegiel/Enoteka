@@ -1,0 +1,34 @@
+<div class="reservation-bar hidden-xs">
+    <div class="container hidden">
+        <div id="reservation-form-wrapper">
+            <form class="form-horizontal">
+                <div id="availDatesform" class="availDatesform form-inline">
+                    <div class="row">
+                        <div class="col-md-offset-2 col-sm-3 col-md-2 text-right">
+                            <div class="input-group reservation-date-field">
+                                <input type="text" class="form-control input-lg reservation-date" id="tbArrivalDate" name="tbArrivalDate" placeholder="{{ 'check_in'| trans }}" readonly/>
+                                <span class="input-group-addon" id="date_arrival_addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                              </div>
+                        </div>
+
+                        <div class="col-sm-3 col-md-2 text-center">
+                            <div class="input-group reservation-date-field">
+                                <input type="text" class="form-control input-lg reservation-date" id="tbDepartureDate" name="tbDepartureDate" placeholder="{{ 'check_out'| trans }}" readonly/>
+                                    <span class="input-group-addon" id="date_checkout_addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4 text-left">
+                            <button class="btn btn-default btn-lg reservation-btn btn-block" type="submit" name="btnCheckAvailability">
+                                Sprawdź Termin
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

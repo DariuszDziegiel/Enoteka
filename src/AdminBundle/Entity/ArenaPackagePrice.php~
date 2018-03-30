@@ -1,0 +1,193 @@
+<?php
+
+namespace AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
+/**
+ * ArenaPackagePrice
+ * @ORM\Table(name="arena_package_price")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\ArenaPackagePriceRepository")
+ * @UniqueEntity(fields={"cms_category_id", "arena_package_id"})
+ */
+class ArenaPackagePrice
+{
+    /**
+     * @var int
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\CmsCategory", inversedBy="packagePrices")
+     * @ORM\JoinColumn(nullable=false, name="cms_category_id")
+     */
+    private $cmsCategory;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\ArenaPackage", inversedBy="packagePrices")
+     * @ORM\JoinColumn(nullable=false, name="arena_package_id")
+     */
+    private $arenaPackage;
+    
+    /**
+     * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
+     * @Assert\GreaterThanOrEqual(value="0")
+     */
+    private $price;
+
+
+    /**
+     * @ORM\Column(type="datetime", nullable=false)
+     * @Gedmo\Timestampable(on="create")
+     */
+    protected $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @Gedmo\Timestampable(on="update")
+     */
+    protected $updatedAt;
+
+    public function __construct()
+    {
+        
+    }
+
+
+    /**
+     * Get id
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set price
+     * @param string $price
+     * @return ArenaPackagePrice
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return string
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+   
+
+
+
+    /**
+     * Set cmsCategory
+     *
+     * @param \AdminBundle\Entity\CmsCategory $cmsCategory
+     *
+     * @return ArenaPackagePrice
+     */
+    public function setCmsCategory(\AdminBundle\Entity\CmsCategory $cmsCategory)
+    {
+        $this->cmsCategory = $cmsCategory;
+
+        return $this;
+    }
+
+    /**
+     * Get cmsCategory
+     *
+     * @return \AdminBundle\Entity\CmsCategory
+     */
+    public function getCmsCategory()
+    {
+        return $this->cmsCategory;
+    }
+
+    /**
+     * Set arenaPackage
+     *
+     * @param \AdminBundle\Entity\ArenaPackage $arenaPackage
+     *
+     * @return ArenaPackagePrice
+     */
+    public function setArenaPackage(\AdminBundle\Entity\ArenaPackage $arenaPackage)
+    {
+        $this->arenaPackage = $arenaPackage;
+
+        return $this;
+    }
+
+    /**
+     * Get arenaPackage
+     *
+     * @return \AdminBundle\Entity\ArenaPackage
+     */
+    public function getArenaPackage()
+    {
+        return $this->arenaPackage;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return ArenaPackagePrice
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return ArenaPackagePrice
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+}

@@ -1,0 +1,17 @@
+{# @var cmsPage \AdminBundle\Entity\CmsPage #}
+{# @var cmsCategory \AdminBundle\Entity\CmsCategory #}
+
+    <a href="{{ path('wine_page_index') }}" data-toggle="dropdown" class="dropdown-toggle" id="myDropdown">
+        {{ cmsCategory.getTitle()| raw }}
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-nav">
+        {% for cmsPage in cmsPages if cmsPages is not empty %}
+            <li>
+                <a href="{{ path('cms_page_details', {'cmsCategorySlug': cmsCategory.getSlug(), 'cmsPageSlug': cmsPage.getSlug() }) }}">
+                    {{ cmsPage.getTitle()| raw }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>

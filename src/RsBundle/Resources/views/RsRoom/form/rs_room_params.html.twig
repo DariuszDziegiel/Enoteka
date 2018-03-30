@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-xs-12">
+        {{ form_row(form.maxAdults, {'label': 'lbl.max_adults'| trans}) }}
+        {#{{ form_row(form.maxKids, {'label': 'lbl.max_kids'| trans}) }} #}
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-xs-12">
+        {{ form_row(form.singleBeds, {'label': 'lbl.single_beds'| trans}) }}
+    </div>
+    <div class="col-xs-12">
+        {{ form_row(form.doubleBeds, {'label': 'lbl.double_beds'| trans}) }}
+    </div>
+    <div class="col-xs-12">
+        {{ form_row(form.additionalBeds, {'label': 'lbl.additional_beds'| trans}) }}
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-xs-12">
+        {{ form_row(form.area, {'label': 'lbl.area'| trans}) }}
+    </div>
+</div>
+{{ form_row(form.facilityItems, {'label': 'lbl.facility_items'| trans}) }}
+
+

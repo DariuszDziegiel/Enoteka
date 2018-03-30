@@ -1,0 +1,8 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block datagrid %}
+    <a href="{{ path('cms_language_download_messages', {'languageCode': 'pl'}) }}" class="btn btn-danger">
+       <span class="glyphicon glyphicon-save"></span>&nbsp;Pobierz plik do tłumaczeń (Polski)
+    </a>
+    {{ grid(grid) }}
+{% endblock %}

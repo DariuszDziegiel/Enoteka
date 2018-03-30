@@ -1,0 +1,51 @@
+{% extends "@App/layout.html.twig" %}
+
+{% block seo_title %}{{ cmsStaticPage.title| raw }}{% endblock %}
+
+
+{% block js %}
+    <script src="{{ asset('vendor/Magnific-Popup/dist/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery_lazyload/jquery.lazyload.js') }}"></script>
+    <script src="{{ asset('vendor/slick-carousel/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/_Common/js/common.classes.min.js') }}"></script>
+    <script src="{{ asset('vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/CmsStaticPage/js/cms_static_page_details.min.js') }}"></script>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('vendor/slick-carousel/slick/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/slick-carousel/slick/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/Magnific-Popup/dist/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/CmsStaticPage/css/cms_static_page_details.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/CmsPage/css/cms_page_details.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="image-box">
+        <div class="image-box-pic border-bottom-transparent"
+             style="background-image: url({{ asset('thumb.php') }}?src={{ asset(cmsStaticPage.mainImageDir ~ cmsStaticPage.mainImage) }}&h=760&q=75)"
+        >
+            <div class="image-box-page-title-wrapper">
+                <h1 class="img-box-title">{{ cmsStaticPage.title| raw }}</h1>
+                <h2 class="img-box-subtitle">{{ cmsStaticPage.subTitle| raw }}</h2>
+                <div class="img-box-breadcrumbs">
+                    <a href="{{ path('homepage') }}">{{ 'main_page'| trans }}</a>&nbsp;&nbsp;/&nbsp;
+                    <span class="img-box-breadcrumbs-active">{{ cmsStaticPage.title| raw }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container main-container">
+        <div class="row">
+            <div class="col-sm-3">
+                {% include '@App/CmsPage/partials/cms_pages_menu.html.twig' %}
+                <hr class="visible-xs" />
+            </div>
+            <div class="col-sm-9">
+                {{ cmsStaticPage.getDescription()| raw }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends '@Twig/Exception/layout_error.html.twig' %}
+{% block content %}
+    <!--{{ exception.message }}-->
+    <div class="alert alert-danger">
+        <span class="glyphicon glyphicon-alert"></span>&nbsp;
+        Brak dostępu do wybranej podstrony / Access Denied
+    </div>
+    <div class="well">
+        {% include '@Twig/Exception/partials/error_links.html.twig' %}
+    </div>
+{% endblock %}

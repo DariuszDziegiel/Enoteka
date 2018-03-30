@@ -1,0 +1,21 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+{# @var cmsLanguage \AdminBundle\Entity\CmsLanguage #}
+{% block js %}
+    {#<script src="{{ asset('bundles/app/CmsArticle/js/cms_article_form.min.js') }}"></script> #}
+{% endblock %}
+
+{% block form %}
+    {# @var cmsLanguage \AdminBundle\Entity\CmsLanguage #}
+    {% if cmsLanguage.isActiveOnPage %}
+        <a href="{{ path('cms_language_download_messages', {'languageCode': cmsLanguage.code}) }}" class="btn btn-danger">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;Pobierz plik tłumaczeń ({{ cmsLanguage.title }})
+        </a>
+    {% endif %}
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_row(form.isActive) }}
+    {{ form_row(form.isActiveOnPage) }}
+    {{ form_row(form.title) }}
+    {% include '@Admin/_Common/partials/form_submit.html.twig' %}
+    {{ form_end(form) }}
+{% endblock %}
+

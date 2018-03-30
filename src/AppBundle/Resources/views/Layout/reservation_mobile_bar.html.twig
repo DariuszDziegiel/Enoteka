@@ -1,0 +1,30 @@
+<div class="reservation-mobile-bar visible-xs">
+    <div class="mobile-menu-item">
+        <a href="tel:{{ page_config.value('menu_phone')| raw }}" class="btn btn-block btn-default btn-md mobile-btn">
+            <span class="glyphicon glyphicon-phone-alt"></span><br />
+            {{ 'call'| trans }}
+        </a>
+    </div>
+    <div class="mobile-menu-item">
+        <a href="{{ path('cms_static_page', {'slug': page_config.getCmsStaticPageByParam('localisation').getSlug()}) }}" class="btn btn-block btn-default btn-md mobile-btn">
+            <span class="glyphicon glyphicon-map-marker"></span><br />
+            {{ 'map'| trans }}
+        </a>
+    </div>
+    <div class="mobile-menu-item">
+        <a href="#" class="js-wis2-open-booking btn btn-block btn-default btn-md mobile-btn">
+            <span class="glyphicon glyphicon-calendar"></span><br />
+            {{ 'reservation'| trans }}
+        </a>
+    </div>
+    <div class="mobile-menu-item mobile-menu-btn-wrapper">
+        <button type="button" class="mobile-menu-btn btn-block btn btn-default collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            {#<span class="sr-only">Menu</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>#}
+            <strong><span class="glyphicon glyphicon-th-list"></span></strong><br/>
+            <strong>Menu</strong>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+
+.gallery-wrapper {
+  @include box-shadow(0 ,5px, 5px, -4px, #36393e);
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  margin-bottom: 20px;
+  border-top: 5px solid $theme-white;
+  border-bottom: 5px solid $theme-white;
+  img {
+    border: {
+      right: 1px solid $theme-ashy;
+    };
+  }
+
+}
+
+
+.gallery-files-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

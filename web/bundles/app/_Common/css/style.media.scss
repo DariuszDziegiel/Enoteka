@@ -1,0 +1,54 @@
+@import "partials/variables";
+@import "partials/mixins";
+
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+
+}
+
+/*XS && SM*/
+@media (max-width: 992px) {
+
+}
+
+
+/*XS*/
+@media (max-width: 768px) {
+
+}
+
+/*SM*/
+@media (min-width: 768px) and (max-width: 992px) {
+
+
+}
+
+
+/*MD*/
+@media (min-width: 992px) and (max-width: 1200px) {
+
+
+
+}
+/*LG*/
+@media (min-width: 1200px) {
+    #footer-content {
+      width: 1170px;
+      margin: 0 auto;
+    }
+  .container {
+    width: 1200px !important;
+    margin: 0 auto;
+  }
+
+}
+
+
+
+//MD && LG
+@media (min-width: 992px)  {
+
+
+
+}

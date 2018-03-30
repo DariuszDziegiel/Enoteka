@@ -1,0 +1,26 @@
+.facility-icons-wrapper {
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  .facility-icon {
+    padding: 15px;
+    text-align: center;
+  }
+
+  .facility-icon-img {
+
+  }
+
+  .facility-icon-txt {
+    font: {
+      size: 0.75em;
+    }
+    text: {
+      transform: uppercase;
+    }
+  }
+
+}

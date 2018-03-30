@@ -1,0 +1,101 @@
+'rooms':        Pokoje
+'contact':      Kontakt
+'restaurant':   Restauracja
+'conferences':  Konferencje
+'location':     Lokalizacja
+'gallery':      Galeria
+'packages':     Degustacje
+'reservations':     Rezerwacje
+'wine':             Wino
+'news':             Aktualnośći
+'cigars':           Cygara
+'cooking':          Kuchnia
+
+
+'opening_hours': Godziny Otwarcia
+'day':
+    '01_monday':    Poniedziałek
+    '02_tuesday':   Wtorek
+    '03_wednesday': Środa
+    '04_thursday':  Czwartek
+    '05_friday':    Piątek
+    '06_saturday':  Sobota
+    '07_sunday':    Niedziela
+'see_all_news': Zobacz wszystkie aktualności
+
+
+
+'main_page':        Strona Główna
+'package_more':     Zobacz pakiet
+'see_more':         Zobacz więcej
+
+
+
+#wines
+'wines_filter': Filtruj listę win
+'year':         Rocznik
+'price':        Cena / 75cl
+'color':        Rodzaj
+'maturity':     Wytrawność
+'country':      Kraj
+'filter_no_results': Brak wyników filtrowania
+'remove_filter': Usuń filtr
+
+
+
+
+
+'images_loading':  Trwa ładowanie zdjęć...
+'virtual_tour':    Wirtualny Spacer
+
+'contact_data': Dane kontaktowe
+'contact_form': Formularz kontaktowy
+'map_loading':  Trwa ładowanie mapy...
+
+'form_name':         Imię
+'form_surname':      Nazwisko
+'form_phone':        Telefon
+'form_subject':      Temat
+'form_message':      Wiadomość
+'form_rewrite_code': Przepisz kod
+'form_send_message': Wyślij wiadomość
+
+'validation_subject': Wprowadź temat wiadomości
+'validation_message': Wprowadź treść wiadomości
+'validation_code':    Przepisz poprawny kod
+
+
+'check_in':          Zameldowanie
+'check_out':         Wymeldowanie
+'cancellation':      Anulacja
+'reservation_rules': Warunki rezerwacji
+'facilities':        Wyposażenie
+
+'single_bed': pojedyncze
+'double_bed': podwójne
+'extra_bed':  dostawki
+'person':     osoba
+'persons':    osoby
+
+'min_stay':  Dowolna <br /> długość pobytu
+'noc':       noc
+'noce':      noce
+'nocy':      nocy
+
+
+'see_second_hotel': Zapraszamy do naszych hoteli
+
+'check_in':  Przyjazd
+'check_out': Wyjazd
+'check_availability':  Sprawdź Termin
+
+'map': Mapa
+'reservation': Rezerwuj
+'call': Zadzwoń
+
+
+
+'package_reservation': Rezerwacja
+'download_wine_list': Pobierz kartę win
+
+

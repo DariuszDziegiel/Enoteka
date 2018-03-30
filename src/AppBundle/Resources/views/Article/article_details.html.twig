@@ -1,0 +1,61 @@
+{% extends '@App/layout.html.twig' %}
+{# @var article \AdminBundle\Entity\CmsArticle#}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/CmsArticle/css/article_details.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/Magnific-Popup/dist/magnific-popup.css') }}">
+{% endblock %}
+
+{% block js %}
+    <script src="{{ asset('vendor/Magnific-Popup/dist/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/CmsArticle/js/cms_article_details.min.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+
+    <div class="image-box">
+        {# @var configImagePackages \AdminBundle\Entity\CmsConfig #}
+        {% set configImagePackages = page_config.byKey('image_packages') %}
+        <div class="image-box-pic border-bottom-transparent" style="background-image: url({{ asset('thumb.php') }}?src={{ asset(article.mainImageDir ~ article.mainImage) }}&w=1380&h=921&q=90)">
+            <div class="image-box-page-title-wrapper">
+                <h1 class="img-box-title">{{ article.getTitle()| raw }}</h1>
+                {# <h2 class="img-box-subtitle">{{ page_config.value('packages_subtitle') }}</h2> #}
+                <div class="img-box-breadcrumbs">
+                    <a href="{{ path('homepage') }}">{{ 'main_page'| trans }}</a>&nbsp;&nbsp;/&nbsp;
+                    <a href="{{ path('articles_index') }}">{{ 'news'| trans }}</a>&nbsp;&nbsp;/&nbsp;
+                    <span class="img-box-breadcrumbs-active">{{ article.getTitle()| raw }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container main-container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="article-details-wrapper">
+                    <h1>{{ article.title| raw }}</h1>
+                    {% if article.date is not empty %}
+                        <div class="article-date">
+                            <strong>
+                                <span class="glyphicon glyphicon-calendar"></span>&nbsp;
+                                {{ article.date.format('d') }}&nbsp;{{ ('calendar.month_' ~ article.date.format('n'))| trans }}&nbsp;{{ article.date.format('Y') }}
+                            </strong>
+                        </div>
+                    {% endif %}
+                    <hr />
+                    <div class="article-desc">
+                        {% if article.mainImage is not empty%}
+                            <a href="{{ asset(article.mainImageDir ~ article.mainImage) }}" class="img-gallery pull-left">
+                                <img src="{{ asset('thumb.php') }}?src={{ asset(article.mainImageDir ~ article.mainImage) }}&w=300" class="article-main-img img-responsive" alt="">
+                            </a>
+                        {% endif %}
+                        {{ article.description| raw }}
+                    </div>
+                    <div class="article-gallery">
+                        {% include '@App/Article/partials/article_gallery_files.html.twig' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

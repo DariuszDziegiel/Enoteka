@@ -1,0 +1,94 @@
+@import "../../_Common/css/partials/variables";
+@import "../../_Common/css/partials/mixins";
+
+@import "../../_Common/css/partials/image_box";
+@import "../../_Common/css/partials/page_section";
+
+#menuSections {
+  position: fixed;
+  top: 45%;
+  right: 0;
+  z-index: 99;
+}
+
+
+.packages-slider {
+  @include box-shadow(0, 0, 2px, 0, #000);
+  margin: 0 auto;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.3);
+
+  .package-slide {
+    margin: 5px;
+  }
+
+}
+
+
+
+.slick-prev::before, .slick-next::before {
+  font-size: 40px;
+}
+
+.slick-prev {
+  left: -45px;
+  width: 40px;
+  height: 40px;
+}
+
+.slick-next {
+  right: -45px;
+  width: 40px;
+  height: 40px;
+}
+
+.slick-slide .package-title {
+  text-shadow: 1px 1px 1px $theme-grey;
+  color: #FFFFFF;
+  font: {
+    weight: bold;
+    size: 1.1em;
+  };
+  padding: {
+    top: 10px;
+  };
+}
+
+.slick-slide img {
+  margin: 0 auto;
+}
+
+
+/*XS && SM*/
+@media (max-width: 992px) {
+
+}
+
+
+/*XS*/
+@media (max-width: 768px) {
+
+}
+
+/*SM*/
+@media (min-width: 768px) and (max-width: 992px) {
+
+
+}
+
+/*MD*/
+@media (min-width: 992px) and (max-width: 1200px) {
+
+}
+/* MD && LG */
+@media (min-width: 1024px) {
+
+}
+
+
+/*LG*/
+@media (min-width: 1200px) {
+  .packages-slider {
+    width: 1170px;
+  }
+}

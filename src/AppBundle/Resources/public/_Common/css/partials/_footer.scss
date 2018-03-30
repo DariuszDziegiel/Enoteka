@@ -1,0 +1,116 @@
+
+#footer {
+  border: {
+    top: 10px solid $theme-color-transparent;
+  }
+  min-height: 150px;
+  padding-top: 20px;
+  //color: $theme-ashy;
+  /*background: url('../img/polygons_1200_200.png');
+  background-repeat: repeat-x;*/
+  background-color: #F2F2F2;
+  a {
+    color: $theme-ashy;
+  }
+
+  #footer-content {
+    padding-bottom: 20px;
+  }
+
+  #footer-copy-realisation {
+    font-size: 0.7em;
+    font-style: italic;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    a {
+      color: #FFFFFF;
+    }
+  }
+
+  .footer-social-icons {
+    font-size: 2em;
+    margin-top: -5px;
+    a {
+      display: inline-block;
+      margin: 0 5px;
+    }
+  }
+
+  .footer-contact {
+
+  }
+
+}
+
+.footer-link {
+  display: block;
+  text-transform: uppercase;
+}
+
+.footer-menu {
+  padding-left: 0;
+  list-style: none;
+  li {
+    padding-left: 0;
+  }
+}
+
+
+.second-hotel {
+  text-align: center;
+}
+
+
+.logo-perfect {
+  max-height: 100px;
+  margin-top: 10px;
+}
+.logo-pergamin {
+  max-height: 130px;
+  margin-right: -15px;
+}
+
+
+.opening-time {
+  padding-top: 15px;
+  text-align: left;
+  ul {
+    padding-top: 10px;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    display: block;
+    margin-bottom: 0;
+    p {
+      line-height: 28px;
+    }
+    span {
+      float: right;
+    }
+  }
+
+}
+
+
+
+/*XS*/
+@media (max-width: 768px) {
+  #footer {
+    text-align: center !important;
+    padding-bottom: 10px;
+  }
+  .footer-menu {
+    li {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  }
+  .second-hotel {
+    text-align: center;
+    img {
+      margin-top: 15px;
+    }
+  }
+}

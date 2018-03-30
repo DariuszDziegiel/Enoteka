@@ -1,0 +1,26 @@
+{# @var file \AdminBundle\Entity\CmsStaticPageFile #}
+{# @var entity \AdminBundle\Entity\CmsStaticPageFile #}
+{% if files is not empty %}
+    {% for file in files %}
+        <div id="sort_{{ file.id }}" class="uploadify-file pull-left" data-file-id="{{ file.id }}">
+            {% if 'image' in file.mimeType %}
+                <img src="{{ asset('thumb.php') }}?src={{ asset(entity.filesDir ~ file.fileName)  }}&w=120&h=120" class="img-thumbnail">
+            {% else %}
+                <div class="attachment-file-wrapper">
+                    <div class="file-icon">
+                        <span class="glyphicon glyphicon-file"></span>
+                    </div>
+                    <div class="file-extension">
+                        {{ file.extension }}
+                    </div>
+                    <div class="file-name">
+                        {{ file.fileName| slice(0, -18)  }}
+                    </div>
+                </div>
+            {% endif %}
+            <button type="button" class="btn btn-default btn-xs remove-file-btn" data-file-id="{{ file.id }}" title="Usuń">
+                <span class="glyphicon glyphicon-trash" ></span>
+            </button>
+        </div>
+    {% endfor %}
+{% endif %}

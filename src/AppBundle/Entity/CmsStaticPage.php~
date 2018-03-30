@@ -1,0 +1,37 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * CmsStaticPage
+ *
+ * @ORM\Table(name="cms_static_page")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CmsStaticPageRepository")
+ */
+class CmsStaticPage
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}
+

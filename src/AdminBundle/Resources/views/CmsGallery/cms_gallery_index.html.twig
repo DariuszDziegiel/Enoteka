@@ -1,0 +1,27 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block js %}
+    <script src="{{ asset('vendor/Magnific-Popup/dist/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('bundles/admin/CmsGallery/js/cms_gallery_index.min.js') }}"></script>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('vendor/Magnific-Popup/dist/magnific-popup.css') }}">
+{% endblock %}
+
+
+{% block datagrid %}
+    {% if app.session.flashBag.get('sort_success') %}
+        <div class="alert alert-success">Kolejność została zmieniona</div>
+    {% endif %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="btn-group btn-group-md" role="group">
+                <a href="{{ path('cms_gallery_add') }}" class="btn btn-success">
+                    <span class="glyphicon glyphicon-plus"></span> {{ 'cms_gallery_add'|trans({}, 'menu') }}
+                </a>
+            </div>
+        </div>
+    </div>
+    {{ grid(grid) }}
+{% endblock %}

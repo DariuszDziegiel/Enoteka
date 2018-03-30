@@ -1,0 +1,17 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block datagrid %}
+    {% if app.session.flashBag.get('sort_success') %}
+        <div class="alert alert-success">Kolejność została zmieniona</div>
+    {% endif %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="btn-group btn-group-md" role="group">
+                <a href="{{ path('rs_package_add') }}" class="btn btn-success">
+                    <span class="glyphicon glyphicon-plus"></span> Dodaj nową degustację
+                </a>
+            </div>
+        </div>
+    </div>
+    {{ grid(grid) }}
+{% endblock %}

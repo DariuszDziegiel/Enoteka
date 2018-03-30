@@ -1,0 +1,3 @@
+{
+    "translations": {"nl":{"messages":{"Page":"Pagina",", Display":", Toon","of %count%":"van %count%","Items per page":"Items per pagina","Select visible":"Selecteer zichtbare","Select all":"Selecteer alle","Deselect visible":"Wis zichtbare","Deselect all":"Wis alle","Action":"Actie","Submit Action":"Actie toepassen","From:":"Van:","To:":"Tot:","eq":"Gelijk aan","neq":"Niet gelijk aan","lt":"Lager dan","lte":"Lager of gelijk aan","gt":"Groter dan","gte":"Groter of gelijk aan","req":"Reguliere expressie","like":"Bevat","nlike":"Bevat niet","rlike":"Start met","llike":"Eindigt met","btw":"Tussen (exclusief)","btwe":"Tussen (inclusief)","isNull":"Is niet gedefinieerd","isNotNull":"Is gedefinieerd","%count% Results, ":"%count% rijen, |%count% rijen, "}}}
+}

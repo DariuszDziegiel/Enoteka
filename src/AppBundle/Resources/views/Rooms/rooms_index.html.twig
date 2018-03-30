@@ -1,0 +1,123 @@
+{% extends "@App/layout.html.twig" %}
+
+{% block js %}
+    <script src="{{ asset('vendor/slick-carousel/slick/slick.min.js') }}"></script>
+    {# <script src="{{ asset('bundles/app/_Common/js/common.classes.min.js') }}"></script> #}
+    <script src="{{ asset('bundles/app/Rooms/js/rooms.min.js') }}"></script>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/Rooms/css/rooms.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/Rooms/css/rooms_index.css') }}">
+{% endblock %}
+
+{% block seo_title %}{{ 'rooms'| trans }}{% endblock %}
+
+
+{% block content %}
+    {# @var configImagePackages \AdminBundle\Entity\CmsConfig #}
+    {% set configImageRooms = page_config.byKey('image_rooms') %}
+    <div class="image-box">
+        <div class="image-box-pic border-bottom-transparent" style="background-image: url({{ asset('thumb.php') }}?src={{ asset(configImageRooms.filesDir ~ configImageRooms.image) }}&h=640&q=85)">
+            <div class="img-box-txt">
+                <h1 class="img-box-title">{{ 'rooms'| trans }}</h1>
+                <h2 class="img-box-subtitle hidden-xs">{{ page_config.value('rooms_subtitle')| raw }}</h2>
+                <div class="img-box-breadcrumbs hidden-xs">
+                    <a href="{{ path('homepage') }}">{{ 'main_page'| trans }}</a>&nbsp;&nbsp;/&nbsp;
+                    <span class="img-box-breadcrumbs-active">{{ 'rooms'| trans }}</span>
+                </div>
+                {#<div class="img-box-scroll-btn"></div>#}
+            </div>
+        </div>
+    </div>
+
+    <div class="container main-container">
+        <hr />
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="facility-icons-wrapper">
+                    {% for rsFacilityItem in rsFacilityItems if rsFacilityItems is not empty %}
+                        {# @var rsFacilityItem  \RsBundle\Entity\RsFacilityItem #}
+                        <div class="facility-icon">
+                            <div class="facility-icon-img">
+                                {% if rsFacilityItem.mainImage %}
+                                    <img src="{{ asset(rsFacilityItem.mainImageDir ~ rsFacilityItem.mainImage) }}" alt="{{ rsFacilityItem.title| raw  }}">
+                                {% else %}
+                                    {{ rsFacilityItem.iconDefault| raw }}
+                                {% endif %}
+                            </div>
+                            <div class="facility-icon-txt">{{ rsFacilityItem.title| raw }}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <hr />
+        {# rooms #}
+        <div class="row">
+            {% for rsRoom in rsRooms if rsRooms is not empty  %}
+                {# @var rsRoom \RsBundle\Entity\RsRoom #}
+                <div class="col-md-4">
+                    <div class="room-wrapper">
+                        <a href="{{ path('rooms_details', {'slug': rsRoom.slug}) }}">
+                            <div class="drop-shadow lifted">
+                                <img src="{{ asset('thumb.php') }}?src={{  asset(rsRoom.mainImageDir ~ rsRoom.mainImage) }}&w=768&h=568"
+                                     data-original="{{ asset('thumb.php') }}?src={{  asset(rsRoom.mainImageDir ~ rsRoom.mainImage) }}&w=768&h=568"
+                                     class="img-responsive lazy-load" />
+                            </div>
+                            <div class="room-title">
+                                {{ rsRoom.title| raw }}
+                            </div>
+                            <div class="room-more">
+                                <button class="btn more-btn">
+                                    {{ 'see_more'| trans }}
+                                </button>
+                            </div>
+                            {#<div class="room-desc">
+                                {{ rsRoom.descriptionShort }}
+                            </div>#}
+                            <hr />
+                            <div class="room-facilities">
+                                <div class="facility-icons-wrapper">
+                                    <div class="facility-icon">
+                                        <div class="facility-icon-img">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                        <div class="facility-icon-txt">
+                                            {{ rsRoom.maxAdults }}
+                                        </div>
+                                    </div>
+                                    <div class="facility-icon">
+                                        <div class="facility-icon-img">
+                                            <i class="fa fa-bed"></i>
+                                        </div>
+                                        <div class="facility-icon-txt">
+                                            {% if rsRoom.singleBeds %}
+                                                {{ rsRoom.singleBeds }} {{ 'single_bed'| trans }}<br />
+                                            {% endif %}
+                                            {% if rsRoom.doubleBeds %}
+                                                {{ rsRoom.doubleBeds }} {{ 'double_bed'| trans }}<br />
+                                            {% endif %}
+                                            {% if rsRoom.additionalBeds %}
+                                                {{ rsRoom.additionalBeds }} {{ 'extra_bed'| trans }}<br />
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="facility-icon">
+                                        <div class="facility-icon-img">
+                                            <i class="fa fa-square-o" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="facility-icon-txt">{{ rsRoom.area }} m<sup>2</sup></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <hr />
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

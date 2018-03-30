@@ -1,0 +1,94 @@
+
+
+'lbl':
+    'is_active':                Aktywny
+    'price':                    Cena
+    'description_cancellation': Warunki Anulacji
+    'min_stay_days':            Min. pobyt [dni]
+    'max_stay_days':            Max. pobyt [dni]
+    'min_release_days':         Min. wyprzedzenie rezerwacji [dni]
+    'max_release_days':         Max. wyprzedzenie rezerwacji [dni]
+    'is_cancellation_allowed':  Anulacja jest dozwolona
+    'free_cancellation_days':   Anulacja bezkosztowa [dni]
+    'rate_plan_is_active':      Plan cenowy aktywny
+    'is_package':               Plan pakietowy
+    'package_items':            Dodatki
+    'meals':                    Posiłki
+    'base_price_rate_plan':         Bazowy plan do wylicznia ceny
+    'base_availability_rate_plan':  Bazowy plan dla dostępności
+    'max_adults':                   Liczba dorosłych
+    'max_kids':                     Liczba dzieci
+    'allotment':                    Allotment
+    'max_allotment':                Max. allotment
+    'min_price':                    Cena minimalna
+    'base_room':                    Pokój bazowy
+    'room_is_active':               Pokój aktywny
+    'title_package':                Tekst reklamowy
+    'object_title':                 Nazwa obiektu
+    'description_regulations':      Regulamin obiektu
+    'description_reservation_regulations':      Regulamin rezerwacji
+    'country':               Kraj
+    'parter':                Parter
+    'single_beds':           Łóżka pojedyncze
+    'double_beds':           Łóżka podwójne
+    'additional_beds':       Dostawki
+    'rooms':                 L. pokoi
+    'bathrooms':             L. łazienek
+    'area':                  Powierzchnia [m2]
+    'facility_items':        Wyposażenie
+    'formula_type':          Operacja
+    'formula_value':         Wartość
+    'formula_unit':          Jednostka
+    'base_rate_plan':        Bazowy plan cenowy
+    'add':                   Dodaj
+    'subtract':              Odejmij
+    'percent':               Procent
+    'price_value':           Kwota
+    'value':                 Wartość
+    'title':                 Nazwa
+    'price_room':            Cena za pokój
+    'iconDefault':           Ikona domyślna
+    'icon':                  Ikona
+    'rs_meal':     Wyżywienie
+    'minStayDays': Min. dugość pobytu
+
+
+'calendar':
+    'day_short_1':    Pn
+    'day_short_2':    Wt
+    'day_short_3':    Śr
+    'day_short_4':    Cz
+    'day_short_5':    Pt
+    'day_short_6':    Sb
+    'day_short_7':    Nd
+    'day_1':   Poniedziałek
+    'day_2':   Wtorek
+    'day_3':   Środa
+    'day_4':   Czwartek
+    'day_5':   Piątek
+    'day_6':   Sobota
+    'day_7':   Niedziela
+    'month_short_1':    Sty
+    'month_short_2':    Lut
+    'month_short_3':    Mar
+    'month_short_4':    Kwi
+    'month_short_5':    Maj
+    'month_short_6':    Cze
+    'month_short_7':    Lip
+    'month_short_8':    Sie
+    'month_short_9':    Wrz
+    'month_short_10':   Paź
+    'month_short_11':   Lis
+    'month_short_12':   Gru
+    'month_1':     Styczeń
+    'month_2':     Luty
+    'month_3':     Marzec
+    'month_4':     Kwiecień
+    'month_5':     Maj
+    'month_6':     Czerwiec
+    'month_7':     Lipiec
+    'month_8':     Sierpień
+    'month_9':     Wrzesień
+    'month_10':    Październik
+    'month_11':    Listopad
+    'month_12':    Grudzień

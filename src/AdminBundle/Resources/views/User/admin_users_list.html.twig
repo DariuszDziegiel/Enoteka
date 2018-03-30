@@ -1,0 +1,66 @@
+{% extends "@Admin/layout.html.twig" %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('vendor/datatables/media/css/jquery.dataTables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/datatables/media/css/dataTables.bootstrap.min.css') }}">
+{% endblock %}
+
+{% block js %}
+    <script src="{{ asset('vendor/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('bundles/admin/User/js/admin_user.min.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="text-center">
+        {{ knp_pagination_render(users) }}
+    </div>
+    <table class="data-table table-hover table-striped table-bordered table">
+        <thead>
+            <tr class="bg-primary">
+                <th>Id</th>
+                <th>Login</th>
+                <th>Rodzaj<br />konta</th>
+                <th>Forma</th>
+                <th>Email</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Konto<br />aktywne</th>
+                <th>Szczegóły</th>
+            </tr>
+        </thead>
+        {% for user in users %}
+            {# @var user \AdminBundle\Entity\User#}
+            <tr>
+                <td class="text-center"><b>{{ user.id }}</b></td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.userGroup.title }}</td>
+                <td>
+                    {% if user.userType  == 1 %}
+                        Działalność gospodarcza
+                    {% endif %}
+                    {% if user.userType  == 2 %}
+                        Osoba fizyczna
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="mailto:{{ user.email }}">{{ user.email }}</a>
+                </td>
+                <td>{{ user.userProfile.name }}</td>
+                <td>{{ user.userProfile.surname }}</td>
+                <td>{% include '@Admin/_Common/partials/tick.html.twig' with {'tick': user.isActive} %}</td>
+                <td>
+                    <button class="btn btn-primary center-block" type="button" data-toggle="collapse" data-target="#user-details-{{ user.id }}">
+                        <span class="glyphicon-search glyphicon"></span>&nbsp;
+                        <span class="glyphicon glyphicon-chevron-down"></span>
+                    </button>
+                    <div class="collapse" id="user-details-{{ user.id }}">
+                        {% include '@App/User/partials/user_details.html.twig' with {'user': user} %}
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="text-center">
+        {{ knp_pagination_render(users) }}
+    </div>
+{% endblock %}

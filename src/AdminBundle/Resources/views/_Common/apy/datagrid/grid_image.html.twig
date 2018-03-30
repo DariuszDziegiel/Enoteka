@@ -1,0 +1,7 @@
+{% if imageFilename is not empty %}
+    {#<a href="{{ asset(imageDir ~ imageFilename) }}" target="_blank"> #}
+        <img src="{{ asset('thumb.php') }}?src={{ asset(imageDir ~ imageFilename) }}&w={{ imageWidth|default(100) }}"
+             class="img-responsive"
+             alt="">
+    {#</a>#}
+{% endif %}

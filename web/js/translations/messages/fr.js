@@ -1,0 +1,38 @@
+(function (Translator) {
+    // fr
+    Translator.add("Page", "Page", "messages", "fr");
+    Translator.add(", Display", ", Afficher", "messages", "fr");
+    Translator.add("of %count%", "sur %count%", "messages", "fr");
+    Translator.add("Items per page", "R\u00e9sultats par page", "messages", "fr");
+    Translator.add("Select visible", "S\u00e9lectionner visible", "messages", "fr");
+    Translator.add("Select all", "S\u00e9lectionner tout", "messages", "fr");
+    Translator.add("Deselect visible", "D\u00e9s\u00e9lectionner visible", "messages", "fr");
+    Translator.add("Deselect all", "D\u00e9s\u00e9lectionner tout", "messages", "fr");
+    Translator.add("Action", "Action", "messages", "fr");
+    Translator.add("Submit Action", "Ex\u00e9cuter", "messages", "fr");
+    Translator.add("From:", "De:", "messages", "fr");
+    Translator.add("To:", "\u00c0:", "messages", "fr");
+    Translator.add("eq", "\u00c9gal \u00e0", "messages", "fr");
+    Translator.add("neq", "Diff\u00e9rent de", "messages", "fr");
+    Translator.add("lt", "Inf\u00e9rieur \u00e0", "messages", "fr");
+    Translator.add("lte", "Inf\u00e9rieur ou \u00e9gal \u00e0", "messages", "fr");
+    Translator.add("gt", "Sup\u00e9rieur \u00e0", "messages", "fr");
+    Translator.add("gte", "Sup\u00e9rieur ou \u00e9gal \u00e0", "messages", "fr");
+    Translator.add("req", "Expression r\u00e9guli\u00e8re", "messages", "fr");
+    Translator.add("like", "Contient", "messages", "fr");
+    Translator.add("nlike", "Ne contient pas", "messages", "fr");
+    Translator.add("rlike", "Commence par", "messages", "fr");
+    Translator.add("llike", "Finit par", "messages", "fr");
+    Translator.add("btw", "Entre exclusif", "messages", "fr");
+    Translator.add("btwe", "Entre inclusif", "messages", "fr");
+    Translator.add("isNull", "N'est pas d\u00e9fini", "messages", "fr");
+    Translator.add("isNotNull", "Est d\u00e9fini", "messages", "fr");
+    Translator.add("%count% Results, ", "%count% R\u00e9sultat, |%count% R\u00e9sultats, ", "messages", "fr");
+    Translator.add("Search", "Rechercher", "messages", "fr");
+    Translator.add("Reset", "R\u00e9initialiser", "messages", "fr");
+    Translator.add("Order by", "Trier par", "messages", "fr");
+    Translator.add("slike", "Contient", "messages", "fr");
+    Translator.add("nslike", "Ne contient pas", "messages", "fr");
+    Translator.add("rslike", "Commence par", "messages", "fr");
+    Translator.add("lslike", "Finit par", "messages", "fr");
+})(Translator);

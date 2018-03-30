@@ -1,0 +1,60 @@
+.parallax-mirror {
+  z-index: 1 !important;
+}
+.parallax-wrapper {
+  height: 100vh;
+  border: {
+    //top: 5px solid $theme-ashy;
+    //bottom: 5px solid $theme-ashy;
+  }
+  background: transparent;
+  position: relative;
+  padding: {
+    left: 0;
+    right: 0;
+  }
+  .parallax-window {
+    height: 100vh;
+    background: transparent;
+  }
+  .parallax-window-1 {
+    min-height: 300px;
+    background: transparent;
+  }
+  .parallax-img-banner {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    z-index: 5;
+  }
+
+}
+
+.parallax-wrapper-top {
+  background: transparent;
+  position: relative;
+  padding: {
+    left: 0;
+    right: 0;
+  }
+  .parallax-window-1 {
+    min-height: 100px;
+    background: transparent;
+  }
+}
+
+.parallax-title {
+  text-align: center;
+  position: absolute;
+  top: 42%;
+  left: 0%;
+  width: 100%;
+  color: #FFFFFF;
+  font: {
+    size: 1.8em;
+    weight: bold;
+  }
+  z-index: 999;
+  text-shadow: 2px 2px #000000;
+  /**background: url('../img/transparent-art-bg.png');**/
+}

@@ -1,0 +1,12 @@
+{% extends '@Twig/Exception/layout_error.html.twig' %}
+
+{% block content %}
+    <!--{{ exception.message }}-->
+    <div class="alert alert-danger">
+        <span class="glyphicon glyphicon-alert"></span>&nbsp;
+        Brak wybranej podstrony / Page not Found
+    </div>
+    <div class="well">
+        {% include '@Twig/Exception/partials/error_links.html.twig' %}
+    </div>
+{% endblock %}

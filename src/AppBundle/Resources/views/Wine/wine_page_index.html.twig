@@ -1,0 +1,90 @@
+{% extends "@App/layout.html.twig" %}
+
+{% block seo_title %}{{ 'wine'| trans }}{% endblock %}
+
+{% block js %}
+    <script src="{{ asset('vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/Wine/js/wine_page_index.min.js') }}"></script>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('vendor/jquery-ui/themes/base/slider.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/jquery-ui/themes/smoothness/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/Wine/css/wine_page_index.css') }}">
+{% endblock %}
+
+{% block content %}
+    <script src="{{ asset('vendor/pdfobject/pdfobject.min.js') }}"></script>
+    {# @var cmsConfigWineCart \AdminBundle\Entity\CmsConfig #}
+    <div class="image-box">
+        {# @var configImageWine \AdminBundle\Entity\CmsConfig #}
+        {% set configImageWine = page_config.byKey('image_wine') %}
+        <div class="image-box-pic border-bottom-transparent"
+             style="background-image: url({{ asset('thumb.php') }}?src={{ asset(configImageWine.filesDir ~ configImageWine.image) }}&w=1380&h=921&q=85)"
+        >
+            <div class="image-box-page-title-wrapper">
+                <h1 class="img-box-title">{{ 'wine'| trans }}</h1>
+                {#<h2 class="img-box-subtitle">Wino podtytuł</h2>#}
+                <div class="img-box-breadcrumbs">
+                    <a href="{{ path('homepage') }}">{{ 'main_page'| trans }}</a>&nbsp;&nbsp;/&nbsp;
+                    <span class="img-box-breadcrumbs-active">{{ 'wine'| trans }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-offset-2 col-xs-8">
+                {#<h2 class="text-center">Lorem ipsum</h2>#}
+                <hr/>
+                <p class="wines-text">
+                    {{ winePage.getDescription()| raw }}
+                </p>
+                <a href="{{ asset(cmsConfigWineCart.filesDir ~ cmsConfigWineCart.attachment) }}" target="_blank" class="wine-cart-download-btn center-block btn btn-default">
+                    {{ 'download_wine_list'| trans }}
+                </a>
+                <hr />
+            </div>
+        </div>
+
+
+        <div id="wine-cart-pdf"></div>
+
+
+        <object data="{{ asset(cmsConfigWineCart.filesDir ~ cmsConfigWineCart.attachment) }}#view=fitH&toolbar=0" type="application/pdf" width="100%" height="1500px" class="pdf-cart-fallback hidden">
+            <iframe src="{{ asset(cmsConfigWineCart.filesDir ~ cmsConfigWineCart.attachment) }}#view=fitH&toolbar=0" style="border: none;" width="100%" height="1500px">
+                <a href="{{ asset(cmsConfigWineCart.filesDir ~ cmsConfigWineCart.attachment) }}" target="_blank" class="wine-cart-download">
+                    {{ 'download_wine_list'| trans }}
+                </a>
+            </iframe>
+        </object>
+
+        {#<div class="row">
+            <div class="col-sm-3">
+                {% include '@App/Wine/partials/wine_page_index/wine_filter.html.twig' %}
+            </div>
+            <div class="col-sm-9">
+                <div class="wines-container">
+                    {% include '@App/Wine/partials/wine_page_index/wine_list.html.twig' %}
+                </div>
+            </div>
+        </div>#}
+    </div>
+    <script>
+        PDFObject.embed(
+                "{{ asset(cmsConfigWineCart.filesDir ~ cmsConfigWineCart.attachment) }}",
+                "#wine-cart-pdf",
+                {
+                    pdfOpenParams: {
+                        view: 'FitH',
+                        toolbar: 0
+                    }
+                }
+        );
+        if (!PDFObject.supportsPDFs){
+            document.querySelector('.pdf-cart-fallback').classList.remove('hidden');
+            document.getElementById('wine-cart-pdf').style.display = 'none';
+        }
+    </script>
+{% endblock %}
+

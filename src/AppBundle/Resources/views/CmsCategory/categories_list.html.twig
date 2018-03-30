@@ -1,0 +1,29 @@
+{% extends "@App/layout.html.twig" %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/CmsCategory/cms_category.css') }}">
+{% endblock %}
+
+
+{% block content %}
+    {# @var cmsCategory \AdminBundle\Entity\CmsCategory #}
+    <div class="container">
+
+        <div class="row">
+            <div class="col-xs-12">
+                {% include '@App/CmsCategory/partials/categories_breadcrumbs.html.twig' %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-5">
+                {% include '@App/CmsCategory/partials/categories_tree.html.twig' %}
+            </div>
+            <div class="col-xs-7 text-justify">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque id, iure! Dolorum laboriosam laudantium nobis quidem vero? A accusamus accusantium consequuntur corporis dicta nam nisi obcaecati praesentium qui rem! Dolor ducimus expedita id suscipit. Dicta error, id maxime odit officia quibusdam sint suscipit. Accusamus accusantium aperiam assumenda at autem blanditiis corporis culpa delectus deleniti dolore dolorem, dolores ea enim excepturi explicabo incidunt inventore labore magnam maiores nulla optio placeat quaerat quibusdam ratione repellendus reprehenderit rerum saepe sunt suscipit veritatis vero voluptates voluptatibus voluptatum! Ab aliquam, cupiditate eligendi exercitationem facilis fugiat harum hic minus neque quisquam quos sequi vel vero? Aliquid animi aperiam architecto consectetur delectus deleniti dolores doloribus dolorum ea earum eos esse et illum ipsa ipsum laudantium magni minima mollitia, non odit officia officiis optio perspiciatis provident quasi repellat, veritatis voluptatibus! A architecto consectetur distinctio eligendi nulla porro possimus quas sequi. Culpa facere fugiat quidem. Adipisci assumenda at atque eaque expedita fuga illo ipsa iure labore laboriosam, maiores necessitatibus nostrum officia omnis pariatur perferendis qui sint. Enim, exercitationem, perspiciatis? Animi blanditiis commodi dolorum ducimus eligendi maxime molestias nihil nulla, optio quae quas quis repudiandae temporibus. Aliquid aspernatur eius fuga fugit impedit nesciunt nostrum optio provident sunt ut! Asperiores aspernatur autem dolorem laborum pariatur quam repellat sunt temporibus veniam. A, consequuntur cum cupiditate, distinctio dolorem eaque eligendi enim eos explicabo facilis harum labore laboriosam magnam minima molestias neque nobis nulla odio officia officiis optio pariatur possimus quaerat quis, rem sed soluta tempore tenetur ut veniam. Delectus dolorum quaerat quam sapiente! Assumenda autem consectetur cumque dolorem ducimus, est exercitationem facere, harum impedit ipsam iure, libero nisi numquam optio porro saepe tempore vel veniam. Consequatur illo impedit ipsum laborum maiores quidem repellat sint sunt vero? Alias deserunt doloremque earum, facilis, illum impedit ipsam laborum minima nihil quaerat quas qui quisquam tenetur voluptates!
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

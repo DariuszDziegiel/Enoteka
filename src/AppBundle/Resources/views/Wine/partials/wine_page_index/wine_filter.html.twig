@@ -1,0 +1,73 @@
+<button id="filter-wine-collapse-btn" class="btn btn-block btn-default btn-lg visible-xs" type="button" data-toggle="collapse" data-target="#wine-filter-wrapper" aria-expanded="false" aria-controls="wine-filter-wrapper">
+    {{ 'wines_filter'| trans }}&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-down"></span>
+</button>
+<div class="collapse" id="wine-filter-wrapper">
+    <form id="wine-filter-form" class="drop-shadow lifted">
+        <div class="wine-filter-title hidden-xs">{{ 'wines_filter'| trans }}</div>
+        <div class="remove-filter-btn-wrapper">
+            <a class="remove-filter-btn btn btn-danger btn-sm">
+                {{ 'remove_filter'| trans }} <span class="glyphicon glyphicon-remove"></span>
+            </a>
+        </div>
+        <div class="filter-wrapper">
+            <p>
+                <label for="year-range">
+                    <b>{{ 'year'| trans }}</b>
+                </label>
+                <input type="text" id="year-range" readonly style="border:0;">
+                <input type="hidden" id="year-range-min" name="year-range-min" value="{{ sliderParams.minYear }}">
+                <input type="hidden" id="year-range-max" name="year-range-max" value="{{ sliderParams.maxYear }}">
+            </p>
+            <div id="year-range-slider"></div>
+        </div>
+        <hr />
+        <div class="filter-wrapper">
+            <p>
+                <label for="price-range"><b>{{ 'price'| trans }}</b></label>
+                <input type="text" id="price-range" readonly style="border:0;">
+                <input type="hidden" id="price-range-min" name="price-range-min" value="{{ sliderParams.minPrice }}">
+                <input type="hidden" id="price-range-max" name="price-range-max" value="{{ sliderParams.maxPrice }}">
+            </p>
+            <div id="price-range-slider"></div>
+        </div>
+        <hr />
+        <div class="filter-wrapper filter-wine-color">
+            <div class="filter-category-title">
+                <b>{{ 'color'| trans }}</b>
+            </div>
+            {% for wineColor in wineColors %}
+                <label>
+                    <input type="checkbox" name="wineColor[]" value="{{ wineColor.id }}">
+                    {{ wineColor.getTitle()| raw }}
+                </label>
+            {% endfor %}
+        </div>
+        <hr />
+        {#<div class="filter-wrapper filter-wine-maturity">
+            <div class="filter-category-title">
+                <b>{{ 'maturity'| trans }}</b>
+            </div>
+            {% for wineMaturity in wineMaturities %}
+                <label>
+                    <input type="checkbox" name="wineMaturity[]" value="{{ wineMaturity.id }}">
+                    {{ wineMaturity.getTitle()| raw }}
+                </label>
+            {% endfor %}
+        </div>
+        <hr /> #}
+        <div class="filter-wrapper filter-wine-country">
+            <div class="filter-category-title">
+                <b>{{ 'country'| trans }}</b>
+            </div>
+            <div class="clearfix"></div>
+            {% for wineCountry in wineCountries %}
+                <label>
+                    <input type="checkbox" name="wineCountry[]" value="{{ wineCountry.id }}">
+                    {{ wineCountry.getTitle()| raw }}
+                </label>
+            {% endfor %}
+            <div class="clearfix"></div>
+        </div>
+
+    </form>
+</div>

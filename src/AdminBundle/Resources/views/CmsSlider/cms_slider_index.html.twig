@@ -1,0 +1,23 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block js %}
+    <script src="{{ asset('bundles/admin/CmsSlider/js/admin_cms_slider.min.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <a href="{{ path('cms_slider_add') }}" class="btn btn-success btn-lg">
+        <span class="glyphicon glyphicon-plus"></span>&nbsp;Dodaj nowy
+    </a>
+    <hr />
+    {% for error in app.session.flashBag.get('slide_delete_error') %}
+        <div class="alert alert-danger">{{ error| trans }}</div>
+    {% endfor %}
+    {% if app.session.flashBag.get('slide_delete_success') %}
+        <div class="alert alert-success">Obraz został usunięty</div>
+    {% endif %}
+
+{% endblock %}
+
+{% block datagrid %}
+    {{ grid(grid) }}
+{% endblock %}

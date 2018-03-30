@@ -1,0 +1,1053 @@
+<?php
+
+namespace AdminBundle\Entity;
+
+use AppBundle\Repository\PaymentStatusRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * ArenaContest
+ * @ORM\Table(name="arena_contest")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\ArenaContestRepository")
+ */
+class ArenaContest
+{
+
+    const CONTEST_FILES_DIR = 'upload/arena_contest_files/';
+    const CONTEST_PARTICIPATIONS_DIR = 'upload/arena_contest_participations/';
+
+    /**
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank()
+     */
+    private $title;
+
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Gedmo\Slug(fields={"title"})
+     */
+    protected $slug;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $subTitle;
+
+    /**
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank()
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $participationsCount = 0;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @Assert\DateTime()
+     */
+    private $date_from = null;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @Assert\DateTime()
+     */
+    private $date_to = null;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $date_winner_select_to = null;
+
+    /**
+     * @ORM\Column(type="boolean", columnDefinition="TINYINT(1) DEFAULT 0")
+     */
+    private $isFinished = false;
+
+    /**
+     * @ORM\Column(type="boolean", columnDefinition="TINYINT(1) DEFAULT 0")
+    */
+    private $isWinnerSelected = false;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\PaymentStatus", inversedBy="arenaContests")
+     * @ORM\JoinColumn(columnDefinition="TINYINT(1) UNSIGNED NOT NULL DEFAULT 1")
+     */
+    private $paymentStatus;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $price;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $priceBrutto;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    protected $prizeWinner;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $priceExtras = 0;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $priceExtrasBrutto = 0;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $priceSum;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $priceSumBrutto;
+
+    /**
+     * @ORM\Column(type="boolean", columnDefinition="TINYINT(1) DEFAULT 0")
+     */
+    protected $isActive = false;
+
+    /**
+     * @ORM\Column(type="boolean", columnDefinition="TINYINT(1) DEFAULT 0")
+     */
+    protected $isHidden = false;
+
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isHiddenProjects = false;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $hash;
+    
+    /**
+     * @ORM\Column(type="datetime", nullable=false)
+     * @Gedmo\Timestampable(on="create")
+     */
+    protected $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @Gedmo\Timestampable(on="update")
+     */
+    protected $updatedAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\CmsCategory", inversedBy="arenaContests")
+     * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(groups={"CmsCategory"}, message="Wybierz kategorię konkursu")
+     */
+    protected $cmsCategory;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\User", inversedBy="arenaContests")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    protected $organizer;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AdminBundle\Entity\ArenaContestStyle", mappedBy="arenaContest", cascade={"persist"})
+     * @Assert\Valid()
+     */
+    protected $arenaContestStyle;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\ArenaPackage", inversedBy="arenaContests")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    protected $arenaPackage;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\ArenaContestParticipation", mappedBy="arenaContest")
+     */
+    private $arenaContestParticipations;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\ArenaContestComment", mappedBy="arenaContest")
+     */
+    private $arenaContestComments;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\ArenaContestParticipation")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $winnerParticipation;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\User", inversedBy="winnerArenaContests")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $winnerAuthor;
+    
+    
+
+    public function __construct()
+    {
+        //$this->arenaPackageExtras = new ArrayCollection();
+        $this->arenaContestParticipations = new ArrayCollection();
+        $this->arenaContestComments = new ArrayCollection();
+    }
+
+    /**
+     * Get id
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return ArenaContest
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return ArenaContest
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set subTitle
+     *
+     * @param string $subTitle
+     *
+     * @return ArenaContest
+     */
+    public function setSubTitle($subTitle)
+    {
+        $this->subTitle = $subTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get subTitle
+     *
+     * @return string
+     */
+    public function getSubTitle()
+    {
+        return $this->subTitle;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return ArenaContest
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set dateFrom
+     *
+     * @param \DateTime $dateFrom
+     *
+     * @return ArenaContest
+     */
+    public function setDateFrom($dateFrom)
+    {
+        $this->date_from = $dateFrom;
+
+        return $this;
+    }
+
+    /**
+     * Get dateFrom
+     *
+     * @return \DateTime
+     */
+    public function getDateFrom()
+    {
+        return $this->date_from;
+    }
+
+    /**
+     * Set dateTo
+     *
+     * @param \DateTime $dateTo
+     *
+     * @return ArenaContest
+     */
+    public function setDateTo($dateTo)
+    {
+        $this->date_to = $dateTo;
+
+        return $this;
+    }
+
+    /**
+     * Get dateTo
+     *
+     * @return \DateTime
+     */
+    public function getDateTo()
+    {
+        return $this->date_to;
+    }
+
+
+    /**
+     * Set price
+     *
+     * @param string $price
+     *
+     * @return ArenaContest
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return string
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set isActive
+     *
+     * @param boolean $isActive
+     *
+     * @return ArenaContest
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return boolean
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return ArenaContest
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return ArenaContest
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set cmsCategory
+     *
+     * @param \AdminBundle\Entity\CmsCategory $cmsCategory
+     *
+     * @return ArenaContest
+     */
+    public function setCmsCategory(\AdminBundle\Entity\CmsCategory $cmsCategory = null)
+    {
+        $this->cmsCategory = $cmsCategory;
+
+        return $this;
+    }
+
+    /**
+     * Get cmsCategory
+     *
+     * @return \AdminBundle\Entity\CmsCategory
+     */
+    public function getCmsCategory()
+    {
+        return $this->cmsCategory;
+    }
+
+    /**
+     * Set organizer
+     *
+     * @param \AdminBundle\Entity\User $organizer
+     *
+     * @return ArenaContest
+     */
+    public function setOrganizer(\AdminBundle\Entity\User $organizer = null)
+    {
+        $this->organizer = $organizer;
+
+        return $this;
+    }
+
+    /**
+     * Get organizer
+     *
+     * @return \AdminBundle\Entity\User
+     */
+    public function getOrganizer()
+    {
+        return $this->organizer;
+    }
+
+    
+
+    /**
+     * Set arenaPackage
+     *
+     * @param \AdminBundle\Entity\ArenaPackage $arenaPackage
+     *
+     * @return ArenaContest
+     */
+    public function setArenaPackage(\AdminBundle\Entity\ArenaPackage $arenaPackage = null)
+    {
+        $this->arenaPackage = $arenaPackage;
+
+        return $this;
+    }
+
+    /**
+     * Get arenaPackage
+     *
+     * @return \AdminBundle\Entity\ArenaPackage
+     */
+    public function getArenaPackage()
+    {
+        return $this->arenaPackage;
+    }
+
+    /**
+     * Set isHidden
+     *
+     * @param boolean $isHidden
+     *
+     * @return ArenaContest
+     */
+    public function setIsHidden($isHidden)
+    {
+        $this->isHidden = $isHidden;
+
+        return $this;
+    }
+
+    /**
+     * Get isHidden
+     *
+     * @return boolean
+     */
+    public function getIsHidden()
+    {
+        return $this->isHidden;
+    }
+
+    /**
+     * Add arenaContestParticipation
+     *
+     * @param \AdminBundle\Entity\ArenaContestParticipation $arenaContestParticipation
+     *
+     * @return ArenaContest
+     */
+    public function addArenaContestParticipation(\AdminBundle\Entity\ArenaContestParticipation $arenaContestParticipation)
+    {
+        $this->arenaContestParticipations[] = $arenaContestParticipation;
+
+        return $this;
+    }
+
+    /**
+     * Remove arenaContestParticipation
+     *
+     * @param \AdminBundle\Entity\ArenaContestParticipation $arenaContestParticipation
+     */
+    public function removeArenaContestParticipation(\AdminBundle\Entity\ArenaContestParticipation $arenaContestParticipation)
+    {
+        $this->arenaContestParticipations->removeElement($arenaContestParticipation);
+    }
+
+    /**
+     * Get arenaContestParticipations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArenaContestParticipations()
+    {
+        return $this->arenaContestParticipations;
+    }
+
+    /**
+     * Set datePayment
+     *
+     * @param \DateTime $datePayment
+     *
+     * @return ArenaContest
+     */
+    public function setDatePayment($datePayment)
+    {
+        $this->date_payment = $datePayment;
+
+        return $this;
+    }
+
+    /**
+     * Get datePayment
+     *
+     * @return \DateTime
+     */
+    public function getDatePayment()
+    {
+        return $this->date_payment;
+    }
+
+    /**
+     * Set paymentStatus
+     *
+     * @param \AppBundle\Entity\PaymentStatus $paymentStatus
+     *
+     * @return ArenaContest
+     */
+    public function setPaymentStatus(\AppBundle\Entity\PaymentStatus $paymentStatus = null)
+    {
+        $this->paymentStatus = $paymentStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get paymentStatus
+     *
+     * @return \AppBundle\Entity\PaymentStatus
+     */
+    public function getPaymentStatus()
+    {
+        return $this->paymentStatus;
+    }
+
+    /**
+     * Set arenaContestStyle
+     *
+     * @param \AdminBundle\Entity\ArenaContestStyle $arenaContestStyle
+     *
+     * @return ArenaContest
+     */
+    public function setArenaContestStyle(\AdminBundle\Entity\ArenaContestStyle $arenaContestStyle = null)
+    {
+        $this->arenaContestStyle = $arenaContestStyle;
+        $arenaContestStyle->setArenaContest($this);
+
+        return $this;
+    }
+
+    /**
+     * Get arenaContestStyle
+     *
+     * @return \AdminBundle\Entity\ArenaContestStyle
+     */
+    public function getArenaContestStyle()
+    {
+        return $this->arenaContestStyle;
+    }
+
+    /**
+     * Set dateWinnerSelectTo
+     *
+     * @param \DateTime $dateWinnerSelectTo
+     *
+     * @return ArenaContest
+     */
+    public function setDateWinnerSelectTo($dateWinnerSelectTo)
+    {
+        $this->date_winner_select_to = $dateWinnerSelectTo;
+
+        return $this;
+    }
+
+    /**
+     * Get dateWinnerSelectTo
+     *
+     * @return \DateTime
+     */
+    public function getDateWinnerSelectTo()
+    {
+        return $this->date_winner_select_to;
+    }
+
+    /**
+     * Set isFinished
+     *
+     * @param boolean $isFinished
+     *
+     * @return ArenaContest
+     */
+    public function setIsFinished($isFinished)
+    {
+        $this->isFinished = $isFinished;
+
+        return $this;
+    }
+
+    /**
+     * Get isFinished
+     *
+     * @return boolean
+     */
+    public function getIsFinished()
+    {
+        return $this->isFinished;
+    }
+
+    /**
+     * Set isWinnerSelected
+     *
+     * @param boolean $isWinnerSelected
+     *
+     * @return ArenaContest
+     */
+    public function setIsWinnerSelected($isWinnerSelected)
+    {
+        $this->isWinnerSelected = $isWinnerSelected;
+
+        return $this;
+    }
+
+    /**
+     * Get isWinnerSelected
+     *
+     * @return boolean
+     */
+    public function getIsWinnerSelected()
+    {
+        return $this->isWinnerSelected;
+    }
+
+    /**
+     * Add arenaContestComment
+     *
+     * @param \AdminBundle\Entity\ArenaContestComment $arenaContestComment
+     *
+     * @return ArenaContest
+     */
+    public function addArenaContestComment(\AdminBundle\Entity\ArenaContestComment $arenaContestComment)
+    {
+        $this->arenaContestComments[] = $arenaContestComment;
+
+        return $this;
+    }
+
+    /**
+     * Remove arenaContestComment
+     *
+     * @param \AdminBundle\Entity\ArenaContestComment $arenaContestComment
+     */
+    public function removeArenaContestComment(\AdminBundle\Entity\ArenaContestComment $arenaContestComment)
+    {
+        $this->arenaContestComments->removeElement($arenaContestComment);
+    }
+
+    /**
+     * Get arenaContestComments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArenaContestComments()
+    {
+        return $this->arenaContestComments;
+    }
+
+    /**
+     * Set participationsCount
+     *
+     * @param integer $participationsCount
+     *
+     * @return ArenaContest
+     */
+    public function setParticipationsCount($participationsCount)
+    {
+        $this->participationsCount = $participationsCount;
+
+        return $this;
+    }
+
+    /**
+     * Get participationsCount
+     *
+     * @return integer
+     */
+    public function getParticipationsCount()
+    {
+        return $this->participationsCount;
+    }
+
+    /**
+     * Set hash
+     * @param string $hash
+     * @return ArenaContest
+     */
+    public function setHash($hash)
+    {
+        $this->hash = $hash;
+        return $this;
+    }
+
+    /**
+     * Get hash
+     * @return string
+     */
+    public function getHash()
+    {
+        return $this->hash;
+    }
+
+    /**
+     * Get contest files dir
+     * @return string
+     */
+    public function getFilesDir() : string {
+        return self::CONTEST_FILES_DIR . $this->getHash(). '/';
+    }
+
+    /**
+     * Get participations files dir
+     * @return string
+     */
+    public function getParticipationsDir() : string {
+        return self::CONTEST_PARTICIPATIONS_DIR . $this->getHash() . '/';
+    }
+
+
+
+
+    /**
+     * Set isHiddenProjects
+     *
+     * @param boolean $isHiddenProjects
+     *
+     * @return ArenaContest
+     */
+    public function setIsHiddenProjects($isHiddenProjects)
+    {
+        $this->isHiddenProjects = $isHiddenProjects;
+
+        return $this;
+    }
+
+    /**
+     * Get isHiddenProjects
+     *
+     * @return boolean
+     */
+    public function getIsHiddenProjects()
+    {
+        return $this->isHiddenProjects;
+    }
+
+    /**
+     * Set winnerParticipation
+     *
+     * @param \AdminBundle\Entity\ArenaContestParticipation $winnerParticipation
+     *
+     * @return ArenaContest
+     */
+    public function setWinnerParticipation(\AdminBundle\Entity\ArenaContestParticipation $winnerParticipation = null)
+    {
+        $this->winnerParticipation = $winnerParticipation;
+
+        return $this;
+    }
+
+    /**
+     * Get winnerParticipation
+     *
+     * @return \AdminBundle\Entity\ArenaContestParticipation
+     */
+    public function getWinnerParticipation()
+    {
+        return $this->winnerParticipation;
+    }
+
+    /**
+     * Set winnerAuthor
+     *
+     * @param \AdminBundle\Entity\User $winnerAuthor
+     *
+     * @return ArenaContest
+     */
+    public function setWinnerAuthor(\AdminBundle\Entity\User $winnerAuthor = null)
+    {
+        $this->winnerAuthor = $winnerAuthor;
+
+        return $this;
+    }
+
+    /**
+     * Get winnerAuthor
+     *
+     * @return \AdminBundle\Entity\User
+     */
+    public function getWinnerAuthor()
+    {
+        return $this->winnerAuthor;
+    }
+
+    /**
+     * Set prizeWinner
+     *
+     * @param string $prizeWinner
+     *
+     * @return ArenaContest
+     */
+    public function setPrizeWinner($prizeWinner)
+    {
+        $this->prizeWinner = $prizeWinner;
+
+        return $this;
+    }
+
+    /**
+     * Get prizeWinner
+     *
+     * @return string
+     */
+    public function getPrizeWinner()
+    {
+        return $this->prizeWinner;
+    }
+
+    /**
+     * Set priceBrutto
+     *
+     * @param string $priceBrutto
+     *
+     * @return ArenaContest
+     */
+    public function setPriceBrutto($priceBrutto)
+    {
+        $this->priceBrutto = $priceBrutto;
+
+        return $this;
+    }
+
+    /**
+     * Get priceBrutto
+     *
+     * @return string
+     */
+    public function getPriceBrutto()
+    {
+        return $this->priceBrutto;
+    }
+
+    /**
+     * Set priceExtras
+     *
+     * @param string $priceExtras
+     *
+     * @return ArenaContest
+     */
+    public function setPriceExtras($priceExtras)
+    {
+        $this->priceExtras = $priceExtras;
+
+        return $this;
+    }
+
+    /**
+     * Get priceExtras
+     *
+     * @return string
+     */
+    public function getPriceExtras()
+    {
+        return $this->priceExtras;
+    }
+
+    /**
+     * Set priceExtrasBrutto
+     *
+     * @param string $priceExtrasBrutto
+     *
+     * @return ArenaContest
+     */
+    public function setPriceExtrasBrutto($priceExtrasBrutto)
+    {
+        $this->priceExtrasBrutto = $priceExtrasBrutto;
+
+        return $this;
+    }
+
+    /**
+     * Get priceExtrasBrutto
+     *
+     * @return string
+     */
+    public function getPriceExtrasBrutto()
+    {
+        return $this->priceExtrasBrutto;
+    }
+
+    /**
+     * Set priceSum
+     *
+     * @param string $priceSum
+     *
+     * @return ArenaContest
+     */
+    public function setPriceSum($priceSum)
+    {
+        $this->priceSum = $priceSum;
+
+        return $this;
+    }
+
+    /**
+     * Get priceSum
+     *
+     * @return string
+     */
+    public function getPriceSum()
+    {
+        return $this->priceSum;
+    }
+
+    /**
+     * Set priceSumBrutto
+     *
+     * @param string $priceSumBrutto
+     *
+     * @return ArenaContest
+     */
+    public function setPriceSumBrutto($priceSumBrutto)
+    {
+        $this->priceSumBrutto = $priceSumBrutto;
+
+        return $this;
+    }
+
+    /**
+     * Get priceSumBrutto
+     *
+     * @return string
+     */
+    public function getPriceSumBrutto()
+    {
+        return $this->priceSumBrutto;
+    }
+}

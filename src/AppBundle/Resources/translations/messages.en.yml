@@ -1,0 +1,100 @@
+#Menu
+'rooms':            Rooms
+'contact':          Contact
+'restaurant':       Restaurant
+'conferences':      Conferences
+'location':         Location
+'gallery':          Gallery
+'packages':         Tastings
+'reservations':     Reservations
+'wine':             Wine
+'news':             News
+'cigars':           Cigars
+'cooking':          Cooking
+
+'opening_hours': Opening hours
+'day':
+    '01_monday':    Monday
+    '02_tuesday':   Tuesday
+    '03_wednesday': Wednesday
+    '04_thursday':  Thursday
+    '05_friday':    Friday
+    '06_saturday':  Saturday
+    '07_sunday':    Sunday
+
+'see_all_news': See all news
+
+
+
+
+
+'main_page':        Main Page
+'package_more':     View More
+'packages_adv_txt': Choose something special
+'see_more': See more
+'images_loading':  Loading images...
+
+#wines
+'wines_filter': Filter wine list
+'year':         Year
+'price':        Price / 75cl
+'color':        Color
+'maturity':     Maturity
+'country':      Country
+'flter_no_results': No filtering results
+'remove_filter': Remove filter
+
+
+
+
+#gallery
+'virtual_tour': Virtual Tour
+
+#contact page
+'contact_data': Contact details
+'contact_form': Contact form
+'map_loading':  Loading map...
+
+'form_name':    Name
+'form_surname': Surname
+'form_phone':   Phone
+'form_subject': Subject
+'form_message': Message
+'form_rewrite_code': Rewrite code
+'form_send_message': Send message
+
+'validation_subject': Wprowadź temat wiadomości
+'validation_message': Wprowadź temat wiadomości
+'validation_code':    Przepisz poprawny kod
+
+#rooms detaisl
+'check_in':     Check in
+'check_out':    Check out
+'cancellation': Cancellation
+'reservation_rules': Terms of reservation
+'facilities':        Facilities
+
+'single_bed': single
+'double_bed': double
+'extra_bed':  extra
+'person':   person
+'persons':  persons
+
+'min_stay':  Any length of stay
+'noc':       night
+'noce':      nights
+'nocy':      nights
+
+#footer
+'see_second_hotel': Welcome to our hotels
+
+'check_in':  Check-in
+'check_out': Check-out
+'check_availability':  Check Availability
+
+'map': Map
+'reservation': Reservation
+'call': Call
+
+'package_reservation': Reservation
+'download_wine_list': Download wine list

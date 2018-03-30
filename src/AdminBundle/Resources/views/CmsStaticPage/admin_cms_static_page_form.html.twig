@@ -1,0 +1,92 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block js %}
+    <script src="{{ asset('vendor/jquery-ui/ui/widgets/sortable.js') }}"></script>
+    <script src="{{ asset('bundles/admin/CmsStaticPage/js/admin_cms_static_page.min.js') }}"></script>
+{% endblock %}
+
+{% block form %}
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+    {% if form.mainImageFile is defined %}
+        {{ form_row(form.mainImageFile, {'label': 'lbl.main_image'| trans}) }}
+        {% if cmsStaticPage is defined and cmsStaticPage.mainImage  %}
+            <div class="form-group">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10">
+                    <img src="{{ asset('thumb.php') }}?src={{ asset('upload/cms_static_page/main_image/' ~ cmsStaticPage.mainImage) }}&w=300">
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+
+    {#
+    {% if form.mainPageImageFile is defined %}
+        {{ form_row(form.mainPageImageFile, {'label': 'mainPageImage'| trans}) }}
+        {% if cmsStaticPage is defined and cmsStaticPage.mainPageImage  %}
+            <div class="form-group">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10">
+                    <img src="{{ asset('thumb.php') }}?src={{ asset('upload/cms_static_page/main_image/' ~ cmsStaticPage.mainPageImage) }}&w=200">
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+    #}
+
+
+    {% if form.param is defined%}
+        {{ form_row(form.param, {'label': 'Parametr'}) }}
+    {% endif %}
+
+    {{ form_widget(form.translations) }}
+
+    {% if cmsStaticPage is defined and cmsStaticPage.isHasGallery %}
+        <div class="form-group">
+            <div class="col-sm-2 control-label">
+                <strong>Galeria</strong>
+            </div>
+            <div class="col-sm-10">
+                <div class="uploadify-input">
+                    <input type="file" name="photo_gallery_file" id="photo_gallery_file" />
+                </div>
+                <div class="uploadify-files-wrapper">
+                    {% include '@Admin/_Common/partials/form/form_files_list.html.twig' with {'entity': cmsStaticPage, 'files': images} %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+
+    {% if cmsStaticPage is defined and cmsStaticPage.isHasAttachments %}
+        <!--Attachements -->
+        <div class="form-group">
+            <div class="col-sm-2 control-label">
+                <strong>Załączniki</strong>
+            </div>
+            <div class="col-sm-10">
+                <div class="uploadify-input">
+                    <input type="file" name="document_entity_file" id="document_entity_file" />
+                </div>
+                <div class="document-files-wrapper">
+                    {% set docFiles = cmsStaticPage.filesByType('doc')  %}
+                    {% include '@Admin/_Common/partials/form/form_files_list.html.twig' with {'entity': cmsStaticPage, 'files': docFiles} %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+
+
+
+    {% include '@Admin/_Common/partials/form_submit.html.twig' %}
+    {{ form_end(form) }}
+
+    {% if cmsStaticPage is defined and cmsStaticPage.isHasGallery %}
+        {% include '@Admin/CmsStaticPage/form/cms_static_page_uploadify_script.html.twig' %}
+    {% endif %}
+
+{% endblock %}
+
+
+

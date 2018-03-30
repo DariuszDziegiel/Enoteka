@@ -1,0 +1,122 @@
+@import "../../_Common/css/partials/variables";
+@import "../../_Common/css/partials/mixins";
+@import "../../_Common/css/partials/image_box";
+@import "../../_Common/css/partials/page";
+
+
+
+.contact-container {
+  background-color: #F2F2F2;
+}
+
+.tab-pane {
+  padding: {
+    top: 15px;
+    bottom: 15px;
+  };
+}
+
+
+#contact_form_body {
+  min-height: 250px;
+}
+
+#contact-data {
+  table {
+    td {
+      padding: 15px;
+    }
+  }
+}
+
+.nav-tabs {
+  li {
+    position: relative;
+    text: {
+      transform: uppercase;
+      align: center;
+    }
+    font: {
+      weight: bold;
+    }
+    width: 50%;
+    background-color: $theme-ashy;
+    a {
+      color: #FFF;
+      border: 0px;
+      @include border-radius(0);
+      &:focus, &:hover {
+        background-color: $theme-ashy;
+      }
+    }
+  }
+  li.active {
+    a {
+      border: 0px;
+      color: #FFF;
+      background-color: $theme-red;
+      &:focus, &:hover {
+        color: #FFF;
+        background-color: $theme-red;
+        border: 0px;
+      }
+    }
+  }
+
+  li.active::after {
+    content: '';
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 12px solid $theme-red;
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    margin-left: -12px;
+    height: 0;
+    width: 0;
+  }
+}
+
+#contact-form {
+  .form-control {
+    margin-bottom: 10px;
+    @include box-shadow(0, 0, 2px, 0, $theme-ashy);
+  }
+  .help-block, .text-danger {
+    color: $theme-red !important;
+  }
+}
+
+.nav-tabs>li>a {
+  margin-right: 0;
+}
+
+
+/*XS*/
+@media (max-width: 768px) {
+  .nav-tabs {
+    li {
+      width: 100%;
+    }
+  }
+
+}
+
+
+/*SM*/
+@media (min-width: 768px) and (max-width: 992px) {
+
+}
+
+
+//MD && LG
+@media (min-width: 992px)  {
+
+
+}
+
+
+/*Small height screen*/
+@media screen and (max-height: 768px) {
+
+}

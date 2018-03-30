@@ -1,0 +1,73 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block js %}
+    {#<script src="{{ asset('bundles/rs/RsMeal/js/rs_meal.min.js') }}"></script> #}
+{% endblock %}
+
+{% block form %}
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+    <div class="row">
+        <div class="col-xs-12">
+            {{ form_errors(form) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="glyphicon glyphicon-cog"></span>&nbsp;Dane adresowe
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    {{ form_row(form.country, {'label': 'lbl.country'| trans}) }}
+                    {{ form_row(form.city, {'label': 'lbl.city'| trans}) }}
+                    {{ form_row(form.street, {'label': 'lbl.street'| trans}) }}
+                    {{ form_row(form.zip, {'label': 'lbl.zip'| trans}) }}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="glyphicon glyphicon-cog"></span>&nbsp;Dane kontaktowe
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    {{ form_row(form.email, {'label': 'lbl.email'| trans}) }}
+                    {{ form_row(form.phone, {'label': 'lbl.phone'| trans}) }}
+                    {{ form_row(form.cellPhone, {'label': 'lbl.cell_phone'| trans}) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="glyphicon glyphicon-cog"></span>&nbsp;Dane do faktur
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    {{ form_row(form.companyTitleInvoice, {'label': 'lbl.company_title_invoice'| trans}) }}
+                    {{ form_row(form.nipInvoice, {'label': 'lbl.nip_invoice'| trans}) }}
+                    {{ form_row(form.streetInvoice, {'label': 'lbl.street'| trans}) }}
+                    {{ form_row(form.cityInvoice, {'label': 'lbl.city'| trans}) }}
+                    {{ form_row(form.zipInvoice, {'label': 'lbl.zip'| trans}) }}
+                    {{ form_row(form.countryInvoice, {'label': 'lbl.country'| trans}) }}
+                    {{ form_row(form.emailInvoice, {'label': 'lbl.email_invoice'| trans}) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hide">
+        {{ form_widget(form.translations) }}
+    </div>
+    {{ form_widget(form._token) }}
+    {% include '@Admin/_Common/partials/form_submit.html.twig' %}
+    {{ form_end(form, {'render_rest': false}) }}
+{% endblock %}

@@ -1,0 +1,37 @@
+{{ form_row(form.baseRoom, {'label': 'lbl.base_room'| trans}) }}
+
+<div class="base-room-formulas-wrapper" data-prototype="{{ form_row(form.baseRoomFormulas.vars.prototype)|e('html_attr') }}">
+    {# @var baseRoomFormula \Symfony\Component\Form\FormView #}
+    {% for baseRoomFormula in form.baseRoomFormulas %}
+        {{ form_errors(baseRoomFormula) }}
+        <div class="form-group">
+            <div class="col-sm-1">
+                {{ loop.index }}
+            </div>
+            <div class="col-sm-2">
+                {{ form_widget(baseRoomFormula.type, {'label': 'lbl.base_price_rate_plan_formula_type'}) }}
+            </div>
+            <div class="col-sm-2">
+                {{ form_widget(baseRoomFormula.value, {'label': 'lbl.base_price_rate_plan_formula_value'}) }}
+            </div>
+            <div class="col-sm-2">
+                {{ form_widget(baseRoomFormula.unit, {'label': 'lbl.base_price_rate_plan_formula_unit'}) }}
+            </div>
+            <div class="col-sm-2">
+                {{ form_widget(baseRoomFormula.isActive, {'label': 'lbl.is_active'}) }}
+            </div>
+            <div class="col-sm-2">
+                <button type="button" data-formula-id="{{ baseRoomFormula.vars.data.id }}" class="btn btn-danger remove-formula">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<div class="base-room-formula-add-btn-wrapper">
+    <button class="btn btn-default pull-right" type="button" id="base-room-formula-add-btn">
+        <span class="glyphicon glyphicon-plus"></span>&nbsp;Dodaj nowy wzór
+    </button>
+</div>
+<div class="clearfix"></div>
+<hr />

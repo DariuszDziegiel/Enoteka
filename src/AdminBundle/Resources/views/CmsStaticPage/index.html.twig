@@ -1,0 +1,14 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block js %}
+    <script src="{{ asset('vendor/Magnific-Popup/dist/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('bundles/admin/CmsStaticPage/js/cms_static_page_index.min.js') }}"></script>
+{% endblock %}
+
+{% block css%}
+    <link rel="stylesheet" href="{{ asset('vendor/Magnific-Popup/dist/magnific-popup.css') }}">
+{% endblock %}
+
+{% block datagrid %}
+    {{ grid(grid) }}
+{% endblock %}

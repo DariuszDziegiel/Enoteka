@@ -1,0 +1,29 @@
+{# @var rsRoomEntity \RsBundle\Entity\RsRoom #}
+<div class="base-room-formulas-wrapper">
+    {% set baseRoomFormulas = rsRoomEntity.baseRoomFormulas %}
+    {% if baseRoomFormulas is not empty %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Lp.</th>
+                <th>Operacja</th>
+                <th>Wartość</th>
+                <th>Jednostka</th>
+                <th>Aktywny</th>
+            </tr>
+            </thead>
+            {% for baseRoomFormula in baseRoomFormulas %}
+                {# @var baseRoomFormula \RsBundle\Entity\RsBaseRoomFormula #}
+                <tr>
+                    <td class="bg-info">{{ loop.index }}</td>
+                    <td>{{ baseRoomFormula.typeLabel| trans }}</td>
+                    <td>{{ baseRoomFormula.value }}</td>
+                    <td>{{ baseRoomFormula.unitLabel| trans }}</td>
+                    <td>
+                        {% include '@Admin/_Common/apy/datagrid/grid_tickbox.html.twig' with {'status': baseRoomFormula.isActive} %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</div>

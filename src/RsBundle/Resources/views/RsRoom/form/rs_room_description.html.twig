@@ -1,0 +1,35 @@
+{# @var rsRoomEntity \RsBundle\Entity\RsRoom #}
+
+
+{% if form.mainImageFile is defined %}
+    {{ form_widget(form.mainImageFile) }}
+    {% if rsRoomEntity is defined and rsRoomEntity.mainImage %}
+        <div class="form-group">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-10">
+                <img src="{{ asset('thumb.php') }}?src={{ asset(rsRoomEntity.mainImageDir ~ rsRoomEntity.mainImage) }}&w=100">
+            </div>
+        </div>
+    {% endif %}
+{% endif %}
+
+
+
+{{ form_widget(form.translations, {'label': 'lbl_tlumaczenia'| trans}) }}
+
+
+{% if rsRoomEntity is defined%}
+    <div class="form-group">
+        <div class="col-sm-2 control-label">
+            <strong>Galeria</strong>
+        </div>
+        <div class="col-sm-10">
+            <div class="uploadify-input">
+                <input type="file" name="photo_gallery_file" id="photo_gallery_file" />
+            </div>
+            <div class="uploadify-files-wrapper">
+                {% include '@Admin/_Common/partials/form/form_files_list.html.twig' with {'entity': rsRoomEntity, 'files': rsRoomImages} %}
+            </div>
+        </div>
+    </div>
+{% endif %}

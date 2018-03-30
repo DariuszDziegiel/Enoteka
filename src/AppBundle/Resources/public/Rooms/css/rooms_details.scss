@@ -1,0 +1,35 @@
+@import "../../_Common/css/partials/variables";
+@import "../../_Common/css/partials/mixins";
+
+.image-box-pic {
+  position: relative;
+  height: 50vh !important;
+  border-bottom: 10px solid $theme-red;
+  @include box-shadow(0, 0, 2px, 0, #000000);
+}
+
+.return-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+}
+
+
+/*SM*/
+@media (min-width: 768px) and (max-width: 992px) {
+  #footer {
+    padding: {
+      bottom: 80px;
+    }
+  }
+}
+
+/* MD && LG */
+@media (min-width: 992px) {
+  #footer {
+    padding: {
+      bottom: 80px;
+    }
+  }
+}

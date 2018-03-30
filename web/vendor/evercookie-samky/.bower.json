@@ -1,0 +1,14 @@
+{
+  "name": "evercookie-samky",
+  "homepage": "https://github.com/samyk/evercookie",
+  "_release": "1533e932f1",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "1533e932f1e2fd3ffbac22c582a1c7f883d23cf6"
+  },
+  "_source": "https://github.com/samyk/evercookie.git",
+  "_target": "*",
+  "_originalSource": "evercookie-samky",
+  "_direct": true
+}

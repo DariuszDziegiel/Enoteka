@@ -1,0 +1,59 @@
+{% extends "@App/layout.html.twig" %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/CmsArticle/css/article_index.css') }}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="image-box">
+        {# @var configImagePackages \AdminBundle\Entity\CmsConfig #}
+        {% set configImagePackages = page_config.byKey('image_packages') %}
+        <div class="image-box-pic border-bottom-transparent" style="background-image: url({{ asset('thumb.php') }}?src={{ asset(configImagePackages.filesDir ~ configImagePackages.image) }}&w=1380&h=921&q=85)">
+            <div class="image-box-page-title-wrapper">
+                <h1 class="img-box-title">{{ 'news'| trans }}</h1>
+                {# <h2 class="img-box-subtitle">{{ page_config.value('packages_subtitle') }}</h2> #}
+                <div class="img-box-breadcrumbs">
+                    <a href="{{ path('homepage') }}">{{ 'main_page'| trans }}</a>&nbsp;&nbsp;/&nbsp;
+                    <span class="img-box-breadcrumbs-active">{{ 'news'| trans }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container main-container">
+        {% for article in news %}
+            <div class="row">
+                <div class="col-sm-3">
+                    {% if article.mainImage is not empty %}
+                        <img src="{{ asset('thumb.php') }}?src={{ asset(article.mainImageDir ~ article.mainImage) }}&w=700&h=650"
+                             class="article-image img-responsive">
+                    {% endif %}
+                </div>
+                <div class="col-sm-9">
+                    <div class="article-title">{{ article.getTitle()| raw }}</div>
+                    {% if article.date is not empty %}
+                        <div class="article-date">
+                            <strong>
+                                <span class="glyphicon glyphicon-calendar"></span>&nbsp;
+                                {{ article.date.format('d') }}&nbsp;{{ ('calendar.month_' ~ article.date.format('n'))| trans }}&nbsp;{{ article.date.format('Y') }}
+                            </strong>
+                        </div>
+                    {% endif %}
+                    {{ article.description| slice(0, 425)| striptags| raw }}...
+                </div>
+                <div class="article-more-btn">
+                    <a href="{{ path('article_details_news', {'slug': article.slug})  }}" class="btn btn-default pull-right">Czytaj Więcej</a>
+                </div>
+            </div>
+            <hr />
+        {% endfor %}
+        <div class="text-center">
+            {{ knp_pagination_render(news) }}
+        </div>
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,43 @@
+{
+  "name": "DCMS",
+  "authors": [
+    "Dariusz Dzięgiel <lemmyafiver@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "web/vendor/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "ckeditor": "^4.5.11",
+    "jquery.cookie": "jquery-cookie#^1.4.1",
+    "cookie-js": "^0.0.1",
+    "jquery-ui": "^1.12.0",
+    "bootbox.js": "bootbox#^4.4.0",
+    "vegas": "^2.3.1",
+    "font-awesome": "^4.7",
+    "jquery.scrollTo": "^2.1.2",
+    "handlebars": "^4.0.5",
+    "uploadify": "^3.2.1",
+    "moment": "^2.16.0",
+    "parallax.js": "^1.4.2",
+    "slick-carousel": "^1.6.0",
+    "imagesloaded": "^4.1.1",
+    "Yamm3": "yamm3#^1.1.0"
+  },
+  "devDependencies": {
+    "jquery.countdown": "^2.2.0",
+    "evercookie-samky": "*",
+    "jquery_lazyload": "jquery.lazyload#^1.9.7",
+    "datatables": "DataTables#^1.10.13",
+    "fullpage.js": "^2.9.4"
+  }
+}

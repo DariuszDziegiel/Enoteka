@@ -1,0 +1,272 @@
+<?php
+
+namespace AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * ArenaContestArenaPackageExtra
+ * @ORM\Table(name="arena_contest_arena_package_extra")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\ArenaContestArenaPackageExtraRepository")
+ */
+class ArenaContestArenaPackageExtra
+{
+
+    /**
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2)
+     * @Assert\GreaterThanOrEqual(value="0")
+     */
+    private $price;
+
+    /**
+     * @ORM\Column(type="boolean",)
+     * @Assert\Choice({0, 1})
+     */
+    private $isIncluded = 0;
+    
+    
+    /**
+     * @ORM\Column(type="datetime", nullable=false)
+     * @Gedmo\Timestampable(on="create")
+     */
+    protected $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @Gedmo\Timestampable(on="update")
+     */
+    protected $updatedAt;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\ArenaContest")
+     */
+    private $arenaContest;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\ArenaPackageExtra")
+     */
+    private $arenaPackageExtra;
+
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $orderId;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\PaymentStatus", inversedBy="arenaContestArenaPackageExtras")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $paymentStatus;
+
+
+    /**
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set price
+     *
+     * @param string $price
+     *
+     * @return ArenaContestArenaPackageExtra
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return string
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set isIncluded
+     *
+     * @param boolean $isIncluded
+     *
+     * @return ArenaContestArenaPackageExtra
+     */
+    public function setIsIncluded($isIncluded)
+    {
+        $this->isIncluded = $isIncluded;
+
+        return $this;
+    }
+
+    /**
+     * Get isIncluded
+     *
+     * @return boolean
+     */
+    public function getIsIncluded()
+    {
+        return $this->isIncluded;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return ArenaContestArenaPackageExtra
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return ArenaContestArenaPackageExtra
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set arenaContest
+     *
+     * @param \AdminBundle\Entity\ArenaContest $arenaContest
+     *
+     * @return ArenaContestArenaPackageExtra
+     */
+    public function setArenaContest(\AdminBundle\Entity\ArenaContest $arenaContest = null)
+    {
+        $this->arenaContest = $arenaContest;
+
+        return $this;
+    }
+
+    /**
+     * Get arenaContest
+     *
+     * @return \AdminBundle\Entity\ArenaContest
+     */
+    public function getArenaContest()
+    {
+        return $this->arenaContest;
+    }
+
+    /**
+     * Set arenaPackageExtra
+     *
+     * @param \AdminBundle\Entity\ArenaPackageExtra $arenaPackageExtra
+     *
+     * @return ArenaContestArenaPackageExtra
+     */
+    public function setArenaPackageExtra(\AdminBundle\Entity\ArenaPackageExtra $arenaPackageExtra = null)
+    {
+        $this->arenaPackageExtra = $arenaPackageExtra;
+
+        return $this;
+    }
+
+    /**
+     * Get arenaPackageExtra
+     *
+     * @return \AdminBundle\Entity\ArenaPackageExtra
+     */
+    public function getArenaPackageExtra()
+    {
+        return $this->arenaPackageExtra;
+    }
+
+    /**
+     * Set orderId
+     *
+     * @param integer $orderId
+     *
+     * @return ArenaContestArenaPackageExtra
+     */
+    public function setOrderId($orderId)
+    {
+        $this->orderId = $orderId;
+
+        return $this;
+    }
+
+    /**
+     * Get orderId
+     *
+     * @return integer
+     */
+    public function getOrderId()
+    {
+        return $this->orderId;
+    }
+
+    /**
+     * Set paymentStatus
+     *
+     * @param \AppBundle\Entity\PaymentStatus $paymentStatus
+     *
+     * @return ArenaContestArenaPackageExtra
+     */
+    public function setPaymentStatus(\AppBundle\Entity\PaymentStatus $paymentStatus = null)
+    {
+        $this->paymentStatus = $paymentStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get paymentStatus
+     *
+     * @return \AppBundle\Entity\PaymentStatus
+     */
+    public function getPaymentStatus()
+    {
+        return $this->paymentStatus;
+    }
+}

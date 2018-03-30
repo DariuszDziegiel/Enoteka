@@ -1,0 +1,59 @@
+<nav class="navbar">
+    <div class="container-fluid menu-container">
+        <div class="menu-languages-md visible-md">
+            {% include '@App/Layout/navigation/menu_languages.html.twig' %}
+        </div>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <div class="menu-languages-xs visible-xs visible-sm">
+                {% include '@App/Layout/navigation/menu_languages.html.twig' %}
+            </div>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <a href="{{ path('homepage') }}" class="page-logo">
+            <img src="{{ asset('images/page/logo.png') }}"
+                 alt="home hotel logo"
+            >
+        </a>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="menu-item">
+                    {{ render(controller('AppBundle:Default:menuCategory', {'cmsCategoryCode': 'menu'})) }}
+                </li>
+                <li class="menu-item">
+                    <a href="{{ path('wine_page_index') }}">{{ 'wine'| trans }}</a>
+                </li>
+                <li class="menu-item">
+                    {{ render(controller('AppBundle:Default:menuCategory', {'cmsCategoryCode': 'bar'})) }}
+                </li>
+                <li class="menu-item">
+                    {{ render(controller('AppBundle:Default:menuCategory', {'cmsCategoryCode': 'cigars'})) }}
+                </li>
+                <li class="menu-item">
+                    {{ render(controller('AppBundle:Default:menuCategory', {'cmsCategoryCode': 'delicatessen'})) }}
+                </li>
+                <li class="menu-item">
+                    <a href="{{ path('cms_static_page', {'slug': page_config.getCmsStaticPageByParam('reservations').getSlug()}) }}">{{ 'reservations'| trans }}</a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ path('packages_index') }}">{{ 'packages'| trans }}</a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ path('cms_static_page', {'slug': page_config.getCmsStaticPageByParam('gallery').getSlug()}) }}">{{ 'gallery'| trans }}</a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ path('contact') }}">{{ 'contact'| trans }}</a>
+                </li>
+                <li class="menu-item visible-lg">
+                    {% include '@App/Layout/navigation/menu_languages.html.twig' %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,146 @@
+{% set header = '
+   <div class="row">
+       <div class="col-sm-9"></div>
+       <div class="col-xs-offset-6 col-sm-offset-0 col-xs-2 col-sm-1 text-center">
+           <b>2.5 cl</b>
+       </div>
+       <div class="col-xs-2 col-sm-1 text-center">
+           <b>10 cl</b>
+       </div>
+       <div class="col-xs-2 col-sm-1 text-center">
+           <b>75 cl</b>
+       </div>
+    </div>
+    '
+%}
+
+    {% set wineColorId = null %}
+    {% set wineCountryId = null %}
+    {% set wineCountryRegionId = null %}
+    {% set wineCountrySubregionId = null %}
+
+{% if wines is empty %}
+    <div class="alert alert-danger text-center">{{ 'filter_no_results'| trans }}</div>
+    {#<a class="remove-filter-btn btn btn-danger btn-sm">
+        {{ 'remove_filter'| trans }} <span class="glyphicon glyphicon-remove"></span>
+    </a>#}
+{% endif %}
+
+{% for wine in wines %}
+    {# Wine Color #}
+    {% if wine.wine_color_id != wineColorId  %}
+        <div class="wine-color-title-wrapper">
+            <span class="wine-color-title">{{ wine.wine_color }}</span>
+        </div>
+    {% endif %}
+
+    {% if wine.wine_color_id != wineColorId and wine.wine_country_id is empty
+        and wine.wine_country_region_id is empty
+        and wine.wine_country_subregion_id is empty
+    %}
+        {{ header| raw }}
+    {% endif %}
+
+
+    {# WINE COUNTRY #}
+    {% if wine.wine_country_id is not empty
+        and wine.wine_country_id != wineCountryId
+    %}
+        <div class="wine-country-title-wrapper">
+            <img src="{{ asset('images/flags/' ~ wine.wine_country_code ~ '.png') }}" alt="flaga {{ wine.wine_country }}">
+            <span class="wine-country-title">
+                {{ wine.wine_country }}
+            </span>
+        </div>
+    {% endif %}
+
+    {% if wine.wine_country_id != wineCountryId
+        and wine.wine_country_region_id is empty
+        and wine.wine_country_subregion_id is empty %}
+        {{ header|raw }}
+    {% endif %}
+
+
+    {# Wine Country Region #}
+
+    {% if wine.wine_country_region_id != wineCountryRegionId
+        and wine.wine_country_region_id is not empty
+        %}
+        <div class="wine-region-wrapper">
+            <span class="wine-region-title">{{ wine.wine_country_region }}</span>
+        </div>
+    {% endif %}
+
+
+    {% if wine.wine_country_region_id != wineCountryRegionId
+        and wine.wine_country_region_id is not empty
+        and wine.wine_country_subregion_id is empty %}
+        {{ header|raw }}
+    {% endif %}
+
+    {# Wine Country Subregion #}
+
+    {% if wine.wine_country_subregion_id != wineCountrySubregionId
+        and wine.wine_country_subregion_id is not empty  %}
+        <div class="wine-subregion-wrapper">
+            <span class="wine-subregion-title">{{ wine.wine_country_subregion }}</span>
+        </div>
+    {% endif %}
+
+
+    {% if wine.wine_country_subregion_id != wineCountrySubregionId and wine.wine_country_subregion_id is not empty %}
+        {{ header|raw }}
+    {% endif %}
+
+
+            <div class="wine-details drop-shadow lifted">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <span class="wine-title">{{ wine.title| raw }}</span>{% if wine.year is not empty %}, <span class="wine-year">{{ wine.year }}</span>{% endif %}
+                    </div>
+                    <div class="col-xs-offset-6 col-sm-offset-0 col-xs-2 col-sm-1 text-center wine-price">
+                        {{ wine.price2comma5cl| default('-') }}
+                    </div>
+                    <div class="col-xs-2 col-sm-1 text-center wine-price">
+                        {{ wine.price10cl| default('-') }}
+                    </div>
+                    <div class="col-xs-2 col-sm-1 text-center wine-price">
+                        {{ wine.price75cl| default('_') }}
+                    </div>
+                    <div class="col-xs-12 wine-description wine-price">
+                        {{ wine.wine_description| raw }}
+                    </div>
+                </div>
+                {#
+                <div class="wine-attributes-wrapper">
+                    {% if wine.price2comma5cl is not empty %}
+                        <div class="wine-attribute">
+                            <div class="title">2.5 cl: </div>
+                            <div class="value">{{ wine.price2comma5cl }} PLN</div>
+                        </div>
+                    {% endif %}
+                    {% if wine.price5cl is not empty %}
+                        <div class="wine-attribute">
+                            <div class="title">5 cl: </div>
+                            <div class="value">{{ wine.price5cl }} PLN</div>
+                        </div>
+                    {% endif %}
+                    {% if wine.price10cl is not empty %}
+                        <div class="wine-attribute">
+                            <div class="title">10 cl: </div>
+                            <div class="value">{{ wine.price10cl }} PLN</div>
+                        </div>
+                    {% endif %}
+                    {% if wine.price75cl is not empty %}
+                        <div class="wine-attribute">
+                            <div class="title">75 cl: </div>
+                            <div class="value">{{ wine.price75cl }} PLN</div>
+                        </div>
+                    {% endif %}
+                </div> #}
+            </div>
+    {% set wineColorId            = wine.wine_color_id %}
+    {% set wineCountryId          = wine.wine_country_id %}
+    {% set wineCountryRegionId    = wine.wine_country_region_id %}
+    {% set wineCountrySubregionId = wine.wine_country_subregion_id %}
+{% endfor %}

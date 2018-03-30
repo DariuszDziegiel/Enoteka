@@ -1,0 +1,24 @@
+{# @var cmsPage \AdminBundle\Entity\CmsPage #}
+{# @var maxSort int #}
+<div class="btn-group" role="group">
+    {% if cmsPage.sort != 0 %}
+        <a href="{{ path('cms_page_sort', {'id': cmsPage.id, 'direction': 'up'}) }}" class="btn btn-default" data-toggle="tooltip" title="Przenieś wyżej">
+            <span class="glyphicon glyphicon-arrow-up"></span>
+        </a>
+    {% endif %}
+    {% if cmsPage.sort != maxSort %}
+        <a href="{{ path('cms_page_sort', {'id': cmsPage.id, 'direction': 'down'}) }}" class="btn btn-default" data-toggle="tooltip" title="Przenieś niżej">
+            <span class="glyphicon glyphicon-arrow-down"></span>
+        </a>
+    {% endif %}
+    {% if cmsPage.sort != 0 %}
+        <a href="{{ path('cms_page_sort', {'id': cmsPage.id, 'direction': 'first'}) }}" class="btn btn-default">
+            <small>Przenieś na początek</small>
+        </a>
+    {% endif %}
+    {% if cmsPage.sort != maxSort %}
+        <a href="{{ path('cms_page_sort', {'id': cmsPage.id, 'direction': 'last'}) }}" class="btn btn-default">
+            <small>Przenieś na koniec</small>
+        </a>
+    {% endif %}
+</div>

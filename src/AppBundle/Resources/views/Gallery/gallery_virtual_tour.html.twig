@@ -1,0 +1,49 @@
+{% extends "@App/layout.html.twig" %}
+
+{% block css %}
+    {#<link rel="stylesheet" href="{{ asset('vendor/fullpage.js/dist/jquery.fullpage.min.css') }}">#}
+    <link rel="stylesheet" href="{{ asset('vendor/slick-carousel/slick/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/slick-carousel/slick/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/Gallery/css/gallery.css') }}">
+    {#<style>
+        .navbar {
+            background-color: rgba(0,0,0,0.4) !important;
+        }
+    </style>#}
+{% endblock %}
+
+{% block js %}
+    <script src="{{ asset('vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('vendor/slick-carousel/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery_lazyload/jquery.lazyload.js') }}"></script>
+    {#<script src="{{ asset('vendor/fullpage.js/dist/jquery.fullpage.min.js') }}"></script>#}
+    <script src="{{ asset('bundles/app/Gallery/js/gallery.min.js') }}"></script>
+{% endblock %}
+
+{% block seo_title %}{{ 'gallery'| trans }}{% endblock %}
+
+{% block content %}
+    <div class="virtual-tour-iframe">
+        {{ page_config.value('virtual_tour')| raw }}
+        <div class="gallery-categories-menu">
+            <div class="container">
+                <ul class="gallery-categories-list">
+                    {% if cmsGalleries is not empty %}
+                        {% for gallery in cmsGalleries %}
+                            {# @var gallery \AdminBundle\Entity\CmsGallery #}
+                            <li>
+                                <a href="{{ path('gallery_details', {'slug': gallery.getSlug() }) }}">{{ gallery.getTitle()| raw }}</a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                    <li class="gallery-category-active">
+                        <a href="{{ path('gallery_virtual_tour') }}">{{ 'virtual_tour'| trans }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+

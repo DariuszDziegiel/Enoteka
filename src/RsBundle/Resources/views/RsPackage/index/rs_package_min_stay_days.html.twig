@@ -1,0 +1,6 @@
+{# @var rsPackage \RsBundle\Entity\RsPackage#}
+{% if not rsPackage.minStayDays %}
+    <b>Dowolna</b>
+    {% else %}
+    {{ rsPackage.minStayDays }}
+{% endif %}

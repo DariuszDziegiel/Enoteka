@@ -1,0 +1,36 @@
+{# @var calendar \RsBundle\Utils\Calendar #}
+{% set dateNow = calendar.dateNow.format('Y-m-d') %}
+<tr>
+<th></th>
+{% for date in calendarDates %}
+    <th class="calendar-days-row {{ date.dayOfWeek in [6, 7]? 'weekend-day': '' }} {% if dateNow == date.date %}calendar-date-now{% endif %}"
+        data-date="{{ date.date }}"
+        data-toggle="popover"
+        data-title="{{ ('calendar.day_' ~ date.dayOfWeek)| trans }}"
+        data-content="<strong>{{ date.date }}</strong>">
+        {% if date.month == 12 and date.day == 31 %}
+            <div class="year-info-wrapper">
+                <div class="previous-year-info">
+                    {{ date.year }}
+                </div>
+            </div>
+        {% endif %}
+        {% if date.month == 1 and date.day == 1 %}
+            <div class="year-info-wrapper">
+                <div class="next-year-info">
+                    {{ date.year }}
+                </div>
+            </div>
+        {% endif %}
+        <div class="day-of-month-number">
+            {{ date.day }}
+        </div>
+        <div class="month-short-title">
+            {{ ('calendar.month_short_' ~ date.month| number_format)| trans }}
+        </div>
+        <div class="day-of-month-title">
+            {{ ('calendar.day_short_' ~ date.dayOfWeek| number_format)| trans }}
+        </div>
+    </th>
+{% endfor %}
+</tr>

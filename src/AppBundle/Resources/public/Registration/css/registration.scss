@@ -1,0 +1,28 @@
+#registration-form {
+
+  input[type=radio], input[type=checkbox] {
+    width: 20px;
+    height: 20px;
+  }
+
+}
+
+
+.regulations-accept-wrapper {
+
+  .regulations-checkbox {
+    float: left;
+    width: 2%;
+
+    .checkbox {
+      padding-top: 0 !important;
+    }
+
+  }
+
+  .regulations-label {
+    float: left;
+    width: 98%;
+  }
+
+}

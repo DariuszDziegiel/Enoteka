@@ -1,0 +1,79 @@
+.reservation-bar {
+  color: #FFFFFF;
+  z-index: 1;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background-color: $theme-red;
+  background-color: $theme-red-transparent;
+  //border-top: 1px solid #FFFFFF;
+  @include box-shadow(0, 0, 8px, 1px, #000);
+}
+
+
+#wis2-panel .wis2-panel--horizontal {
+  padding: 0 !important;
+  background-color: inherit !important;
+}
+
+#wis2-panel .wis2-panel--horizontal .wis2-el {
+  padding: 0px 10px !important;
+  height: 45px !important;
+}
+
+
+.reservation-date {
+  text: {
+    align: center;
+  }
+  background-color: #FFFFFF !important;
+}
+
+.reservation-btn {
+  text-transform: uppercase;
+  @include box-shadow(0, 0, 5px, 0px, #000000);
+}
+
+.reservation-btn::before {
+  //border: 1px solid #ffffff;
+  content: "";
+  display: block;
+  height: 56px;
+  left: 10px;
+  position: absolute;
+  top: -5px;
+  width: 380px;
+}
+
+
+.reservation-date-field {
+  @include box-shadow(0, 0, 5px, 0px, #000000);
+}
+
+.reservation-date-field::before {
+  //border: 1px solid #ffffff;
+  content: "";
+  display: block;
+  height: 56px;
+  left: -5px;
+  position: absolute;
+  top: -5px;
+  width: 180px;
+}
+.input-group-addon {
+  cursor: pointer;
+}
+
+.ui-datepicker-header {
+  background-color: $theme-red;
+  color: #FFF;
+  padding: {
+    top: 1px;
+  };
+}
+
+.ui-datepicker-prev, .ui-datepicker-next {
+  background-color: #FFFFFF;
+}

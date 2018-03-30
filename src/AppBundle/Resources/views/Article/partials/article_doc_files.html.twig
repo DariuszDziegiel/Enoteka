@@ -1,0 +1,30 @@
+{# docs #}
+{% set docFiles = article.filesByType('doc') %}
+{% if docFiles is not empty %}
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table table-hover">
+                {% for file in docFiles %}
+                    <tr>
+                        <td>
+                            <div class="file-icon">
+                                <span class="glyphicon glyphicon-file"></span>
+                            </div>
+                        </td>
+                        <td>
+                            {{ file.fileName| slice(0, -18)  }}
+                        </td>
+                        <td class="text-uppercase">
+                            {{ file.extension }}
+                        </td>
+                        <td>
+                            <a href="{{ asset(article.filesDir ~ file.fileName)  }}" class="btn btn-sm btn-default pull-right" target="_blank">
+                                Pobierz
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endif %}

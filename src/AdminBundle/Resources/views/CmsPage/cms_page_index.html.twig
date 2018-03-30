@@ -1,0 +1,11 @@
+{% extends "@Admin/layout.html.twig" %}
+
+
+{% block datagrid %}
+    <a href="{{ path('cms_page_add', {'cmsCategoryId': cmsCategory.id}) }}" class="btn btn-lg btn-success">Dodaj podkategorię <b>"{{ cmsCategory.getTitle() }}"</b></a>
+    <hr />
+    {% if app.session.flashBag.get('sort_success') %}
+        <div class="alert alert-success">Kolejność została zmieniona</div>
+    {% endif %}
+    {{ grid(grid) }}
+{% endblock %}

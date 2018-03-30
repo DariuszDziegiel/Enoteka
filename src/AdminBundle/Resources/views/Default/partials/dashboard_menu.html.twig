@@ -1,0 +1,26 @@
+<ul class="dashboard-menu">
+    {% for category in menu.category %}
+        <li data-index="{{ loop.index }}">
+            <div class="dashboard-menu-category-name">
+                <span class="glyphicon glyphicon-list-alt"></span>
+                &nbsp;{{ category.attributes.name }}
+            </div>
+            <ul class="dashboard-submenu">
+                {% for item in category.item %}
+                    <li>
+                            {% if item.param is defined %}
+                                <a href="{{ path(item.route|trim, { (item.param.attributes.name|trim) : item.param }) }}">
+                            {% else %}
+                                <a href="{{ path(item.route|trim) }}">
+                            {% endif %}
+                            {% if item.icon is defined %}
+                                <span class="{{ item.icon }}"></span>
+                            {% endif %}
+                            {{ item.attributes.label }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>

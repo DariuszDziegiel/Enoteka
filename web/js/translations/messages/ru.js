@@ -1,0 +1,34 @@
+(function (Translator) {
+    // ru
+    Translator.add("Page", "\u0421\u0442\u0440\u0430\u043d\u0438\u0446\u0430", "messages", "ru");
+    Translator.add(", Display", ", \u041f\u043e\u043a\u0430\u0437\u0430\u0442\u044c", "messages", "ru");
+    Translator.add("of %count%", "\u0438\u0437 %count%", "messages", "ru");
+    Translator.add("Items per page", "\u0417\u0430\u043f\u0438\u0441\u0435\u0439 \u043d\u0430 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "messages", "ru");
+    Translator.add("Select visible", "\u0412\u044b\u0431\u0440\u0430\u0442\u044c \u0432\u0438\u0434\u0438\u043c\u044b\u0435", "messages", "ru");
+    Translator.add("Select all", "\u0412\u044b\u0431\u0440\u0430\u0442\u044c \u0432\u0441\u0435", "messages", "ru");
+    Translator.add("Deselect visible", "\u041e\u0442\u043c\u0435\u043d\u0438\u0442\u044c \u0432\u044b\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u0432\u0438\u0434\u0438\u043c\u044b\u0445", "messages", "ru");
+    Translator.add("Deselect all", "\u041e\u0442\u043c\u0435\u043d\u0438\u0442\u044c \u0432\u044b\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u0432\u0441\u0435\u0445", "messages", "ru");
+    Translator.add("Action", "\u0414\u0435\u0439\u0441\u0442\u0432\u0438\u0435", "messages", "ru");
+    Translator.add("Submit Action", "\u0412\u044b\u043f\u043e\u043b\u043d\u0438\u0442\u044c", "messages", "ru");
+    Translator.add("From:", "\u0421:", "messages", "ru");
+    Translator.add("To:", "\u041f\u043e:", "messages", "ru");
+    Translator.add("eq", "\u0420\u0430\u0432\u043d\u043e", "messages", "ru");
+    Translator.add("neq", "\u041d\u0435 \u0440\u0430\u0432\u043d\u043e", "messages", "ru");
+    Translator.add("lt", "\u041c\u0435\u043d\u044c\u0448\u0435", "messages", "ru");
+    Translator.add("lte", "\u041c\u0435\u043d\u044c\u0448\u0435 \u043b\u0438\u0431\u043e \u0440\u0430\u0432\u043d\u043e", "messages", "ru");
+    Translator.add("gt", "\u0411\u043e\u043b\u044c\u0448\u0435", "messages", "ru");
+    Translator.add("gte", "\u0411\u043e\u043b\u044c\u0448\u0435 \u043b\u0438\u0431\u043e \u0440\u0430\u0432\u043d\u043e", "messages", "ru");
+    Translator.add("req", "\u0420\u0435\u0433\u0443\u043b\u044f\u0440\u043d\u043e\u0435 \u0432\u044b\u0440\u0430\u0436\u0435\u043d\u0438\u0435", "messages", "ru");
+    Translator.add("like", "\u0421\u043e\u0434\u0435\u0440\u0436\u0438\u0442", "messages", "ru");
+    Translator.add("nlike", "\u041d\u0435 \u0441\u043e\u0434\u0435\u0440\u0436\u0438\u0442", "messages", "ru");
+    Translator.add("rlike", "\u041d\u0430\u0447\u0438\u043d\u0430\u0435\u0442\u0441\u044f \u0441", "messages", "ru");
+    Translator.add("llike", "\u041e\u043a\u0430\u043d\u0447\u0438\u0432\u0430\u0435\u0442\u0441\u044f \u043d\u0430", "messages", "ru");
+    Translator.add("btw", "\u041c\u0435\u0436\u0434\u0443 (\u043d\u0435 \u0432\u043a\u043b\u044e\u0447\u0430\u044f)", "messages", "ru");
+    Translator.add("btwe", "\u041c\u0435\u0436\u0434\u0443 (\u0432\u043a\u043b\u044e\u0447\u0438\u0442\u0435\u043b\u044c\u043d\u043e)", "messages", "ru");
+    Translator.add("isNull", "\u041d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e (null)", "messages", "ru");
+    Translator.add("isNotNull", "\u041e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e (\u043d\u0435 null)", "messages", "ru");
+    Translator.add("%count% Results, ", "%count% \u0417\u0430\u043f\u0438\u0441\u044c, |%count% \u0417\u0430\u043f\u0438\u0441\u0438, |%count% \u0417\u0430\u043f\u0438\u0441\u0435\u0439, ", "messages", "ru");
+    Translator.add("No result", "\u041d\u0435\u0442 \u0437\u0430\u043f\u0438\u0441\u0435\u0439 \u0434\u043b\u044f \u043e\u0442\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f", "messages", "ru");
+    Translator.add("Export", "\u042d\u043a\u0441\u043f\u043e\u0440\u0442", "messages", "ru");
+    Translator.add("Reset", "\u0421\u0431\u0440\u043e\u0441", "messages", "ru");
+})(Translator);

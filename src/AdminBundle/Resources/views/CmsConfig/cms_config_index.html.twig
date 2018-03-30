@@ -1,0 +1,14 @@
+{% extends "@Admin/layout.html.twig" %}
+
+
+{% block css %}
+    <style>
+        .grid-column-configTitle {font-weight: bold;}
+    </style>
+{% endblock %}
+
+
+
+{% block datagrid %}
+    {{ grid(grid) }}
+{% endblock %}

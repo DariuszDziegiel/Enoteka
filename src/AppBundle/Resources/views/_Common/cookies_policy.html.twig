@@ -1,0 +1,10 @@
+<div id="privacy-policy-box" {% if app.request.cookies.get('privacy_policy_close') %} class="privacy-policy-box-hide" {% endif %}>
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            Strona używa cookies. Wyrażasz zgodę na używanie cookies, zgodnie z aktualnymi ustawieniami przeglądarki.
+        </div>
+        <div class="col-xs-12 text-center">
+            <div id="privacy-policy-close" class="btn btn-red">ZAMKNIJ</div>
+        </div>
+    </div>
+</div>

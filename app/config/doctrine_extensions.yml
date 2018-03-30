@@ -1,0 +1,14 @@
+
+stof_doctrine_extensions:
+    default_locale: pl
+    orm:
+        default:
+            tree: true
+            timestampable: true # not needed: listeners are not enabled by default
+            sluggable: true # not needed: listeners are not enabled by default
+            sortable: true
+
+
+knp_doctrine_behaviors:
+    translatable: true
+

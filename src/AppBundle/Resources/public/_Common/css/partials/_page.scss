@@ -1,0 +1,88 @@
+.reservation-bar {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+}
+
+.container h2 {
+  text: {
+    align: center;
+  }
+  font: {
+    size: 2.1em;
+  }
+  //text-shadow: 0px 0px 1px $theme-grey;
+  //margin-top: 0;
+}
+
+.container h3 {
+  font: {
+    size: 1.05em;
+  }
+  text: {
+    align: center;
+  }
+  color: $theme-ashy;
+  margin: {
+    top: 0;
+  }
+}
+
+.info-window {
+  position: relative;
+  background-color: $theme-red-soft;
+  color: #FFF;
+  padding: 10px;
+  .info-desc {
+    font-size: 0.9em;
+    text-align: center;
+    ul {
+      list-style: none;
+      padding: {
+        left: 0px;
+      }
+    }
+  }
+}
+
+.info-window::after {
+  position: absolute;
+  content: '';
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  border: 1px solid #FFF;
+}
+
+.gallery-slider-wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.loading-images-overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 11;
+  background-color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  .loading-images-txt {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    color: #FFF;
+    text-align: center;
+    font-weight: bold;
+  }
+
+}
+

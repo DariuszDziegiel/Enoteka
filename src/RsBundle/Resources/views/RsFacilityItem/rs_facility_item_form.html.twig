@@ -1,0 +1,47 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block js %}
+    {#<script src="{{ asset('bundles/rs/RsMeal/js/rs_meal.min.js') }}"></script> #}
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/rs/RsFacilityItem/css/rs_facility_item.css') }}">
+{% endblock %}
+
+
+{% block form %}
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+        {{ form_row(form.isActive, {'label': 'lbl.is_active'| trans}) }}
+        {{ form_widget(form.translations, {'label': 'lbl_tlumaczenia'| trans}) }}
+
+        {% if form.iconDefault is defined %}
+            {{ form_row(form.iconDefault) }}
+            {% else %}
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <b>Ikona domyślna</b>
+                    </label>
+                    <div class="col-sm-10 default-icon">
+                        {{ rsFacilityItem.iconDefault| raw }}
+                    </div>
+                </div>
+        {% endif %}
+
+        {{ form_widget(form.mainImageFile) }}
+        {% if form.mainImageFile is defined %}
+            {{ form_widget(form.mainImageFile) }}
+            {% if rsFacilityItem is defined and rsFacilityItem.mainImage %}
+                <div class="form-group">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10">
+                        <img src="{{ asset('thumb.php') }}?src={{ asset(rsFacilityItem.mainImageDir ~ rsFacilityItem.mainImage) }}&w=100">
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+        {% include '@Admin/_Common/partials/form_submit.html.twig' %}
+
+    {{ form_end(form) }}
+{% endblock %}

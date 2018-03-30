@@ -1,0 +1,40 @@
+{
+  "name": "knppaginator-ajax",
+  "authors": [
+    "Yoan Arnaudov <jonidev@gmail.com>"
+  ],
+  "description": "Add ajax load more style button to the symfony2 knp paginator plugin",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "knp",
+    "paginator",
+    "knp",
+    "paginator",
+    "symfony2",
+    "ajax"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/nacholibre/knppaginator-ajax",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.9.1 - 2"
+  },
+  "version": "1.0.1",
+  "_release": "1.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.1",
+    "commit": "2d3c5f923b06158ce8c9bb9e09a1057790a52cb5"
+  },
+  "_source": "https://github.com/nacholibre/knppaginator-ajax.git",
+  "_target": "^1.0.1",
+  "_originalSource": "knppaginator-ajax",
+  "_direct": true
+}

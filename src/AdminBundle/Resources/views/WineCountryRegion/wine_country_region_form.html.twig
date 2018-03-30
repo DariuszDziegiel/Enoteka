@@ -1,0 +1,17 @@
+{% extends "@Admin/layout.html.twig" %}
+
+{% block js %}{% endblock %}
+
+{% block form %}
+    <a href="{{ path('wine_country_region_add') }}" class="btn btn-success">
+        <span class="glyphicon glyphicon-plus"></span>&nbsp;Dodaj nowy region
+    </a>
+    <hr />
+    {{ form_start(form) }}
+        {{ form_row(form.wineCountry) }}
+        {{ form_widget(form.translations, {'label': 'lbl_tlumaczenia'| trans}) }}
+        {% include '@Admin/_Common/partials/form_submit.html.twig' %}
+    {{ form_end(form) }}
+
+{% endblock %}
+

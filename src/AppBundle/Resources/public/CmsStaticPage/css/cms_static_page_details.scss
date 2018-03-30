@@ -1,0 +1,106 @@
+@import "../../_Common/css/partials/variables";
+@import "../../_Common/css/partials/mixins";
+@import "../../_Common/css/partials/image_box";
+@import "../../_Common/css/partials/page";
+
+.gallery-slider {
+  border: {
+    top: 10px solid #EAEAEA;
+    bottom: 10px solid #EAEAEA;
+  }
+
+  .gallery-slide {
+    height: 100vh;
+    position: relative;
+    outline: none;
+    img {
+      height: 100vh;
+    }
+  }
+
+  .slick-next {
+    right: 30px;
+  }
+
+  .slick-prev {
+    left: 25px;
+  }
+
+  .slick-prev, .slick-next {
+    width: 40px;
+    height: 40px;
+    z-index: 10;
+    top: 54%;
+    font-size: 3em;
+    color: #FFF;
+  }
+  .slick-prev:before, .slick-next:before {
+    content: '';
+  }
+}
+
+.gallery-slide:not(.slick-current):before {
+  content: '';
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.gallery-file {
+  @include box-shadow(1px, 2px, 2px, 0, #000)
+}
+
+@media (min-width: 1px) and (max-width: 445px) {
+
+}
+
+@media (min-width: 446px) and (max-width: 768px) {
+
+}
+
+/*XS*/
+@media (max-width: 768px) {
+
+}
+
+
+/*SM*/
+@media (min-width: 768px) and (max-width: 992px) {
+  #footer {
+    padding: {
+      bottom: 80px;
+    }
+  }
+}
+
+/* MD && LG */
+@media (min-width: 992px) {
+  #footer {
+    padding: {
+      bottom: 80px;
+    }
+  }
+}
+
+/*LG*/
+@media (min-width: 1200px) {
+
+}
+
+
+/*Small height screen*/
+@media screen and (max-height: 768px) {
+  .img-box-txt {
+    font-size: .95em;
+    position: absolute;
+    bottom: 15px;
+    top: auto;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+}

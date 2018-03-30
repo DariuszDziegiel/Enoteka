@@ -1,0 +1,38 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block content %}
+
+    <div class="container">
+
+        {% include '@App/_Common/app_breadcrumbs.html.twig' %}
+
+        {% if error %}
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="row">
+            <div class="col-xs-6">
+                {% include '@App/_Common/hwioauth/social_login_buttons.html.twig' %}
+                <hr />
+            </div>
+            <div class="col-xs-6"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                {% include '@App/Security/partials/user_login_form.html.twig' %}
+            </div>
+            <div class="col-xs-6 text-center">
+                <a href="{{ path('user_registration') }}" class="btn btn-success btn-lg">Załóż Konto</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+

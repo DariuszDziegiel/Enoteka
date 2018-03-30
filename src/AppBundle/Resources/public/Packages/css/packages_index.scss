@@ -1,0 +1,62 @@
+@import "../../_Common/css/partials/variables";
+@import "../../_Common/css/partials/mixins";
+
+
+
+
+.img-box-txt {
+
+}
+
+.packages-categories {
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .package-category {
+    position: relative;
+    margin: 5px;
+    border: 2px solid #FFF;
+    text-align: center;
+    display: inline-block;
+    padding: 5px;
+    background-color: $theme-red-soft;
+  }
+
+  .package-category:hover, .package-category-active {
+    text-decoration: none;
+    background-color: $theme-red;
+  }
+  .package-category-title {
+    color: #FFF;
+    text-transform: uppercase;
+    font: {
+      weight: bold;
+      size: 0.9em;
+    }
+  }
+
+  .package-category-subtitle {
+    font-size: 0.9em;
+    color: #f9f9f9;
+    font-style: italic;
+  }
+
+}
+
+
+/*Small height screen*/
+@media screen and (max-height: 768px) {
+  .img-box-txt {
+    font-size: .95em;
+    position: absolute;
+    bottom: 15px;
+    top: auto;
+    -webkit-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    transform: translateY(0%);
+  }
+}
+
+

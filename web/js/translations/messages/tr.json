@@ -1,0 +1,3 @@
+{
+    "translations": {"tr":{"messages":{"eq":"E\u015fittir","neq":"E\u015fit de\u011fildir","lt":"K\u00fc\u00e7\u00fckt\u00fcr","lte":"K\u00fc\u00e7\u00fck ya da e\u015fittir","gt":"B\u00fcy\u00fckt\u00fcr","gte":"B\u00fcy\u00fck ya da e\u015fittir","req":"D\u00fczenli ifade","like":"\u0130\u00e7erir","nlike":"\u0130\u00e7ermez","rlike":"\u0130le Ba\u015flar","llike":"\u0130le biter","btw":"Bunlar\u0131 kapsamaz","btwe":"Bunlar\u0131 kapsar","isNull":"Tan\u0131mlanmam\u0131\u015f","isNotNull":"Tan\u0131mlanm\u0131\u015f","%count% Results, ":"%count% Sonu\u00e7, "}}}
+}

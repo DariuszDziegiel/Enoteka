@@ -1,0 +1,15 @@
+{% extends '@Admin/layout.html.twig' %}
+
+
+{% block content %}
+    <hr />
+    <a href="{{ path('cms_newsletter_export') }}" class="btb btn-lg btn-danger">
+        Eksportuj adresy do pliku CSV
+    </a>
+{% endblock %}
+
+
+{% block datagrid %}
+    <hr />.
+    {{ grid(grid) }}
+{% endblock %}

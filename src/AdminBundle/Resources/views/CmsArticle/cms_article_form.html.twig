@@ -1,0 +1,86 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block js %}
+    <script src="{{ asset('bundles/app/CmsArticle/js/cms_article_form.min.js') }}"></script>
+{% endblock %}
+
+{% block form %}
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_row(form.isActive) }}
+
+    {% if form.createdAt is defined %}
+        {{ form_row(form.createdAt) }}
+    {% endif %}
+
+    {% if form.link is defined %}
+        {{ form_row(form.link) }}
+    {% endif %}
+
+    {% if form.city is defined %}
+        {{ form_row(form.city) }}
+    {% endif %}
+
+    {% if form.date is defined %}
+        {{ form_row(form.date) }}
+    {% endif %}
+
+
+
+    {{ form_row(form.mainImageFile, {'label': 'lbl.main_image'| trans}) }}
+    {% if cmsArticle is defined and cmsArticle.mainImage  %}
+        <div class="form-group">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-10">
+                <img src="{{ asset('thumb.php') }}?src={{ asset('upload/cms_article/main_image/' ~ cmsArticle.mainImage) }}&w=100">
+            </div>
+        </div>
+    {% endif %}
+
+    {{ form_widget(form.translations) }}
+
+    {% if cmsArticle is defined %}
+
+    {# Gallery #}
+    <div class="form-group">
+        <div class="col-sm-2 control-label">
+            <strong>Galeria Zdjęć</strong>
+        </div>
+        <div class="col-sm-10">
+            <div class="uploadify-input">
+                <input type="file" name="photo_gallery_file" id="photo_gallery_file" />
+            </div>
+            <div class="uploadify-files-wrapper">
+                {% set imageFiles = cmsArticle.filesByType('img')  %}
+                {% include '@Admin/_Common/partials/form/form_files_list.html.twig' with {'entity': cmsArticle, 'files': imageFiles} %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Attachements -->
+    {#
+    <div class="form-group">
+        <div class="col-sm-2 control-label">
+            <strong>Załączniki</strong>
+        </div>
+        <div class="col-sm-10">
+            <div class="uploadify-input">
+                <input type="file" name="document_entity_file" id="document_entity_file" />
+            </div>
+            <div class="document-files-wrapper">
+                {% set docFiles = cmsArticle.filesByType('doc')  %}
+                {% include '@Admin/_Common/partials/form/form_files_list.html.twig' with {'entity': cmsArticle, 'files': docFiles} %}
+            </div>
+        </div>
+    </div>
+    #}
+    {% endif %}
+
+    {% include '@Admin/_Common/partials/form_submit.html.twig' %}
+    {{ form_end(form) }}
+
+    {% if cmsArticle is defined %}
+        {% include '@Admin/CmsArticle/form/cms_article_form_uploadify_script.html.twig' %}
+    {% endif %}
+
+{% endblock %}

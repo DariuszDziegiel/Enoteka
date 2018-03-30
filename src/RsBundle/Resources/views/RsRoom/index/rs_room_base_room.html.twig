@@ -1,0 +1,17 @@
+{# @var rsRoomEntity \RsBundle\Entity\RsRoom#}
+{# @var baseRoom \RsBundle\Entity\RsRoom #}
+{% set baseRoom = rsRoomEntity.baseRoom %}
+{% if baseRoom is not empty %}
+    <div>
+        <div class="bg-primary">&nbsp;{{ baseRoom.title }}
+            <a class="btn btn-default pull-right btn-xs" role="button" data-toggle="collapse" href="#baseRoomFormulas_{{ rsRoomEntity.id }}" aria-expanded="false">
+                <span class="glyphicon glyphicon-search"></span> Pokaż wzory
+            </a>
+        </div>
+        <div class="collapse" id="baseRoomFormulas_{{ rsRoomEntity.id }}">
+            <div class="well">
+                {% include '@Rs/RsRoom/partials/rs_room_base_formulas.html.twig' with {'rsRoomEntity': rsRoomEntity} %}
+            </div>
+        </div>
+    </div>
+{% endif %}

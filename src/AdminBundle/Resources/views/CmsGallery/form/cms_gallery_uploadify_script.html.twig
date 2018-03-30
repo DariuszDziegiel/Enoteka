@@ -1,0 +1,79 @@
+{# @var rsRoomEntity \RsBundle\Entity\RsRoom #}
+<script src="{{ asset('vendor/uploadify/jquery.uploadify.min.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('vendor/uploadify/uploadify.css') }}">
+
+{# Galeria#}
+<script>
+    $(function () {
+        var uploadifyFilesTemplateSrc = $('#uploadify-files-template').html();
+        var uploadifyFilesTemplate = Handlebars.compile(uploadifyFilesTemplateSrc);
+
+        $('#photo_gallery_file').uploadify({
+            {% include '@Admin/_Common/uploadify/uploadify_default_options.html.twig' with
+            {'uploader': 'cms_gallery_file', 'buttonText': 'Wybierz zdjęcia'} %}
+            'formData': {
+                'entity_id': {{ cmsGallery.id }},
+                'entity_class': 'CmsGallery',
+                'file_type': 'img'
+            },
+            'onUploadComplete': function(file) {},
+            'onUploadSuccess' : function(file, data, response) {
+                var data = $.parseJSON(data);
+                var templateVars = {fileName: data.newFilename, fileId: data.fileId, extension: data.newFilenameExtension};
+                $('.uploadify-files-wrapper').append(uploadifyFilesTemplate(templateVars));
+            }
+        })
+    });
+</script>
+<script id="uploadify-files-template" type="text/x-handlebars-template">
+    <div class="uploadify-file pull-left" data-file-id="{% verbatim %}{{ fileId }}{% endverbatim %}">
+        <img src="{{ asset('thumb.php') }}?src=/web/upload/cms_gallery/files/{% verbatim %}{{ fileName }}{% endverbatim %}&w=120&h=120" class="img-thumbnail">
+        <button type="button" class="btn btn-default btn-xs remove-file-btn" data-file-id="{% verbatim %}{{ fileId }}{% endverbatim %}" title="Usuń">
+            <span class="glyphicon glyphicon-trash"></span>
+        </button>
+    </div>
+</script>
+
+{# Attachements#}
+{#
+<script>
+    $(function () {
+        var documentFilesTemplateSrc = $('#document-files-template').html();
+        var documentFilesTemplate = Handlebars.compile(documentFilesTemplateSrc);
+        $('#document_entity_file').uploadify({
+            {% include '@Admin/_Common/uploadify/uploadify_default_options.html.twig' with
+            {'uploader': 'cms_static_page_file', 'fileTypeExts': '*.doc; *.docx; *.pdf; *.txt; *.jpg; *.jpeg; *.png', 'buttonText': 'Wybierz załączniki'} %}
+            'formData': {
+                'entity_id': {{ cmsStaticPage.id }},
+                'entity_class': 'CmsStaticPage',
+                'file_type':    'doc'
+            },
+            'onUploadComplete': function(file) {},
+            'onUploadSuccess' : function(file, data, response) {
+                var data = $.parseJSON(data);
+                var templateVars = {fileName: data.newFilename, fileId: data.fileId, extension: data.newFilenameExtension};
+                $('.document-files-wrapper').append(documentFilesTemplate(templateVars));
+            }
+        })
+    });
+</script> #}
+{#
+<script id="document-files-template" type="text/x-handlebars-template">
+    <div class="uploadify-file pull-left" data-file-id="{% verbatim %}{{ fileId }}{% endverbatim %}">
+        <div class="attachment-file-wrapper">
+            <div class="file-icon">
+                <span class="glyphicon glyphicon-file"></span>
+            </div>
+            <div class="file-name">
+                {% verbatim %}{{ fileName }}{% endverbatim %}
+            </div>
+            <div class="file-extension">
+                {% verbatim %}{{ extension }}{% endverbatim %}
+            </div>
+        </div>
+        <button type="button" class="btn btn-default btn-xs remove-file-btn" data-file-id="{% verbatim %}{{ fileId }}{% endverbatim %}" title="Usuń">
+            <span class="glyphicon glyphicon-trash"></span>
+        </button>
+    </div>
+</script>
+#}

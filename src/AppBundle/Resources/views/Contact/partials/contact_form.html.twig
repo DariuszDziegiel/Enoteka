@@ -1,0 +1,48 @@
+{% if app.session.flashBag.get('mail_send_success') %}
+    <div class="alert alert-success">
+        <span class="glyphicon glyphicon-ok"></span> Wiadomość została wysłana
+    </div>
+{% endif %}
+{{ form_start(form, {'attr': {'novalidate': 'novalidate', 'id': 'contact-form'}}) }}
+
+<div class="row">
+    <div class="col-sm-4">
+        {{ form_widget(form.name, {'attr': {'placeholder': 'form_name'}}) }}
+        {{ form_errors(form.name) }}
+        {{ form_widget(form.surname, {'attr': {'placeholder': 'form_surname'}}) }}
+        {{ form_errors(form.surname) }}
+        {{ form_widget(form.email, {'attr': {'placeholder': 'E-mail'}}) }}
+        {{ form_errors(form.email) }}
+        {{ form_widget(form.phone, {'attr': {'placeholder': 'form_phone'}}) }}
+        {{ form_errors(form.phone) }}
+    </div>
+    <div class="col-sm-8">
+        {{ form_widget(form.subject, {'attr': {'placeholder': 'form_subject'}}) }}
+        {{ form_errors(form.subject) }}
+        {{ form_widget(form.body, {'attr': {'placeholder': 'form_message'}}) }}
+        {{ form_errors(form.body) }}
+        <div class="form-group">
+            <label class="col-xs-2 control-label required">{{ 'form_rewrite_code'| trans }}</label>
+            <div class="col-xs-5">
+                {{ form_widget(form.code.code_first) }}
+            </div>
+            <div class="col-xs-5">
+                {{ form_widget(form.code.code_repeat) }}
+                <div class="text-danger">
+                    {{ form_errors(form.code) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<button type="submit" class="btn btn-default pull-right btn-lg text-uppercase more-btn" name="send-mail">
+    <span class="glyphicon glyphicon-envelope"></span> {{ 'form_send_message'| trans }}
+</button>
+
+{{ form_end(form) }}

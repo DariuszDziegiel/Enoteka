@@ -1,0 +1,35 @@
+{% extends "@App/layout.html.twig" %}
+
+
+{% block  content %}
+    <div class="container">
+
+        {% include '@Admin/_Common/breadcrumbs.html.twig' %}
+
+        {% if app.session.flashBag.get('form_success') %}
+            <div class="alert alert-success">Dane zostały zapisane</div>
+        {% endif %}
+
+
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'id': 'user-profile-edit-form'}}) }}
+        {{ form_row(form.userProfile.companyName) }}
+        {{ form_row(form.userProfile.companyNip) }}
+
+        {{ form_row(form.userProfile.name) }}
+        {{ form_row(form.userProfile.surname) }}
+        {{ form_row(form.userProfile.address) }}
+        {{ form_row(form.userProfile.city) }}
+        {{ form_row(form.userProfile.zip) }}
+        {{ form_row(form.userProfile.phone) }}
+
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-success pull-right btn-lg text-uppercase" name="">
+                <span class="glyphicon glyphicon-floppy-save"></span> Zapisz
+            </button>
+        </div>
+        {{ form_widget(form._token) }}
+        {{ form_end(form, {'render_rest': false}) }}
+    </div>
+{% endblock %}
+

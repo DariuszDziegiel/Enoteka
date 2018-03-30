@@ -1,0 +1,94 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+services:
+    #CmsArticleType form
+    form.cms_article_type:
+        class: AdminBundle\Form\CmsArticleType
+        arguments: ['@app.language_helper']
+        tags:
+            - { name: form.type }
+
+    #CmsStaticPage form
+    form.cms_static_page:
+        class: AdminBundle\Form\CmsStaticPageType
+        arguments: ['@app.language_helper']
+        tags:
+            - { name: form.type }
+
+    form.cms_page:
+        class: AdminBundle\Form\CmsPageType
+        arguments: ['@app.language_helper']
+        tags:
+            - { name: form.type }
+
+    #CmsGallery form
+    form.cms_gallery_page:
+        class: AdminBundle\Form\CmsGalleryType
+        arguments: ['@app.language_helper']
+        tags:
+            - { name: form.type }
+
+    form.cms_config:
+        class: AdminBundle\Form\CmsConfigForm
+        arguments: ['@app.language_helper']
+        tags:
+            - { name: form.type }
+
+    form.wine:
+        class: AdminBundle\Form\WineType
+        arguments: ['@app.language_helper']
+        tags:
+            - { name: form.type }
+
+    form.wine_color:
+        class: AdminBundle\Form\WineColorType
+        arguments: ['@app.language_helper']
+        tags:
+            - { name: form.type }
+
+    form.wine_country:
+        class: AdminBundle\Form\WineCountryType
+        arguments: ['@app.language_helper']
+        tags:
+            - { name: form.type }
+
+    form.wine_maturity:
+        class: AdminBundle\Form\WineMaturityType
+        arguments: ['@app.language_helper']
+        tags:
+            - { name: form.type }
+
+    form.wine_country_region:
+        class: AdminBundle\Form\WineCountryRegionType
+        arguments: ['@app.language_helper']
+        tags:
+            - { name: form.type }
+
+    #-------- RS Bundle -------------------------------------------------------------------------------------------
+    #RsRoom form
+    form.rs_room_type:
+        class: RsBundle\Form\RsRoomType
+        arguments: ['@app.language_helper']
+        tags:
+            - { name: form.type }
+
+    #RsFacilityItemType
+    form.rs_facility_item_type:
+        class: RsBundle\Form\RsFacilityItemType
+        arguments: ['@app.language_helper']
+        tags:
+            - { name: form.type }
+
+    #RsMeal
+    form.rs_meal_type:
+        class: RsBundle\Form\RsMealType
+        arguments: ['@app.language_helper']
+        tags:
+            - { name: form.type }
+
+    #RsPackage
+    form.rs_package_type:
+        class: RsBundle\Form\RsPackageType
+        arguments: ['@app.language_helper']
+        tags:
+            - { name: form.type }

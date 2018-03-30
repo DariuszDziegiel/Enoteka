@@ -1,0 +1,24 @@
+{# @var rsPackage \RsBundle\Entity\RsPackage #}
+{# @var maxSort int #}
+<div class="btn-group" role="group">
+    {% if rsPackage.sort != 0 %}
+        <a href="{{ path('rs_package_sort', {'id': rsPackage.id, 'direction': 'up'}) }}" class="btn btn-default" data-toggle="tooltip" title="Przenieś wyżej">
+            <span class="glyphicon glyphicon-arrow-up"></span>
+        </a>
+    {% endif %}
+    {% if rsPackage.sort != maxSort %}
+        <a href="{{ path('rs_package_sort', {'id': rsPackage.id, 'direction': 'down'}) }}" class="btn btn-default" data-toggle="tooltip" title="Przenieś niżej">
+            <span class="glyphicon glyphicon-arrow-down"></span>
+        </a>
+    {% endif %}
+    {% if rsPackage.sort != 0 %}
+        <a href="{{ path('rs_package_sort', {'id': rsPackage.id, 'direction': 'first'}) }}" class="btn btn-default">
+            <small>Przenieś na początek</small>
+        </a>
+    {% endif %}
+    {% if rsPackage.sort != maxSort %}
+        <a href="{{ path('rs_package_sort', {'id': rsPackage.id, 'direction': 'last'}) }}" class="btn btn-default">
+            <small>Przenieś na koniec</small>
+        </a>
+    {% endif %}
+</div>

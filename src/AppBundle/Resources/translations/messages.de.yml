@@ -1,0 +1,71 @@
+#Menu
+'hotel':       Home Aparthotel
+'rooms':       Zimmer
+'contact':     Kontakt
+'restaurant':  Restaurant
+'conferences': Konferenzen
+'location':    Lage
+'gallery':     Galerie
+'packages':    Pakete
+
+'main_page':        Zuhause
+'package_more':     Mehr
+'packages_adv_txt': Wählen Sie etwas Besonderes
+'see_more':         Mehr
+
+'images_loading':   Laden von Bildern...
+
+
+#gallery
+'virtual_tour': Virtuelle Tour
+
+
+#contact page
+'contact_data': Kontaktdaten
+'contact_form': Kontakt formular
+'map_loading':  Die Karte wird geladen...
+
+'form_name':    Name
+'form_surname': Nachname
+'form_phone':   Telefon
+'form_subject': Thema
+'form_message': Nachricht
+'form_rewrite_code': Geben Sie den Code
+'form_send_message': Senden
+
+'validation_subject': Wprowadź temat wiadomości
+'validation_message': Wprowadź temat wiadomości
+'validation_code':    Przepisz poprawny kod
+
+
+#rooms detaisl
+'check_in':     Scheck
+'check_out':    Auschecken
+'cancellation': Annullierung
+'reservation_rules': Buchungsbedingungen
+'facilities':        Einrichtungen
+
+'single_bed': single
+'double_bed': doppelt
+'extra_bed':  extra
+'person':     person
+'persons':    leute
+
+'min_stay':  Jede Länge
+'noc':       nacht
+'noce':      nacht
+'nocy':      nacht
+
+#footer
+'see_second_hotel': Siehe unser zweites Hotel
+
+'check_in':            Anreise
+'check_out':           Abreise
+'check_availability':  Online Buchen
+
+'map':         Karte
+'reservation': Reservierung
+'call':        Anruf
+
+'package_reservation': Reservierung
+'download_wine_list':  Laden Sie die Weinkarte herunter

@@ -1,0 +1,15 @@
+{% extends "@Admin/layout.html.twig" %}
+
+{% block js %}
+{% endblock %}
+
+
+{% block form %}
+
+    {{ form_start(form) }}
+    {{ form_widget(form.translations, {'label': 'lbl_tlumaczenia'| trans}) }}
+    {% include '@Admin/_Common/partials/form_submit.html.twig' %}
+    {{ form_end(form) }}
+
+{% endblock %}
+

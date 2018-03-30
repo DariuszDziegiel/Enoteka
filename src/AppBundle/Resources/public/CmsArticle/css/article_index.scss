@@ -1,0 +1,37 @@
+@import "../../_Common/css/partials/variables";
+@import "../../_Common/css/partials/mixins";
+@import "../../_Common/css/partials/image_box";
+
+
+.article-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.article-date {
+  font-size: 1em;
+}
+
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+  background-color: $theme-color;
+  border-color: $theme-color;
+}
+
+@media (max-width: 768px) {
+  .article-more-btn {
+    margin: {
+      top: 10px;
+      right: 15px;
+    };
+  }
+
+  .article-title {
+    font-size: 1.3em;
+    padding: {
+      top: 10px;
+    }
+  }
+
+}

@@ -1,0 +1,41 @@
+{# @var user \AdminBundle\Entity\User #}
+<table class="table">
+    <tr>
+        <th>Imię</th>
+        <td>{{ user.userProfile.name }}</td>
+    </tr>
+    <tr>
+        <th>Nazwisko</th>
+        <td>{{ user.userProfile.surname }}</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>
+            <a href="mailto:{{ user.email }}">{{ user.email }}</a>
+        </td>
+    </tr>
+    <tr>
+        <th>Adres</th>
+        <td>{{ user.userProfile.address }}</td>
+    </tr>
+    <tr>
+        <th>Miasto / Miejscowość</th>
+        <td>{{ user.userProfile.city }}</td>
+    </tr>
+    <tr>
+        <th>Kod pocztowy</th>
+        <td>{{ user.userProfile.zip }}</td>
+    </tr>
+    <tr>
+        <th>Telefon</th>
+        <td>{{ user.userProfile.phone }}</td>
+    </tr>
+    <tr>
+        <th>Firma</th>
+        <td>{{ user.userProfile.companyName }}</td>
+    </tr>
+    <tr>
+        <th>NIP</th>
+        <td>{{ user.userProfile.companyNip }}</td>
+    </tr>
+</table>

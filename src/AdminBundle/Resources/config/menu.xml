@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu_admin>
+
+    <category name="Menu" id="menu">
+        <item label="Dodaj podkategorię MENU">
+            <route>cms_page_add</route>
+            <param name="cmsCategoryId">1</param>
+            <icon>glyphicon glyphicon-plus</icon>
+        </item>
+        <item label="Lista podkategorii MENU">
+            <route>cms_page_index</route>
+            <param name="cmsCategoryId">1</param>
+            <icon>glyphicon glyphicon-list</icon>
+        </item>
+    </category>
+
+    <category name="Wino" id="wine">
+        <item label="Wina">
+            <route>wine_index</route>
+            <icon>glyphicon glyphicon-list</icon>
+        </item>
+        <item label="Dodaj nowe wino">
+            <route>wine_add</route>
+            <icon>glyphicon glyphicon-plus</icon>
+        </item>
+        <item label="Kraje">
+            <route>wine_country_index</route>
+            <icon>glyphicon glyphicon-list</icon>
+        </item>
+        <item label="Regiony">
+            <route>wine_country_region_index</route>
+            <icon>glyphicon glyphicon-list</icon>
+        </item>
+    </category>
+
+    <category name="Bar" id="bar">
+        <item label="Dodaj podkategorię BAR">
+            <route>cms_page_add</route>
+            <param name="cmsCategoryId">2</param>
+            <icon>glyphicon glyphicon-plus</icon>
+        </item>
+        <item label="Lista podkategorii BAR">
+            <route>cms_page_index</route>
+            <param name="cmsCategoryId">2</param>
+            <icon>glyphicon glyphicon-list</icon>
+        </item>
+    </category>
+
+
+    <category name="Cygara" id="cigars">
+        <item label="Dodaj podkategorię CYGARA">
+            <route>cms_page_add</route>
+            <param name="cmsCategoryId">3</param>
+            <icon>glyphicon glyphicon-plus</icon>
+        </item>
+        <item label="Lista podkategorii CYGARA">
+            <route>cms_page_index</route>
+            <param name="cmsCategoryId">3</param>
+            <icon>glyphicon glyphicon-list</icon>
+        </item>
+    </category>
+
+
+    <category name="Delikatesy" id="delicatessen">
+        <item label="Dodaj podkategorię DELIKATESY">
+            <route>cms_page_add</route>
+            <param name="cmsCategoryId">4</param>
+            <icon>glyphicon glyphicon-plus</icon>
+        </item>
+        <item label="Lista podkategorii DELIKATESY">
+            <route>cms_page_index</route>
+            <param name="cmsCategoryId">4</param>
+            <icon>glyphicon glyphicon-list</icon>
+        </item>
+    </category>
+
+    <category name="Degustacje" id="tastings">
+        <item label="Lista degustacji">
+            <route>rs_package_index</route>
+            <icon>glyphicon glyphicon-list</icon>
+        </item>
+        <item label="Dodaj nową degustacje">
+            <route>rs_package_add</route>
+            <icon>glyphicon glyphicon-plus</icon>
+        </item>
+    </category>
+
+
+    <category name="Konfiguracja" id="configuration">
+        <item label="Parametry konfiguracyjne">
+            <route>cms_config_index</route>
+            <icon>glyphicon glyphicon-cog</icon>
+        </item>
+        <item label="Języki">
+            <route>cms_language_index</route>
+            <icon>glyphicon glyphicon-globe</icon>
+        </item>
+        <!--<item label="Slider">
+            <route>cms_slider_index</route>
+            <icon>glyphicon glyphicon-picture</icon>
+        </item>-->
+        <!--<item label="Wyposażenie">
+            <route>rs_facility_item_index</route>
+            <icon>glyphicon glyphicon-cog</icon>
+        </item>
+        <item label="Wyżywienie">
+            <route>rs_meal_index</route>
+            <icon>glyphicon glyphicon-cutlery</icon>
+        </item>-->
+    </category>
+
+    <category name="Podstrony" id="content">
+        <item label="Wino">
+            <route>admin_cms_static_page_edit</route>
+            <param name="param">wine</param>
+            <icon>glyphicon glyphicon-file</icon>
+        </item>
+        <item label="Bar">
+            <route>admin_cms_static_page_edit</route>
+            <param name="param">bar</param>
+            <icon>glyphicon glyphicon-file</icon>
+        </item>
+        <item label="Cygara">
+            <route>admin_cms_static_page_edit</route>
+            <param name="param">cigars</param>
+            <icon>glyphicon glyphicon-file</icon>
+        </item>
+        <item label="Delikatesy">
+            <route>admin_cms_static_page_edit</route>
+            <param name="param">delicatessen</param>
+            <icon>glyphicon glyphicon-file</icon>
+        </item>
+        <item label="Rezerwacje">
+            <route>admin_cms_static_page_edit</route>
+            <param name="param">reservations</param>
+            <icon>glyphicon glyphicon-file</icon>
+        </item>
+        <item label="Galeria">
+            <route>admin_cms_static_page_edit</route>
+            <param name="param">gallery</param>
+            <icon>glyphicon glyphicon-picture</icon>
+        </item>
+        <item label="Kontakt">
+            <route>admin_cms_static_page_edit</route>
+            <param name="param">contact</param>
+            <icon>glyphicon glyphicon-file</icon>
+        </item>
+    </category>
+
+
+    <category name="Aktualności" id="articles">
+        <item label="Aktualności">
+            <route>admin_cms_article_index</route>
+            <icon>glyphicon glyphicon-list</icon>
+        </item>
+        <item label="Dodaj nową aktualność">
+            <route>admin_cms_article_add</route>
+            <icon>glyphicon glyphicon-plus</icon>
+        </item>
+    </category>
+
+
+    <!--
+    <category name="Galeria">
+        <item label="Lista Galerii">
+            <route>cms_gallery_index</route>
+            <icon>glyphicon glyphicon-list</icon>
+        </item>
+        <item label="Dodaj galerię">
+            <route>cms_gallery_add</route>
+            <icon>glyphicon glyphicon-plus</icon>
+        </item>
+    </category>
+    -->
+
+
+    <!--
+    <category name="Realizacje" id="realisations">
+         <item label="Lista realizacji">
+             <route>admin_cms_article_index</route>
+             <icon>glyphicon glyphicon-th-list</icon>
+         </item>
+        <item label="Dodaj nową realizację">
+            <route>admin_cms_article_add</route>
+            <icon>glyphicon glyphicon-plus</icon>
+        </item>
+     </category>
+   -->
+
+</menu_admin>

@@ -1,0 +1,29 @@
+'admin_cms_static_page_index':     Podstrony
+'admin_cms_static_page_form':      Edycja treści podstrony
+'admin_password_change':           Zmiana hasła
+
+
+'cms_slider_index':       Slider
+'cms_slider_edit':        Edycja obrazu
+'cms_slider_add':         Dodawanie nowego obrazu
+'cms_newsletter_index':   Newsletter
+'admin_cms_article_news_index': Aktualności
+'admin_cms_article_news_add':   Dodaj aktualność
+
+'admin_cms_article_events_index': Wydarzenia
+'admin_cms_article_events_add':   Dodaj wydarzenie
+
+'admin_cms_article_articles_index': Artykuły
+'admin_cms_article_articles_add':   Dodaj artykuł
+
+'admin_users_list':                 Zarejestrowani użytkownicy
+
+'cms_language_index': Języki
+'cms_config_index':  Parametry konfiguracyjne
+
+'wine_add':   Dodaj nowe wino
+'wine_index': Wina
+'wine_country_index': Kraje
+'wine_country_region_index': Regiony
+'admin_cms_article_index': Aktualności
+'admin_cms_article_add':   Dodaj nową aktualność

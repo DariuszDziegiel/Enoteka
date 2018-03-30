@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.get('_locale') }}">
+<head>
+    <meta charset="utf-8">
+    <title>{% block seo_title %}{{ 'main_page'| trans }}{% endblock %} - {{ page_config.value('seo_title') }}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {#<link rel="icon" href="{{ asset('favicon.ico') }}"> #}
+    {# @var page_config \AppBundle\Utils\ConfigHelper#}
+    <meta name="description" content="{% block seo_description %}{{ page_config.value('seo_description')| raw }}{% endblock %}"/>
+    <meta name="keywords" content="{% block seo_keywords %}{{ page_config.value('seo_keywords')| raw }}{% endblock %}"/>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Lato&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/jquery-ui/themes/base/theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/jquery-ui/themes/base/datepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/_Common/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/_Common/css/style.media.css') }}">
+    {% block css %} {% endblock %}
+</head>
+<body>
+    {% include '@App/Layout/preloader.html.twig' %}
+    {% include '@App/_Common/menu.html.twig' %}
+
+    {% block content %}{% endblock %}
+    {% if app.request.locale == 'pl' %}
+        {% include '@App/_Common/cookies_policy.html.twig' %}
+    {% endif %}
+    <footer>
+        {% include '@App/Layout/layout_footer.html.twig' %}
+    </footer>
+    <script type="text/javascript">
+        var APP_ASSETS = "{{ asset('bundles/app/') }}";
+        var APP_VENDOR = "{{ asset('vendor/') }}";
+        var APP_WEB    = "{{ asset('') }}";
+    </script>
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="{{ asset('vendor/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery.cookie/jquery.cookie.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    {#<script src="{{ asset('vendor/parallax.js/parallax.min.js') }}"></script>#}
+    <script src="{{ asset('vendor/jquery_lazyload/jquery.lazyload.js') }}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery.scrollTo/jquery.scrollTo.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/_Common/js/script.min.js') }}"></script>
+    {#{% include '@App/_Common/hwioauth/facebook_login_js.html.twig' %} #}
+    {% block js %} {% endblock %}
+    {% include '@App/Layout/preloader_js.html.twig' %}
+</body>
+</html>

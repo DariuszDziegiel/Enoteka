@@ -1,0 +1,83 @@
+
+#footer {
+  border: {
+    top: 10px solid $theme-red;
+  }
+  min-height: 150px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  //color: $theme-ashy;
+  /*background: url('../img/polygons_1200_200.png');
+  background-repeat: repeat-x;*/
+  background-color: #FFFFFF;
+  a {
+    color: $theme-ashy;
+  }
+
+  #footer-copy-realisation {
+    font-size: 0.7em;
+    font-style: italic;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    a {
+      color: #FFFFFF;
+    }
+  }
+
+  .footer-social-icons {
+    font-size: 2em;
+    margin-top: -5px;
+    a {
+      display: inline-block;
+      margin: 0 5px;
+    }
+  }
+
+  .footer-contact {
+
+  }
+
+}
+
+.footer-link {
+  display: block;
+  text-transform: uppercase;
+}
+
+.footer-menu {
+  padding-left: 0;
+  list-style: none;
+  li {
+    padding-left: 0;
+  }
+}
+
+
+.second-hotel {
+  text-align: right;
+}
+
+
+.logo-perfect {
+  max-height: 150px;
+}
+.logo-pergamin {
+  max-height: 150px;
+}
+
+
+/*XS*/
+@media (max-width: 768px) {
+  #footer {
+    text-align: center !important;
+  }
+  .footer-menu {
+    li {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  }
+  .second-hotel {
+    text-align: center;
+  }
+}

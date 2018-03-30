@@ -1,0 +1,37 @@
+{# @var article \AdminBundle\Entity\CmsArticle #}
+<header xmlns="http://www.w3.org/1999/html">
+    <div class="section-title">
+        <span class="section-title-txt">{{'news'| trans }}</span>
+    </div>
+</header>
+<div class="news-wrapper">
+    {% if news is not empty %}
+        <div class="row">
+            {% for article in news %}
+                <div class="col-sm-6 col-md-4">
+                    <a href="{{ path('article_details_news', {'slug': article.slug})  }}">
+                        <div class="article">
+                            {% if article.mainImage is not empty %}
+                                <img src="{{ asset('thumb.php') }}?src={{ asset(article.mainImageDir ~ article.mainImage) }}&w=700&h=650"
+                                     class="article-image img-responsive">
+                            {% endif %}
+                            {% if article.date is not empty %}
+                                <div class="article-date">
+                                    <strong>
+                                        <span class="glyphicon glyphicon-calendar"></span>&nbsp;{{ article.date.format('d') }}&nbsp;{{ ('calendar.month_' ~ article.date.format('n'))| trans }}&nbsp;{{ article.date.format('Y') }}
+                                    </strong>
+                                </div>
+                            {% endif %}
+                            <div class="article-title">
+                                {{ article.title| striptags| raw }}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="news-all-btn-wrapper">
+        <a href="{{ path('articles_index') }}" class="news-all-btn">{{ 'see_all_news'| trans }}</a>
+    </div>
+</div>

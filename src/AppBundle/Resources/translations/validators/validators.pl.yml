@@ -1,0 +1,5 @@
+'valid':
+    'userGroup':                          Określ typ konta
+    'userType':                           Określ formę
+    'isRegistrationRegulationsAccepted':  Wymagana akceptacja regulaminu
+    'isDataProcessingAccepted':           Wymagana zgoda na przetwarzanie danych

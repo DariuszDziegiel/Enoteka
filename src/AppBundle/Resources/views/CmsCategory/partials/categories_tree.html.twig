@@ -1,0 +1,11 @@
+<div class="categories-tree">
+    {% for cmsCategory in cmsCategories %}
+        {% set isParentCategory = cmsCategory.parent is null? true: false %}
+        {% set isActiveCategory = (cmsCategorySelected is not empty and cmsCategorySelected.id == cmsCategory.id)? true: false %}
+        <div class="category {% if isParentCategory %}parent-category{% else %}children-category{% endif %} {% if isActiveCategory %}active-category{% endif %}">
+            <a href="{{ path('contest_list', {'slug': cmsCategory.slug}) }}" class="category-link">
+                {% if not isParentCategory  %} - {% endif %}{{ cmsCategory.title }}
+            </a>
+        </div>
+    {% endfor %}
+</div>

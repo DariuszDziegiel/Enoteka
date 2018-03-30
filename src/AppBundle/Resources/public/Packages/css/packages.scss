@@ -1,0 +1,69 @@
+@import "../../_Common/css/partials/variables";
+@import "../../_Common/css/partials/mixins";
+@import "../../_Common/css/partials/image_box";
+@import "../../_Common/css/partials/page";
+@import "../../_Common/css/partials/shadows";
+
+
+.package-wrapper {
+  margin-top: 30px;
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+
+  .package-image {
+    position: relative;
+  }
+
+  .package-price {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    background-color: #FFFFFF;
+    padding: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+    @include box-shadow(0, 0, 6px, 0px, #000);
+    @include border-radius(4px);
+  }
+
+  .package-title {
+    padding: {
+      top: 10px;
+    }
+    text: {
+      decoration: none;
+    }
+    color: $theme-grey;
+    text-align: center;
+    font: {
+      size: 1.4em;
+      weight: bold;
+    }
+
+  }
+
+  .package-desc {
+    color: $theme-grey;
+    text-align: center;
+  }
+
+  .package-more {
+    padding: {
+      bottom: 10px;
+      top: 10px;
+    };
+    text: {
+      align: center;
+    }
+  }
+
+}
+
+
+
+

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+<head>
+    <meta charset="utf-8">
+    <title>Panel Administracyjny - {{ page_name }}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {#<link rel="icon" href="{{ asset('favicon.ico') }}"> #}
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/dist/css/bootstrap-theme.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/jquery-ui/themes/base/all.css') }}" >
+    <link rel="stylesheet" href="{{ asset('bundles/admin/_Common/css/style.form.css') }}" >
+    <link rel="stylesheet" href="{{ asset('bundles/admin/_Common/css/style.css') }}" >
+    {% if 'index' in app.request.get('_route') %}
+        <link rel="stylesheet" href="{{ asset('bundles/admin/_Common/css/data_grid.css') }}">
+    {% endif %}
+    {% block css %}{% endblock %}
+    <script src="{{ asset('vendor/jquery/dist/jquery.js') }}"></script>
+    <script src="{{ asset('vendor/jquery.cookie/jquery.cookie.js') }}"></script>
+    <script type="text/javascript">
+        var ADMIN_ASSETS = '{{ app.request.basepath() }}/bundles/admin';
+        var ROUTER_CONTROLLER = '{{ app.request.get('_controller') }}';
+        var ROUTER_ACTION = '{{ app.request.get('_controller') }}';
+        var ROUTER_ROUTE = '{{ app.request.attributes.get('_route') }}';
+        var ROUTER_PARAMS = '{{ app.request.attributes.get('_route_params')|json_encode }}';
+        var CURENT_URL = '{{ app.request.getUri }}';
+        var ENVIRONMENT = '{{ app.environment }}';
+    </script>
+    {% if is_granted('ROLE_ADMIN') %}
+        <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
+        <script type="text/javascript">
+            CKEDITOR.config.customConfig = ADMIN_ASSETS + '/_Common/js/ckeditor_config.min.js';
+        </script>
+    {% endif %}
+    <script src="{{ asset('vendor/bootbox.js/bootbox.js') }}"></script>
+    <script type="text/javascript">
+        bootbox.setDefaults({
+            locale: '{{ app.request.locale }}'
+        });
+    </script>
+    <script src="{{ asset('vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('vendor/handlebars/handlebars.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('vendor/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/a2lixtranslationform/js/a2lix_translation_bootstrap.js') }}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('vendor/jquery_lazyload/jquery.lazyload.js') }}"></script>
+    <script src="{{ asset('bundles/admin/_Common/js/common.min.js') }}"></script>
+    {% block js %}{% endblock %}
+</head>
+<body>
+    {% if is_granted('ROLE_ADMIN') %}
+    <div class="admin-menu navbar-fixed-top">
+        {{ render(controller('AdminBundle:_Common:getMenu', {'currentRouteName': app.request.get('_route')})) }}
+    </div>
+    {% endif %}
+    <div role="page" class="container container-fluid col-xs-12">
+        <div class="admin-content">
+
+            {% if is_granted('ROLE_ADMIN') %}
+                {% block breadcrumb %}
+                    {% include '@Admin/_Common/breadcrumbs.html.twig' %}
+                {% endblock %}
+            {% endif %}
+
+            {% block content %}{% endblock %}
+
+            <!-- FORM -->
+            {% if app.session.flashBag.get('form_success') %}
+                <div class="alert alert-success">
+                    <span class="glyphicon glyphicon-ok"></span>&nbsp;{{ 'form_save_success'|trans  }}
+                    {#{% set record_add = app.request.attributes.get('_route')|replace({'_edit': '_add'}) %}
+                    {% if record_add is defined %}
+                        <a href="{{ path(record_add) }}" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-plus"></span> {{ record_add|trans({}, 'menu') }}
+                        </a>
+                    {% endif %}#}
+                </div>
+            {% endif %}
+            {% if app.session.flashBag.get('form_error') %}
+                <div class="alert alert-danger">
+                    <span class="glyphicon glyphicon-info-sign"></span>&nbsp;{{ 'form_save_error'|trans  }}
+                </div>
+            {% endif %}
+            {% if app.session.flashBag.get('remove_success') %}
+                <div class="alert alert-success">
+                    <span class="glyphicon glyphicon-info-sign"></span>&nbsp;Rekord został usunięty
+                </div>
+            {% endif %}
+            <!-- CONTENT -->
+            <div class="cms-form">
+                {% block form %}{% endblock %}
+            </div>
+            <div class="cms-datagrid">
+                {% block datagrid %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div id="footer-admin" class="col-xs-12">
+            {% block footer %}{% endblock %}
+            <div class="row">
+                <div class="col-md-6 text-left">
+                </div>
+                <div class="col-md-6 text-right">
+                    {#<a class="realisation-link text-muted" href="http://www.darecom.pl" target="_blank" title="DareCom.pl - tworzenie stron www, CMS, CRM, aplikacje internetowe, responsywne strony internetowe, Kraków, Niepołomice, Wieliczka, Bochnia">Realizacja: <b>DareCom</b></a>#}
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="{{ asset('bundles/bazingajstranslation/js/translator.min.js') }}"></script>
+    <script src="{{ path('bazinga_jstranslation_js', { 'domain': 'AdminBundle' }) }}"></script>
+    <script src="{{ asset('js/translations/messages/' ~ app.request.locale ~ '.js') }}"></script>
+</body>
+</html>

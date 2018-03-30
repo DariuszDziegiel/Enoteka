@@ -1,0 +1,34 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/admin/Default/css/style.css') }}">
+{% endblock  %}
+
+{% block content %}
+    {% if app.session.flashBag.get('access_denied') %}
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="alert alert-danger">
+                    <span class="glyphicon glyphicon-remove"></span>&nbsp;
+                    <b>Brak dostępu do wybranego modułu / Access denied</b>
+                </div>
+            </div>
+        </div>
+   {% endif %}
+
+    <div class="row">
+        <div class="col-md-6">
+           {{ include('AdminBundle:Default/partials:dashboard_menu.html.twig') }}
+        </div>
+        <div class="col-md-6">
+            <div class="well">
+                Rozwiązanie problemu niedziałającej galerii w przeglądarce <b>CHROME</b>
+                <ol>
+                    <li>W pasku adresu wpisujemy: <code>chrome://settings/content/flash</code></li>
+                    <li>W sekcji "ZEZWALAJ" klikamy na 'DODAJ' i wpisujemy adres domeny: <code>enotekapergamin.pl</code> </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

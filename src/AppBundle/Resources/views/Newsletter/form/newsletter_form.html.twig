@@ -1,0 +1,19 @@
+<div class="newsletter-container">
+    <div id="newsletter-form-wrapper">
+        <h1 class="text-uppercase h1-main-text">
+            <strong>Elżbieta Duda</strong><br/>
+            <span class="h1-sub-text">Poseł na sejm RP</span>
+        </h1>
+        <form method="post" id="newsletter-form" action="{{ path('newsletter_mail_add') }}" novalidate>
+            Pozostańmy w kontakcie
+            <div id="newsletter-form-message"></div>
+            <div id="newsletter-form-body">
+                {% include '@App/Newsletter/form/newsletter_mail_add.html.twig' with {'form': newsletterMailAddForm} %}
+            </div>
+            <button type="button" class="btn btn-md btn-default pull-right" id="newsletter-form-save">
+                <span class="newsletter-loader"></span>Zapisz do Newslettera
+            </button>
+            <div class="clearfix"></div>
+        </form>
+    </div>
+</div>

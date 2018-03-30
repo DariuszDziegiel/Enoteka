@@ -1,0 +1,68 @@
+{% extends "@App/layout.html.twig" %}
+
+{% block js %}
+    <script src="{{ asset('vendor/slick-carousel/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/_Common/js/common.classes.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/Packages/js/packages.min.js') }}"></script>
+{% endblock %}
+
+{% block css %}
+    {#<link rel="stylesheet" href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}">#}
+    {#<link rel="stylesheet" href="{{ asset('bundles/app/Gallery/css/gallery.css') }}"> #}
+    <link rel="stylesheet" href="{{ asset('bundles/app/Packages/css/packages.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/Packages/css/packages_details.css') }}">
+{% endblock %}
+
+{% block seo_title %}{{ 'packages'| trans }} - {{ rsPackage.getTitle()| raw }}{% endblock %}
+
+{% block content %}
+    <div class="image-box">
+        {% if rsPackage.mainImage is not empty %}
+                {% set packageImageUrl =  asset('thumb.php') ~'?src=' ~ asset(rsPackage.mainImageDir ~ rsPackage.mainImage) ~ '&h=640&q=90' %}
+            {% else %}
+                {# @var configImagePackages \AdminBundle\Entity\CmsConfig #}
+                {% set configImagePackages = page_config.byKey('image_packages') %}
+                {% set packageImageUrl = asset('thumb.php') ~'?src=' ~ asset(configImagePackages.filesDir ~ configImagePackages.image) ~ '&h=640&q=90'  %}
+        {% endif %}
+
+        <div class="image-box-pic border-bottom-transparent"
+             style="background-image: url({{ packageImageUrl }})"
+        >
+            <header>
+                <div class="image-box-page-title-wrapper">
+                    <header>
+                        <h1 class="img-box-title">{{ rsPackage.getTitle()| raw }}</h1>
+                    </header>
+                    <div class="img-box-breadcrumbs">
+                        <a href="{{ path('homepage') }}">{{ 'main_page'| trans }}</a>&nbsp;&nbsp;/&nbsp;
+                        <a href="{{ path('packages_index') }}">{{ 'packages'| trans }}</a>&nbsp;&nbsp;/&nbsp;
+                        <span class="img-box-breadcrumbs-active">{{ rsPackage.getTitle()| raw }}</span>
+                    </div>
+                </div>
+            </header>
+            <a href="{{ path('packages_index') }}" class="btn btn-red return-btn visible-xs">
+                <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;{{ 'packages'| trans }}
+            </a>
+        </div>
+    </div>
+
+    <div class="container main-container">
+        <div class="row">
+            <div class="col-sm-9">
+                <main>
+                    {{ rsPackage.getDescription()| raw }}
+                </main>
+            </div>
+            <div class="col-sm-3">
+                <aside>
+                    <div class="info-window">
+                        <h3 class="drop-shadow lifted">{{ 'package_reservation'| trans }}</h3>
+                        <div class="info-desc">
+                            {{ page_config.getValue('packages_reservation_rules')| raw }}
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+{% endblock %}

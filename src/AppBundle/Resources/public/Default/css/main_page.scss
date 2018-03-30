@@ -1,0 +1,407 @@
+@import "../../_Common/css/partials/variables";
+@import "../../_Common/css/partials/mixins";
+
+@import "../../_Common/css/partials/image_box";
+@import "../../_Common/css/partials/page_section";
+@import "../../_Common/css/partials/articles";
+@import "../../_Common/css/partials/main_page_map";
+
+
+
+.navbar-fixed-top {
+  top: 65px;
+}
+
+
+#main-image123 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
+  background-image: url('/images/main_slider/restauracja1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  #bgvid {
+    /* Make video to at least 100% wide and tall */
+    min-width: 100%;
+    min-height: 100%;
+
+    /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+    width: auto;
+    height: auto;
+
+    /* Center the video */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    //object-fit: cover;
+  }
+}
+
+
+#main-image {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  z-index: 0;
+  background-image: url('/images/main_slider/wines.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+}
+#main-image > video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* 1. No object-fit support: */
+@media (min-aspect-ratio: 16/9) {
+  //#main-image > video { height: 300%; top: -100%; }
+}
+@media (max-aspect-ratio: 16/9) {
+  //#main-image > video { width: 300%; left: -100%; }
+}
+/* 2. If supporting object-fit, overriding (1): */
+@supports (object-fit: cover) {
+  #main-image > video {
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+}
+
+
+
+#main-image::after {
+  content: ' ';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .2);
+}
+
+
+
+#video-buttons {
+  position: absolute;
+  right: 5px;
+  bottom: 15px;
+  display: inline-block;
+  z-index: 1;
+
+  .video-button {
+    float: left;
+    padding: {
+      top: 4px;
+      bottom: 0;
+      right: 7px;
+      left: 7px;
+    };
+    margin-left: 7px;
+    //@include border-radius(3px);
+    @include box-shadow(0, 0, 18px, 0, #000);
+    font-size: 1em;
+    cursor: pointer;
+    background-color: $theme-white-transparent;
+  }
+
+  .video-button.video-time-button {
+    font-weight: bold;
+  }
+  .video-button.video-time-button.active {
+    background-color: $theme-color-transparent;
+    color: #FFF;
+  }
+}
+
+
+.image-box-pic-packages {
+  min-height: 520px;
+}
+
+
+/**/
+.image-full-width-container {
+
+}
+
+.section-wrapper {
+  position: relative;
+  //border-top: 10px solid #FFF;
+  padding: {
+
+  };
+}
+
+.section-menu-wrapper {
+  /*background-image: url('/images/main_slider/restauracja1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;*/
+  //background-color: #F2F2F2;
+  padding-top: 10px;
+}
+
+
+.section-title {
+  text-align: center;
+  //background-color: $theme-white-transparent;
+  color: #000;
+  font-size: 1.3em;
+  padding: {
+    bottom: 10px;
+  }
+  .section-title-txt {
+    border: {
+      bottom: 2px solid $theme-color-transparent;
+      top: 2px solid $theme-color-transparent;
+    }
+  }
+}
+
+.section-title.section-title-white {
+  color: #FFF;
+}
+
+
+
+.section-menu-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .menu-category-img-wrapper {
+    display: block;
+    position: relative;
+    height: auto;
+    width: auto;
+    border-right: 1px solid #ABABAB;
+    border-bottom: 1px solid #ABABAB;
+    .menu-page-title {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: $theme-white-transparent;
+      color: #000;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.1em;
+      text-shadow: 1px 1px #FFF;
+      width: 100%;
+      z-index: 2;
+    }
+  }
+  .menu-category-img-wrapper:after {
+    position: absolute;
+    content: ' ';
+    background-color: rgba(0, 0, 0, .3);
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+  }
+  .menu-category-img-wrapper:hover:after {
+    display: none;
+  }
+}
+
+.vegas-overlay {
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+  opacity: .3;
+}
+
+.vegas-animation-kenburns {
+  animation: kenburns ease-out;
+  transition-duration: 10s;
+}
+
+@keyframes kenburns {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.packages-slider {
+  @include box-shadow(0, 0, 2px, 0, #000);
+  margin: 0 auto;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.3);
+
+  .package-slide {
+    margin: 5px;
+  }
+}
+
+#main-image-text-box {
+  z-index: 2;
+  position: absolute;
+  bottom: 15px;
+  left: 0px;
+  width: 50%;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  //@include box-shadow(-5px, -5px, 50px, 11px, #000);
+  @include box-shadow(0, 0, 18px, 0, #000);
+  h2 {
+    text-align: center;
+    margin: {
+      top: 10px;
+      bottom: 10px;
+    }
+  }
+}
+
+
+.main-image-text-box-xs {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 10px 10px 10px 20px;
+  //@include box-shadow(-5px, -5px, 50px, 11px, #000);
+  //@include box-shadow(0, 0, 18px, 0, #000);
+  h2 {
+    text-align: center;
+  }
+}
+
+
+
+.slick-prev::before, .slick-next::before {
+  font-size: 40px;
+}
+
+.slick-prev {
+  left: -45px;
+  width: 40px;
+  height: 40px;
+}
+
+.slick-next {
+  right: -45px;
+  width: 40px;
+  height: 40px;
+}
+
+.slick-slide .package-title {
+  text-shadow: 1px 1px 1px $theme-grey;
+  color: #FFFFFF;
+  font: {
+    weight: bold;
+    size: 1.1em;
+  };
+  padding: {
+    top: 10px;
+  };
+}
+
+.slick-slide img {
+  margin: 0 auto;
+}
+
+.news-container {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+
+/*XS && SM*/
+@media  (max-width: 992px) {
+  #main-image-text-box {
+    width: 100%;
+    bottom: 0;
+  }
+
+}
+
+
+/*XS*/
+@media (max-width: 768px) {
+
+  .image-box-pic-packages {
+    height: 100vh !important;
+  }
+
+  .section {
+    .image-box-pic-page-section:after {
+      display: none !important;
+    }
+    .image-box-pic-page-section {
+      .page-section {
+        padding: 10px;
+      }
+    }
+  }
+
+  #footer-content {
+    padding: {
+    }
+  }
+
+  .image-box {
+    .page-cell {
+      background-color: rgba(255, 255, 255, 0.8);
+      height: 100%;
+      .page-section {
+
+      }
+    }
+  }
+
+}
+
+/*SM*/
+@media (min-width: 768px) and (max-width: 992px) {
+  #footer {
+    padding: {
+      bottom: 80px;
+    }
+  }
+}
+
+/*MD*/
+@media (min-width: 992px) and (max-width: 1200px) {
+  #footer {
+    padding: {
+      bottom: 80px;
+    }
+  }
+}
+
+/* MD && LG */
+@media (min-width: 992px) {
+  #footer {
+    padding: {
+      //bottom: 75px;
+    }
+  }
+}
+
+/*LG*/
+@media (min-width: 1200px) {
+  .packages-slider {
+    width: 1170px;
+  }
+  #footer {
+    padding: {
+      bottom: 10px;
+    }
+  }
+}

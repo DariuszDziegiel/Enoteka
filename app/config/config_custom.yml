@@ -1,0 +1,8 @@
+#TWIG
+twig:
+    globals:
+        page_name: 'Enoteka Pergamin'
+        page_config: '@app.config_helper'
+        language_helper: '@app.language_helper'
+        facebook_client_id: '%facebook_client_id%'
+        google_maps_api_key: '%google_maps_api_key%'

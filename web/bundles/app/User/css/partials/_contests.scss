@@ -1,0 +1,47 @@
+.table-contests {
+  text-align: center;
+  thead {
+    background-color: #EAEAEA;
+  }
+  .contest-title {
+    background-color: #EAEAEA;
+    font: {
+      size: 1.2em;
+      weight: bold;
+    };
+    text: {
+      decoration: underline;
+    }
+  }
+  .contest-number {
+    font: {
+      weight: bold;
+    }
+  }
+}
+
+.contest-details-row {
+  border-bottom: 10px solid #337AB7;
+  .glyphicon-ok {
+    color: #008800;
+    font-size: 1.3em;
+  }
+  .glyphicon-remove {
+    color: #c1292e;
+    font-size: 1.3em;
+  }
+}
+
+.arena-contest-participations {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .image-wrapper {
+    border: 1px solid #ABABAB;
+    margin: 5px;
+    .image-info {
+    }
+  }
+}
+

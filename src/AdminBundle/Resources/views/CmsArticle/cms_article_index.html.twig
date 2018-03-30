@@ -1,0 +1,12 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block js %}
+    {#<script src="{{ asset('bundles/rs/RsMeal/js/rs_meal.min.js') }}"></script> #}
+{% endblock %}
+
+{% block datagrid %}
+    <a href="{{ path('admin_cms_article_add') }}" class="btn btn-danger">
+        <span class="glyphicon glyphicon-plus"></span> Dodaj nową aktualność
+    </a>
+    {{ grid(grid) }}
+{% endblock %}

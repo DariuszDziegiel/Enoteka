@@ -1,0 +1,54 @@
+{# @var pageMedia \AdminBundle\Entity\CmsStaticPage #}
+{% set pageMedia = pages['media']  %}
+<header>
+    <h2 class="page-title-header">{{ pageMedia.getTitle()| raw }}</h2>
+</header>
+<article class="text-justify">
+    {{ pageMedia.getDescription()| raw }}
+</article>
+
+{# gallery #}
+{% set imgFiles = pageMedia.filesByType('img') %}
+{% if imgFiles is not empty %}
+    <div class="row">
+        <div class="col-xs-12 col-md-offset-1 col-md-10 gallery-files-wrapper">
+            {% for file in imgFiles %}
+                <a href="{{ asset(pageMedia.filesDir ~ file.fileName)  }}">
+                    <img src="{{ asset('thumb.php') }}?src={{ asset(pageMedia.filesDir ~ file.fileName)  }}&w=169&h=160" class="gallery-file img-thumbnail img-responsive">
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+{# docs #}
+{% set docFiles = pageMedia.filesByType('doc') %}
+{% if docFiles is not empty %}
+    <div class="row">
+        <div class="col-xs-12 col-md-offset-1 col-md-10">
+            <table class="table table-hover">
+            {% for file in docFiles %}
+                <tr>
+                    <td>
+                        <div class="file-icon">
+                            <span class="glyphicon glyphicon-file"></span>
+                        </div>
+                    </td>
+                    <td>
+                        {{ file.fileName| slice(0, -18)  }}
+                    </td>
+                    <td>
+                        {{ file.extension }}
+                    </td>
+                    <td>
+                        <a href="{{ asset(pageMedia.filesDir ~ file.fileName)  }}" class="btn btn-sm btn-default pull-right" target="_blank">
+                            Pobierz
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endif %}
+

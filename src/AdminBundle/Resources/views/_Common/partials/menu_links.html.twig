@@ -1,0 +1,24 @@
+{% for category in menu.category %}
+    <li class="dropdown admin-menu-category" data-index="{{ loop.index }}">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="selected"></span>{{ category.attributes.name }}
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-horizontal__ nav-justified__">
+            {% for item in category.item %}
+                <li>
+                    {% if item.param is defined %}
+                    <a href="{{ path(item.route|trim, { (item.param.attributes.name|trim) : item.param}) }}">
+                        {% else %}
+                            <a href="{{ path(item.route|trim) }}">
+                            {% endif %}
+                            {% if item.icon is defined %}
+                                <span class="{{ item.icon }}"></span>
+                            {% endif %}
+                            {{ item.attributes.label }}
+                        </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </li>
+{% endfor %}

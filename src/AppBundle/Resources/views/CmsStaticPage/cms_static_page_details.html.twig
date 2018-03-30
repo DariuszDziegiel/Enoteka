@@ -1,0 +1,117 @@
+{% extends "@App/layout.html.twig" %}
+{# @var cmsStaticPage \AdminBundle\Entity\CmsStaticPage #}
+{# @var page_config \AppBundle\Utils\ConfigHelper #}
+
+{% block js %}
+    <script src="{{ asset('vendor/Magnific-Popup/dist/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery_lazyload/jquery.lazyload.js') }}"></script>
+    <script src="{{ asset('vendor/slick-carousel/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/_Common/js/common.classes.min.js') }}"></script>
+    <script src="{{ asset('vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/CmsStaticPage/js/cms_static_page_details.min.js') }}"></script>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('vendor/slick-carousel/slick/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/slick-carousel/slick/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/Magnific-Popup/dist/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/CmsStaticPage/css/cms_static_page_details.css') }}">
+{% endblock %}
+
+
+{% block seo_title %}
+    {% spaceless %}
+        {% if cmsStaticPage.seoTitle| length %}
+            {{ cmsStaticPage.seoTitle| raw }}
+        {% else %}
+            {{ cmsStaticPage.title| raw }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}
+
+{% block seo_description %}
+    {% spaceless %}
+        {% if cmsStaticPage.seoDescription| length %}
+            {{ cmsStaticPage.seoDescription| raw }}
+        {% else %}
+            {{ page_config.value('seo_description') }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}
+
+{% block seo_keywords %}
+    {% spaceless %}
+        {% if cmsStaticPage.seoKeywords| length %}
+            {{ cmsStaticPage.seoKeywords| raw }}
+        {% else %}
+            {{ page_config.value('seo_keywords') }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}
+
+
+{% block content %}
+    <div class="image-box">
+        <div class="image-box-pic border-bottom-transparent"
+               style="background-image: url({{ asset('thumb.php') }}?src={{ asset(cmsStaticPage.mainImageDir ~ cmsStaticPage.mainImage) }}&h=760&q=75)"
+            >
+            <div class="image-box-page-title-wrapper">
+                <h1 class="img-box-title">{{ cmsStaticPage.title| raw }}</h1>
+                <h2 class="img-box-subtitle">{{ cmsStaticPage.subTitle| raw }}</h2>
+                <div class="img-box-breadcrumbs">
+                    <a href="{{ path('homepage') }}">{{ 'main_page'| trans }}</a>&nbsp;&nbsp;/&nbsp;
+                    <span class="img-box-breadcrumbs-active">{{ cmsStaticPage.title| raw }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container main-container">
+        <div class="row">
+            <div class="col-xs-12">
+                {{ cmsStaticPage.description| raw }}
+            </div>
+        </div>
+        {#<div class="row">
+            <div class="col-xs-12">
+                {% set imgFiles = cmsStaticPage.filesByType('img') %}
+                {% if imgFiles is not empty %}
+                    <div class="gallery-files-wrapper">
+                        {% for file in imgFiles %}
+                            <a href="{{ asset(cmsStaticPage.filesDir ~ file.fileName)  }}">
+                                <img src="{{ asset('thumb.php') }}?src={{ asset(cmsStaticPage.filesDir ~ file.fileName)  }}&w=210&h=150"
+                                     class="gallery-file img-responsive"
+                                     data-original="{{ asset('thumb.php') }}?src={{ asset(cmsStaticPage.filesDir ~ file.fileName)  }}&w=210&h=150"
+                                >
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div> #}
+    </div>
+
+{% if images is not empty %}
+    <div class="gallery-slider-wrapper">
+        <div class="loading-images-overlay">
+            <div class="loading-images-txt">
+                <img src="{{ asset('images/loading_circle.gif') }}" alt="">
+                <br />
+                {{ 'images_loading'| trans }}
+            </div>
+        </div>
+        <div class="gallery-slider ">
+            {% for image in images %}
+                {# @var image \AdminBundle\Entity\CmsStaticPageFile #}
+                <div class="gallery-slide">
+                    <img src="{{ asset('thumb.php') }}?src={{ asset(cmsStaticPage.filesDir ~ image.fileName) }}&h=1170"
+                         class="img-responsive lazy-load"
+                         data-original="{{ asset('thumb.php') }}?src={{ asset(cmsStaticPage.filesDir ~ image.fileName) }}&h=1170"
+                    >
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}
+

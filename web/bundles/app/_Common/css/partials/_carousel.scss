@@ -1,0 +1,131 @@
+.carousel-wrapper {
+  border: {
+    top: 5px solid $theme-white;
+    bottom: 5px solid $theme-white;
+  }
+}
+
+.carousel-inner {
+  border: {
+    bottom: 15px solid $theme-ashy;
+  }
+}
+
+.carousel {
+  position: relative;
+  &-caption-text {
+    display: inline-block;
+    color: #FFF;
+    padding: 5px;
+  }
+}
+
+.carousel-caption-text {
+  .carousel-caption-title, .carousel-caption-desc {
+    background-image: url('../img/transparent-body-bg.png');
+  }
+  .carousel-caption-title {
+    font: {
+      weight: bold;
+      size: 2em;
+    }
+  }
+  .carousel-caption-desc {
+    font-size: 1.3em;
+  }
+
+}
+
+
+.carousel-fade .carousel-inner .item {
+  opacity: 1;
+  /*-webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;*/
+  -webkit-transition: opacity 3s ease-in-out;
+  -moz-transition: opacity 3s ease-in-out;
+  -ms-transition: opacity 3s ease-in-out;
+  -o-transition: opacity 3s ease-in-out;
+  transition: opacity 3s ease-in-out;
+}
+.carousel-fade .carousel-inner .active {
+  opacity: 1;
+}
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
+
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+
+  background-color: #777;
+}
+.carousel-inner > .item > img {
+  min-width: 100%;
+}
+
+
+/*XS*/
+@media (max-width: 768px) {
+  .carousel {
+    &-caption-text {
+      font-size: 1em;
+    }
+  }
+}
+
+
+
+
+
+/*SM*/
+@media (min-width: 768px) and (max-width: 992px) {
+
+
+}
+
+/*MD*/
+@media (min-width: 992px) and (max-width: 1200px) {
+
+}
+
+
+
+
+  //MD && LG
+@media (min-width: 992px)  {
+  .carousel-wrapper {
+    padding: 0;
+  }
+
+  .carousel {
+     img {
+
+    }
+  }
+
+}

@@ -1,0 +1,57 @@
+{# @var page_config \AppBundle\Utils\ConfigHelper #}
+<div id="footer" class="container-fluid">
+    <div id="footer-content">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="footer-contact">
+                        {{ page_config.value('footer_contact')| raw }}
+                    </div>
+                    <div id="footer-copy-realisation">
+                        Copyright &copy; {{ 'now'| date('Y') }}
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 text-center">
+                    <div class="btn-group btn-group-justified footer-social-icons" role="group">
+                        <a href="https://www.facebook.com/enoteka.pergamin/" target="_blank">
+                            <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                        </a>
+                        {#<a href="#">
+                            <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                        </a>#}
+                        <a href="#" target="_blank">
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://pl.tripadvisor.com/Restaurant_Review-g274772-d8807788-Reviews-Enoteka_Pergamin-Krakow_Lesser_Poland_Province_Southern_Poland.html" target="_blank">
+                            <i class="fa fa-tripadvisor" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <br />
+                    <div class="text-center">
+                        <b>{{ 'opening_hours'| trans }}</b>
+                    </div>
+                    <div class="opening-time">
+                        <ul>
+                            <li><p>{{ 'day.01_monday'| trans }}<span>11:00 - 23:00</span></p></li>
+                            <li><p>{{ 'day.02_tuesday'| trans }}<span>11:00 - 23:00</span></p></li>
+                            <li><p>{{ 'day.03_wednesday'| trans }}<span>11:00 - 23:00</span></p></li>
+                            <li><p>{{ 'day.04_thursday'| trans }}<span>11:00 - 23:00</span></p></li>
+                            <li><p>{{ 'day.05_friday'| trans }}<span>11:00 - 23:00</span></p></li>
+                            <li><p>{{ 'day.06_saturday'| trans }}<span>11:00 - 23:00</span></p></li>
+                            <li><p>{{ 'day.07_sunday'| trans }}<span>11:00 - 23:00</span></p></li>
+                        </ul>
+                    </div>
+                    <a href="http://www.perfecthotels.pl" target="_blank">
+                        {#<img src="{{ asset('images/page/logo_perfect_hotels.jpg') }}" alt="logo perfect hotels" class="logo-perfect"/> #}
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-4 second-hotel">
+                    <b>{{ 'see_second_hotel'| trans }}</b>
+                    <br class="hidden-xs"/>
+                    <br />
+                    <a href="http://premium-hotels.pl" target="_blank">
+                        <img src="{{ asset('images/page/logo_premium_hotels.png') }}" alt="logo pergamin apartments" class="logo-pergamin"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+</div>

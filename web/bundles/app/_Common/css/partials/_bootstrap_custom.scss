@@ -1,0 +1,9 @@
+.text-danger {
+  .help-block {
+    color: #a94442 !important;
+  }
+}
+
+.form-control, .input-group-addon {
+  @include border-radius(0);
+}

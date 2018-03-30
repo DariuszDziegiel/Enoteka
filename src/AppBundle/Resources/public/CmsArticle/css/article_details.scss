@@ -1,0 +1,23 @@
+@import "../../_Common/css/partials/variables";
+@import "../../_Common/css/partials/mixins";
+@import "../../_Common/css/partials/image_box";
+
+.img-gallery {
+  margin: 10px;
+}
+.article-date {
+  font-size: 1.1em;
+}
+
+.mfp-wrap {
+  z-index: 99999 !important;
+}
+
+.gallery-files-wrapper {
+  padding-top: 10px;
+}
+
+.article-main-img {
+  margin-top: -5px;
+  margin-right: 5px;
+}

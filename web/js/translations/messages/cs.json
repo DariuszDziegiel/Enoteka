@@ -1,0 +1,3 @@
+{
+    "translations": {"cs":{"messages":{"eq":"Rovn\u00e1 se","neq":"Nerovn\u00e1 se","lt":"Men\u0161\u00ed ne\u017e","lte":"Men\u0161\u00ed nebo rovno ne\u017e","gt":"V\u011bt\u0161\u00ed ne\u017e","gte":"V\u011bt\u0161\u00ed nebo rovno ne\u017e","req":"Regul\u00e1rn\u00ed v\u00fdraz","like":"Obsahuje","nlike":"Neobsahuje","rlike":"Za\u010d\u00edn\u00e1 na","llike":"Kon\u010d\u00ed na","btw":"Mezi","btwe":"Mezi v\u010detn\u011b","isNull":"Nen\u00ed definov\u00e1no","isNotNull":"Je definov\u00e1no","%count% Results, ":"%count% V\u00fdsledek, |%count% V\u00fdsledk\u016f, "}}}
+}

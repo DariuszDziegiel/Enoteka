@@ -1,0 +1,22 @@
+{% extends "@Admin/layout.html.twig" %}
+
+{% block datagrid %}
+
+    <a href="{{ path('wine_country_region_add') }}" class="btn btn-success">Dodaj nowy region</a>
+    <hr />
+    <div class="row">
+        <div class="col-xs-2">
+            <b class="text-center">Kraj</b>
+            <div class="list-group">
+                {% for wineCountry in wineCountries %}
+                    <a href="{{ path('wine_country_region_index', {'country': wineCountry.getSlug()}) }}" class="list-group-item {% if wineCountrySelected ==wineCountry %}active{% endif %}">{{ wineCountry.getTitle()| raw }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-xs-10">
+            <br />
+            {{ grid(grid) }}
+        </div>
+    </div>
+{% endblock %}
+

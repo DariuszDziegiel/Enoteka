@@ -1,0 +1,236 @@
+
+$a2lixTranslationFormActiveTab: #35AA47;
+
+.cms-form {
+    button[type = submit] {
+        color: #FFFFFF;
+        font: {
+            size: 1.3em;
+            weight: bold;
+        }
+        text-transform: uppercase;
+        background: {
+            color: #35AA47;
+        };
+    }
+    button[type=submit]:focus {
+        border: 2px solid #FF0000;
+    }
+
+    .tab-pane {
+        padding-top: 10px;
+    }
+    .nav-tabs-main {
+        background-color: #EAEAEA;
+    }
+
+    .nav-tabs-main li{
+        font: {
+            size: 1.1em;
+            weight: bold;
+        }
+        text-transform: uppercase;
+        background-color: #FFFFFF;
+        border: {
+            right: 1px solid #ABABAB;
+            left: 1px solid #ABABAB;
+            top: 1px solid #ABABAB;
+            radius: 10px 10px 0 0 ;
+        }
+    }
+    .small-field {
+        width: auto;
+    }
+}
+
+.form-buttons-row {
+    position: fixed;
+    bottom: 0;
+    background-color: #ABABAB;
+    width: 100%;
+    margin: 0 !important;
+    text-align: center;
+    left: 0;
+    right: 0;
+    padding: 2px;
+    opacity: 0.95;
+    z-index: 9999;
+}
+
+
+.uploadify-file {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 5px;
+
+    .attachment-file-wrapper {
+        position: relative;
+        text-align: center;
+        background-color: #eaeaea;
+        height: 120px;
+        .file-icon {
+            font-size: 2em;
+        }
+        .file-name {
+            overflow: hidden;
+            font-size: 0.8em;
+            word-wrap: break-word;
+        }
+        .file-extension {
+            background-color: #000000;
+            color: #FFF;
+            font: {
+                size: 1.3em;
+                weight: bold;
+            }
+            text-transform: uppercase;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    }
+    .remove-file-btn {
+        position: absolute;
+        right: 0px;
+        top: 0px
+    }
+    .remove-file-btn:hover {
+        padding: 7px;
+    }
+}
+
+.a2lix-locale-tab {
+
+}
+
+.a2lix_translations {
+    overflow: hidden;
+}
+
+ul.a2lix_translationsLocales {
+    padding: 0;
+    li {
+        display: inline;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        a {
+            background: #EFEFEF;
+            border: 1px solid #000;
+            font-size: 14px;
+            padding: 3px 10px;
+            text-decoration: none;
+        }
+    }
+    li.active a, li.active a:hover {
+        background: $a2lixTranslationFormActiveTab !important;
+        border-bottom: 1px solid #fff !important;
+        color: #FFF !important;
+    }
+}
+
+div.a2lix_translationsFields {
+    position: relative;
+    top: -2px;
+    > div {
+        border: 1px solid #ABABAB;
+        display: none;
+        margin-right: 5px;
+        padding: 5px;
+    }
+    > div.active {
+        display: block;
+    }
+}
+
+
+#ui-datepicker-div  {
+    z-index: 99999 !important;
+}
+
+//Hide native calendar datepicker
+input::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+input[type='date']::-webkit-input-placeholder {
+    visibility: hidden !important;
+}
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+
+/*------------------------------------------------------------*/
+
+@media (max-width: 500px) {
+    .cms-form {
+        .nav-tabs-main li{
+            width: 100%;
+        }
+    }
+}
+
+/*Responsive media queries*/
+@media (max-width: 768px) {
+
+}
+
+
+
+/* XS*/
+@media (min-width:320px) and (max-width: 768px) {
+
+    .cms-form {
+        button[type=submit] {
+            width: 100%;
+            padding: 10px;
+        }
+    }
+
+
+
+}
+
+/*SM*/
+@media (min-width: 768px) and (max-width: 992px) {
+
+
+}
+
+/*MD*/
+@media (min-width: 992px) and (max-width: 1200px) {
+
+
+}
+
+/*LG*/
+@media (min-width: 1200px) {}
+
+
+/*SM & higher*/
+@media (min-width: 768px) {
+    .number {
+        max-width: 100px;
+    }
+
+    .cms-form {
+        padding: {
+            left: 25px !important;
+            right: 25px !important;
+        };
+        button[type = submit] {
+            /*position: fixed;
+            bottom: 20px;*/
+            right: 47%;
+        }
+        .small {
+            max-width: 125px;
+        }
+    }
+
+
+}
+
+

@@ -1,0 +1,172 @@
+{% extends "@App/layout.html.twig" %}
+
+{% block js %}
+    <script src="{{ asset('vendor/slick-carousel/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/_Common/js/common.classes.min.js') }}"></script>
+    {# <script src="{{ asset('bundles/app/_Common/js/common.classes.min.js') }}"></script> #}
+    <script src="{{ asset('bundles/app/Rooms/js/rooms.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/Rooms/js/rooms_details.min.js') }}"></script>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('vendor/slick-carousel/slick/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/slick-carousel/slick/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/Gallery/css/gallery.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/Rooms/css/rooms.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/Rooms/css/rooms_details.css') }}">
+{% endblock %}
+
+{% block seo_title %}{{ 'rooms'| trans }} - {{ rsRoom.title| raw }}{% endblock %}
+
+{% block content %}
+    <div class="image-box">
+        <div class="image-box-pic border-bottom-transparent"
+             style="background-image: url({{ asset('thumb.php') }}?src={{ asset(rsRoom.mainImageDir ~ rsRoom.mainImage) }}&h=640&q=85)"
+        >
+            <div class="img-box-txt">
+                <h1 class="img-box-title">{{ rsRoom.title| raw }}</h1>
+                {#<h2 class="img-box-subtitle">Zobacz nasze pakiety specjalne</h2>#}
+                <div class="img-box-breadcrumbs hidden-xs">
+                    <a href="{{ path('homepage') }}">{{ 'main_page'| trans }}</a>&nbsp;&nbsp;/&nbsp;
+                    <a href="{{ path('rooms_index') }}">{{ 'rooms'| trans }}</a>&nbsp;&nbsp;/&nbsp;
+                    <span class="img-box-breadcrumbs-active">{{ rsRoom.title| raw }}</span>
+                </div>
+                <div class="img-box-scroll-btn hidden-xs"></div>
+            </div>
+            <a href="{{ path('packages_index') }}" class="btn btn-red return-btn visible-xs">
+                <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;{{ 'rooms'| trans }}
+            </a>
+            {% include '@App/Layout/reservation_bar.html.twig' %}
+        </div>
+    </div>
+
+    <div class="container main-container">
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="room-facilities">
+                    <div class="facility-icons-wrapper">
+                        <div class="facility-icon">
+                            <div class="facility-icon-img">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <div class="facility-icon-txt">{{ rsRoom.maxAdults }}
+                                {% if  rsRoom.maxAdults == 1%}
+                                        {{ 'person'| trans }}
+                                    {% else %}
+                                        {{ 'persons'| trans }}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="facility-icon">
+                            <div class="facility-icon-img">
+                                <i class="fa fa-bed"></i>
+                            </div>
+                            <div class="facility-icon-txt">
+                                {% if rsRoom.singleBeds %}
+                                    {{ rsRoom.singleBeds }} {{ 'single_bed'| trans }}<br />
+                                {% endif %}
+                                {% if rsRoom.doubleBeds %}
+                                    {{ rsRoom.doubleBeds }} {{ 'double_bed'| trans }}<br />
+                                {% endif %}
+                                {% if rsRoom.additionalBeds %}
+                                    {{ rsRoom.additionalBeds }} {{ 'extra_bed'| trans }}<br />
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="facility-icon">
+                            <div class="facility-icon-img">
+                                <i class="fa fa-square-o" aria-hidden="true"></i>
+                            </div>
+                            <div class="facility-icon-txt">{{ rsRoom.area }} m<sup>2</sup></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3"></div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-9">
+                {{ rsRoom.description| raw }}
+                <br />
+                <br />
+                <h3 class="drop-shadow lifted">{{ 'facilities'| trans }}</h3>
+                <div class="room-facilities">
+                    <div class="facility-icons-wrapper">
+                        {% for rsFacilityItem in rsFacilityItems if rsFacilityItems is not empty %}
+                            {# @var rsFacilityItem  \RsBundle\Entity\RsFacilityItem #}
+                            <div class="facility-icon">
+                                <div class="facility-icon-img">
+                                    {% if rsFacilityItem.mainImage %}
+                                            <img src="{{ asset(rsFacilityItem.mainImageDir ~ rsFacilityItem.mainImage) }}" alt="{{ rsFacilityItem.title| raw  }}">
+                                        {% else %}
+                                            {{ rsFacilityItem.iconDefault| raw }}
+                                    {% endif %}
+                                </div>
+                                <div class="facility-icon-txt">{{ rsFacilityItem.title| raw }}</div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <h3 class="drop-shadow lifted">{{ 'reservation_rules'| trans}}</h3>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <b>{{ 'check_in'| trans }}</b>
+                        <br />
+                        <span class="text-muted">{{ page_config.value('check_in')| raw }}</span>
+                    </div>
+                    <div class="col-sm-4">
+                        <b>{{ 'check_out'| trans }}</b>
+                        <br />
+                        <span class="text-muted">{{ page_config.value('check_out')| raw }}</span>
+                    </div>
+                    <div class="col-sm-4">
+                        <b>{{ 'cancellation'| trans }}</b>
+                        <br />
+                        <span class="text-muted">{{ page_config.value('cancellation_rules')| raw }}</span>
+                    </div>
+                </div>
+                <hr />
+            </div>
+            <div class="col-sm-3">
+                <div class="info-window">
+                    <h3 class="drop-shadow lifted">Dlaczego rezerwować online</h3>
+                    <div class="info-desc">
+                        <ul>
+                            <li>
+                                <i class="fa fa-money" aria-hidden="true"></i>
+                                &nbsp;Najniższa cena
+                            </li>
+                            <li>
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                                &nbsp;Natychmiastowe potwierdzenie
+                            </li>
+                            <li>
+                                <i class="fa fa-shield" aria-hidden="true"></i>
+                                &nbsp;&nbsp;Bezpieczna transakcja
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if rsRoomImages is not empty %}
+        <div class="gallery-slider ">
+            {% for rsRoomImage in rsRoomImages %}
+                {# @var rsRoomImage \RsBundle\Entity\RsRoomFile #}
+                <div class="gallery-slide">
+                    <img src="{{ asset('thumb.php') }}?src={{ asset(rsRoom.filesDir ~ rsRoomImage.fileName) }}&h=1170"
+                         class="img-responsive lazy-load"
+                         data-original="{{ asset('thumb.php') }}?src={{ asset(rsRoom.filesDir ~ rsRoomImage.fileName) }}&h=1170"
+                    >
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+
+{% endblock %}

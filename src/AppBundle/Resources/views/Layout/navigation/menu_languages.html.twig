@@ -1,0 +1,27 @@
+<a href="#" class="dropdown-toggle dropdown-languages" data-toggle="dropdown" role="button" aria-expanded="false">
+    {% if  app.request.locale is defined %}
+        <img src="{{ asset('images/flags/' ~ app.request.locale ~ '.png') }}" alt="" class="">
+    {% else %}
+        <img src="{{ asset('images/flags/pl.png') }}" alt="" class="">
+    {% endif %}
+    {# <span class="caret"></span> #}
+</a>
+<ul class="dropdown-menu dropdown-flags" role="menu">
+    {# @var language_helper \AppBundle\Utils\LanguageHelper #}
+    {# @var cmsLanguage \AdminBundle\Entity\CmsLanguage #}
+    {% set activeLanguages = language_helper.activePageLanguages %}
+    {% for cmsLanguage in activeLanguages %}
+        <li>
+            <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')| merge({'_locale': cmsLanguage.code})) }}">
+                <img src="{{ asset('images/flags/' ~ cmsLanguage.code ~ '.png') }}" alt="flaga {{ cmsLanguage.code }}">
+            </a>
+            <div class="divider"></div>
+        </li>
+    {% endfor %}
+</ul>
+
+
+{#
+<div class="nav-additional nav-additional-right">
+</div>
+#}

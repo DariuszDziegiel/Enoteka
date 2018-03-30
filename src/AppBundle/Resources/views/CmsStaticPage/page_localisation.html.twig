@@ -1,0 +1,83 @@
+{% extends "@App/layout.html.twig" %}
+
+{% block js %}
+    <script src="{{ asset('vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('vendor/Magnific-Popup/dist/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery_lazyload/jquery.lazyload.js') }}"></script>
+    <script src="{{ asset('vendor/slick-carousel/slick/slick.min.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/google-maps-utility-library-v3/markerwithlabel/src/markerwithlabel_packed.js') }}"></script>
+    <script src="{{ asset('bundles/app/_Common/js/common.classes.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/CmsStaticPage/js/cms_static_page_details.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/CmsStaticPage/js/page_localisation.min.js') }}"></script>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('vendor/Magnific-Popup/dist/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/CmsStaticPage/css/cms_static_page_details.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/CmsStaticPage/css/page_localisation.css') }}">
+{% endblock %}
+
+
+{% block seo_title %}
+    {% spaceless %}
+        {% if cmsStaticPage.seoTitle| length %}
+            {{ cmsStaticPage.seoTitle| raw }}
+        {% else %}
+            {{ cmsStaticPage.title| raw }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}
+
+{% block seo_description %}
+    {% spaceless %}
+        {% if cmsStaticPage.seoDescription| length %}
+            {{ cmsStaticPage.seoDescription| raw }}
+        {% else %}
+            {{ page_config.value('seo_description') }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}
+
+{% block seo_keywords %}
+    {% spaceless %}
+        {% if cmsStaticPage.seoKeywords| length %}
+            {{ cmsStaticPage.seoKeywords| raw }}
+        {% else %}
+            {{ page_config.value('seo_keywords') }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}
+
+
+{% block content %}
+    {# @var cmsStaticPage \AdminBundle\Entity\CmsStaticPage#}
+    <div class="image-box">
+        <div class="image-box-pic border-bottom-transparent" style="background-image: url({{ asset('thumb.php') }}?src={{ asset(cmsStaticPage.mainImageDir ~ cmsStaticPage.mainImage) }}&h=740&q=85)">
+            <div class="img-box-txt">
+                <h1 class="img-box-title">{{ cmsStaticPage.title| raw }}</h1>
+                <h2 class="img-box-subtitle">{{ cmsStaticPage.subTitle| raw }}</h2>
+                <div class="img-box-breadcrumbs">
+                    <a href="{{ path('homepage') }}">{{ 'main_page'| trans }}</a>&nbsp;&nbsp;/&nbsp;
+                    <span class="img-box-breadcrumbs-active">{{ cmsStaticPage.title| raw }}</span>
+                </div>
+                <div class="img-box-scroll-btn"></div>
+            </div>
+            {% include '@App/Layout/reservation_bar.html.twig' %}
+        </div>
+    </div>
+
+    <div class="container main-container" id="main-content-scroll">
+        {{ cmsStaticPage.description| raw }}
+    </div>
+    <div id="google-map">
+        <div class="map-loading-wrapper">
+            <div class="map-loading-content">
+                <img src="{{ asset('images/loading_circle.gif') }}" alt="">
+                <br />
+                {{ 'map_loading'| trans }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,25 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+    test: 'test'
+
+services:
+    # VICH NAMER
+     app.vich_namer:
+         class: AdminBundle\Utils\VichNamer
+         arguments: ['@app.string_helper', '@app.filesystem_helper']
+
+     #ONEUP NAMER
+     admin.oneup_namer:
+         class: AdminBundle\Utils\OneupNamer
+         arguments: ['@app.string_helper', '@app.filesystem_helper']
+
+      # ONEUP UPLOAD LISTENER--------------------------------------------
+     upload_listener.entity_files:
+         class: AdminBundle\EventListener\Upload\OneUpFileListener
+         arguments: ["@doctrine.orm.entity_manager"]
+         tags:
+             - {name: kernel.event_listener, event: oneup_uploader.post_persist, method: onUpload}
+
+
+

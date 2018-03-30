@@ -1,0 +1,356 @@
+<?php
+
+namespace AdminBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+/**
+ * ArenaPackage
+ *
+ * @ORM\Table(name="arena_package")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\ArenaPackageRepository")
+ */
+class ArenaPackage
+{
+    /**
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    
+    /**
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank()
+     */
+    private $title;
+
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $description;
+
+
+    /**
+     * @ORM\Column(type="smallint", nullable=true)
+     */
+    private $proposalsNumber;
+
+
+
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Gedmo\Slug(fields={"title"})
+     */
+    protected $slug;
+
+    /** 
+     * @ORM\Column(type="boolean") 
+     * @Assert\Choice(choices="{0,1}")
+     */
+    protected $isActive = false;
+    
+    /**
+     * @ORM\Column(type="datetime", nullable=false)
+     * @Gedmo\Timestampable(on="create")
+     */
+    protected $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @Gedmo\Timestampable(on="update")
+     */
+    protected $updatedAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\ArenaPackagePrice", mappedBy="arenaPackage")
+     */
+    protected $packagePrices;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\ArenaContest", mappedBy="arenaPackage")
+     */
+    protected $arenaContests;
+
+
+    
+    
+
+    public function __construct()
+    {
+        $this->packagePrices = new ArrayCollection();
+    }
+
+
+    /**
+     * Get id
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set title
+     * @param string $title
+     * @return ArenaPackage
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set slug
+     * @param string $slug
+     * @return ArenaPackage
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set isActive
+     * @param boolean $isActive
+     * @return ArenaPackage
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     * @return boolean
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * Set createdAt
+     * @param \DateTime $createdAt
+     * @return ArenaPackage
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return ArenaPackage
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Add packagePrice
+     *
+     * @param \AdminBundle\Entity\ArenaPackagePrice $packagePrice
+     *
+     * @return ArenaPackage
+     */
+    public function addPackagePrice(\AdminBundle\Entity\ArenaPackagePrice $packagePrice)
+    {
+        $this->packagePrices[] = $packagePrice;
+
+        return $this;
+    }
+
+    /**
+     * Remove packagePrice
+     *
+     * @param \AdminBundle\Entity\ArenaPackagePrice $packagePrice
+     */
+    public function removePackagePrice(\AdminBundle\Entity\ArenaPackagePrice $packagePrice)
+    {
+        $this->packagePrices->removeElement($packagePrice);
+    }
+
+    /**
+     * Get packagePrices
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPackagePrices()
+    {
+        return $this->packagePrices;
+    }
+
+    /**
+     * Add arenaContest
+     *
+     * @param \AdminBundle\Entity\ArenaContest $arenaContest
+     *
+     * @return ArenaPackage
+     */
+    public function addArenaContest(\AdminBundle\Entity\ArenaContest $arenaContest)
+    {
+        $this->arenaContests[] = $arenaContest;
+
+        return $this;
+    }
+
+    /**
+     * Remove arenaContest
+     *
+     * @param \AdminBundle\Entity\ArenaContest $arenaContest
+     */
+    public function removeArenaContest(\AdminBundle\Entity\ArenaContest $arenaContest)
+    {
+        $this->arenaContests->removeElement($arenaContest);
+    }
+
+    /**
+     * Get arenaContests
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArenaContests()
+    {
+        return $this->arenaContests;
+    }
+
+    /**
+     * Add arenaPackageExtra
+     *
+     * @param \AdminBundle\Entity\ArenaPackage2ArenaPackageExtra $arenaPackageExtra
+     *
+     * @return ArenaPackage
+     */
+    public function addArenaPackageExtra(\AdminBundle\Entity\ArenaPackage2ArenaPackageExtra $arenaPackageExtra)
+    {
+        $this->arenaPackageExtras[] = $arenaPackageExtra;
+
+        return $this;
+    }
+
+    /**
+     * Remove arenaPackageExtra
+     *
+     * @param \AdminBundle\Entity\ArenaPackage2ArenaPackageExtra $arenaPackageExtra
+     */
+    public function removeArenaPackageExtra(\AdminBundle\Entity\ArenaPackage2ArenaPackageExtra $arenaPackageExtra)
+    {
+        $this->arenaPackageExtras->removeElement($arenaPackageExtra);
+    }
+
+    /**
+     * Get arenaPackageExtras
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArenaPackageExtras()
+    {
+        return $this->arenaPackageExtras;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return ArenaPackage
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set proposalsNumber
+     *
+     * @param integer $proposalsNumber
+     *
+     * @return ArenaPackage
+     */
+    public function setProposalsNumber($proposalsNumber)
+    {
+        $this->proposalsNumber = $proposalsNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get proposalsNumber
+     *
+     * @return integer
+     */
+    public function getProposalsNumber()
+    {
+        return $this->proposalsNumber;
+    }
+    
+}

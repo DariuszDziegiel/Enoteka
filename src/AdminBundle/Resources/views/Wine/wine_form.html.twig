@@ -1,0 +1,132 @@
+{% extends "@Admin/layout.html.twig" %}
+{% block js %}{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('bundles/admin/Wine/css/wine_form.css') }}">
+{% endblock %}
+
+{% block form %}
+    <a href="{{ path('wine_add') }}" class="btn btn-success">
+      <span class="glyphicon glyphicon-plus"></span> Dodaj Nowe Wino
+    </a>
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.isActive) }}
+        {{ form_row(form.year) }}
+        {{ form_row(form.wineColor) }}
+        {{ form_row(form.wineCountry) }}
+        {{ form_row(form.wineCountryRegion) }}
+        {{ form_row(form.wineCountrySubregion) }}
+        <hr />
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <h3>Cena</h3>
+            </div>
+            <div class="col-sm-3">
+                {{ form_label(form.price2comma5cl) }}
+                <div class="col-sm-6">
+                    {{ form_widget(form.price2comma5cl) }}
+                    <div class="alert-danger">
+                        {{ form_errors(form.price2comma5cl) }}
+                    </div>
+                </div>
+            </div>
+            <hr class="visible-xs" />
+            <div class="col-sm-3">
+                {{ form_label(form.price10cl) }}
+                <div class="col-sm-6">
+                    {{ form_widget(form.price10cl) }}
+                    <div class="alert-danger">
+                        {{ form_errors(form.price10cl) }}
+                    </div>
+                </div>
+            </div>
+            <hr class="visible-xs"/>
+            <div class="col-sm-3">
+                {{ form_label(form.price75cl) }}
+                <div class="col-sm-6">
+                    {{ form_widget(form.price75cl) }}
+                    <div class="alert-danger">
+                        {{ form_errors(form.price75cl) }}
+                    </div>
+                </div>
+            </div>
+            <hr class="visible-xs">
+            <div class="col-sm-3 text-muted">
+                {{ form_label(form.price5cl) }}
+                <div class="col-sm-6">
+                        {{ form_widget(form.price5cl) }}
+                        <div class="alert-danger">
+                            {{ form_errors(form.price5cl) }}
+                        </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        {{ form_row(form.wineMaturity) }}
+        {{ form_widget(form.translations, {'label': 'lbl_tlumaczenia'| trans}) }}
+        {% include '@Admin/_Common/partials/form_submit.html.twig' %}
+    {{ form_end(form) }}
+
+    <script>
+        $(document).ready(function () {
+            /**
+             * Wine Country region dynamic select
+             */
+            var wineCountry       = $('#wine_wineCountry');
+            wineCountry.change(function () {
+
+                $('#wine_wineCountryRegion').fadeOut();
+                $('#wine_wineCountryRegion').parent('div').append('<img src="{{ asset('images/loading_circle.gif') }}" class="wine-country-region-loading-circle">');
+
+                var form = $(this).closest('form');
+                var data = {};
+                data[wineCountry.attr('name')] = wineCountry.val();
+                //ajax submit form
+                $.ajax({
+                    url:  form.attr('action'),
+                    type: form.attr('method'),
+                    data: data,
+                    success: function (html) {
+                        $('#wine_wineCountryRegion').replaceWith(
+                                $(html).find('#wine_wineCountryRegion')
+                        );
+                        $('#wine_wineCountryRegion').fadeIn();
+                        $('.wine-country-region-loading-circle').remove();
+                    }
+                });
+            });
+
+
+            /**
+             * Wine Country Subregion dynamic select
+             */
+
+            $('body').on('change', '#wine_wineCountryRegion', function () {
+                $('#wine_wineCountrySubregion').fadeOut();
+                $('#wine_wineCountrySubregion').parent('div').append('<img src="{{ asset('images/loading_circle.gif') }}" class="wine-country-subregion-loading-circle">');
+
+                var wineCountryRegion = $(this);
+                var form = $(this).closest('form');
+                var data = {};
+                data[wineCountryRegion.attr('name')] = wineCountryRegion.val();
+
+                $.ajax({
+                    url:  form.attr('action'),
+                    type: form.attr('method'),
+                    data: data,
+                    success: function (html) {
+                        $('#wine_wineCountrySubregion').replaceWith(
+                                $(html).find('#wine_wineCountrySubregion')
+                        );
+                        $('#wine_wineCountrySubregion').fadeIn();
+                        $('.wine-country-subregion-loading-circle').remove();
+                    }
+                });
+            })
+
+
+        })
+    </script>
+{% endblock %}
+

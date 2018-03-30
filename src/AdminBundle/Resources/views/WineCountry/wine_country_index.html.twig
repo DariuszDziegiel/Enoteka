@@ -1,0 +1,8 @@
+{% extends "@Admin/layout.html.twig" %}
+
+{% block datagrid %}
+    <a href="{{ path('wine_country_add') }}" class="btn btn-lg btn-success">Dodaj nowy kraj</a>
+    <hr />
+    {{ grid(grid) }}
+{% endblock %}
+

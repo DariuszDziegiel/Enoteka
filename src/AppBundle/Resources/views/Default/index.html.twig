@@ -1,0 +1,188 @@
+{% extends '@App/layout.html.twig' %}
+
+{% block css %}
+    {#<link rel="stylesheet" href="{{ asset('vendor/vegas/dist/vegas.min.css') }}">#}
+    <link rel="stylesheet" href="{{ asset('vendor/slick-carousel/slick/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/slick-carousel/slick/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/Default/css/main_page.css') }}">
+    {#<link rel="stylesheet" href="{{ asset('vendor/jquery-background-video/jquery.background-video.css') }}">#}
+{% endblock %}
+
+{% block js %}
+    {#<script src="{{ asset('vendor/vegas/dist/vegas.min.js') }}"></script>#}
+    <script src="{{ asset('vendor/slick-carousel/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery_lazyload/jquery.lazyload.js') }}"></script>
+    {#<script src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/google-maps-utility-library-v3/markerwithlabel/src/markerwithlabel_packed.js') }}"></script>
+    <script src="{{ asset('bundles/app/CmsStaticPage/js/page_localisation.min.js') }}"></script>#}
+    <script src="{{ asset('vendor/jquery-background-video/jquery.background-video.js') }}"></script>
+    <script src="{{ asset('bundles/app/Default/js/main_page.min.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    {# Main Image #}
+    <div id="main-image" class="jquery-background-video-wrapper">
+        <video id="bgvid" playsinline autoplay muted loop class="jquery-background-video">
+            <source src="{{ asset('video/Enoteka_1.mp4') }}" type="video/mp4">
+            <source src="{{ asset('video/Enoteka_1.webm') }}" type="video/webm">
+        </video>
+        <div class="img-box-txt img-box-txt-fade" id="video-txt">
+            <h1 class="img-box-title ribbon-content">{{ page_config.value('main_page_title')| raw }}</h1>
+            <h2 class="img-box-subtitle">{{ page_config.value('main_page_subtitle')| raw }}</h2>
+            <div class="img-box-scroll-btn"></div>
+        </div>
+        <div id="main-image-text-box" class="hidden-xs hidden-sm hidden-md">
+            <h2>{{ page_config.value('main_page_txt_title')| raw }}</h2>
+            <p>{{ page_config.value('main_page_txt_text')| raw }}</p>
+        </div>
+        <div id="video-buttons">
+            <div id="video-button-1" class="video-button video-time-button active" data-time="0" data-toggle="popover" title="<span class='glyphicon glyphicon-play-circle'></span>&nbsp;<b>{{ 'restaurant'| trans| upper }}</b>">
+                1
+            </div>
+            <div id="video-button-2" class="video-button video-time-button" data-time="39" data-toggle="popover" title="<span class='glyphicon glyphicon-play-circle'></span>&nbsp;<b>{{ 'cooking'| trans| upper }}</b>">
+                2
+            </div>
+            <div id="video-button-3" class="video-button video-time-button" data-time="75" data-toggle="popover" title="<span class='glyphicon glyphicon-play-circle'></span>&nbsp;<b>BAR</b>">
+                3
+            </div>
+            <div id="video-button-4" class="video-button video-time-button" data-time="127" data-toggle="popover" title="<span class='glyphicon glyphicon-play-circle'></span>&nbsp;<b>{{ 'cigars'| trans| upper }}</b>">
+                4
+            </div>
+            <div id="video-fullscreen-btn" class="video-button">
+                <span class="glyphicon glyphicon-fullscreen"></span>
+            </div>
+            <div id="bgvidMuteBtn" class="video-button">
+                <span class="glyphicon glyphicon-volume-up"></span>
+            </div>
+        </div>
+    </div>
+    <div class="container visible-xs visible-md visible-sm">
+        <div class="main-image-text-box-xs">
+            <h2>{{ page_config.value('main_page_txt_title')| raw }}</h2>
+            <p>{{ page_config.value('main_page_txt_text')| raw }} </p>
+        </div>
+    </div>
+    <div class="container news-container">
+        {% include '@App/Default/partails/news.html.twig' %}
+    </div>
+
+    {# MENU #}
+    {# @var menuPage \AdminBundle\Entity\CmsPage#}
+    <div class="image-full-width-container section-menu-wrapper section-wrapper">
+        <div class="section-title">
+            <span class="section-title-txt">Menu</span>
+        </div>
+        <div class="section-menu-images">
+            {% for menuPage in menuPages %}
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" style="padding-left: 0; padding-right: 0;">
+                    <a class="menu-category-img-wrapper" href="{{ path('cms_page_details', {'cmsCategorySlug':  menuPage.getCmsCategory.getSlug(), 'cmsPageSlug': menuPage.getSlug()}) }}">
+                        <img src="{{ asset('thumb.php') }}?src={{ asset(menuPage.mainImageDir ~ menuPage.mainImage) }}&w=780&h=350" alt="{{ menuPage.getTitle() }}" class="img-responsive">
+                        <div class="menu-page-title">{{ menuPage.getTitle()| raw }}</div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {#<div class="image-full-width-container section-map-wrapper section-wrapper">
+        <div class="section-title">
+            <span class="section-title-txt">Lokalizacja</span>
+        </div>
+        <div id="google-map">
+            <div class="map-loading-wrapper">
+                <div class="map-loading-content">
+                    <img src="{{ asset('images/loading_circle.gif') }}" alt="">
+                    <br />
+                    {{ 'map_loading'| trans }}
+                </div>
+            </div>
+        </div>
+    </div>#}
+
+
+
+    {# WINO #}
+    {# @var page_config \AppBundle\Utils\ConfigHelper #}
+    {# @var cmsStaticPage \AdminBundle\Entity\CmsStaticPage #}
+    {% set cmsStaticPage = page_config.cmsStaticPageByParam('wine') %}
+    {% embed '@App/Default/partails/section_image_right.html.twig' with {'cmsStaticPage': cmsStaticPage}%}
+        {% block link_see_more %}
+            <a href="{{ path('wine_page_index') }}" class="page-section-view-more">
+                <span class="view-more-txt">{{ 'see_more'| trans }}</span>&nbsp;&nbsp;<span class="view-more-icon"></span>
+            </a>
+        {% endblock %}
+    {% endembed %}
+
+
+    {# BAR #}
+    {# @var cmsStaticPage \AdminBundle\Entity\CmsStaticPage #}
+    {% set cmsStaticPage = page_config.cmsStaticPageByParam('bar') %}
+    {% embed '@App/Default/partails/section_image_left.html.twig' with {'cmsStaticPage': cmsStaticPage} %}
+        {% block link_see_more %}
+            <a href="{{ path('cms_page_category', {'cmsCategorySlug': 'bar'}) }}" class="page-section-view-more">
+                <span class="view-more-txt">{{ 'see_more'| trans }}</span>&nbsp;&nbsp;<span class="view-more-icon"></span>
+            </a>
+        {% endblock %}
+    {% endembed %}
+
+    {# CYGARA #}
+    {# @var cmsStaticPage \AdminBundle\Entity\CmsStaticPage #}
+    {% set cmsStaticPage = page_config.cmsStaticPageByParam('cigars') %}
+    {% embed '@App/Default/partails/section_image_right.html.twig' with {'cmsStaticPage': cmsStaticPage} %}
+        {% block link_see_more %}
+            <a href="{{ path('cms_page_category', {'cmsCategorySlug': 'cygara'}) }}" class="page-section-view-more">
+                <span class="view-more-txt">{{ 'see_more'| trans }}</span>&nbsp;&nbsp;<span class="view-more-icon"></span>
+            </a>
+        {% endblock %}
+    {% endembed %}
+
+    {# DELIKATESY #}
+    {# @var cmsStaticPage \AdminBundle\Entity\CmsStaticPage #}
+    {% set cmsStaticPage = page_config.cmsStaticPageByParam('delicatessen') %}
+    {% embed '@App/Default/partails/section_image_left.html.twig' with {'cmsStaticPage': cmsStaticPage} %}
+        {% block link_see_more %}
+            <a href="{{ path('cms_page_category', {'cmsCategorySlug': 'delikatesy'}) }}" class="page-section-view-more">
+                <span class="view-more-txt">{{ 'see_more'| trans }}</span>&nbsp;&nbsp;<span class="view-more-icon"></span>
+            </a>
+        {% endblock %}
+    {% endembed %}
+
+    {# pakiety #}
+    <div class="section">
+        <div class="image-box">
+            {# @var configImagePackages \AdminBundle\Entity\CmsConfig #}
+            {% set configImagePackages = page_config.byKey('image_packages') %}
+            <div class="image-box-pic image-box-pic-packages" style="background-image: url('{{ asset('thumb.php') }}?src={{ asset(configImagePackages.filesDir ~ configImagePackages.image) }}&w=1920&h=1280&q=75&f=2')">
+                <div class="img-box-txt">
+                    <div class="section-title section-title-white">
+                        <span class="section-title-txt">{{ 'packages'| trans}}</span>
+                    </div>
+                    <h1 class="img-box-title">{{ page_config.value('packages_title')|raw }}</h1>
+                    <h2 class="img-box-subtitle">{{ page_config.value('packages_subtitle')|raw }}</h2>
+                    <div id="packages-slider-wrapper">
+                        <div class="packages-slider">
+                            {% for rsPackage in rsPackages if rsPackages is not empty %}
+                                <div class="package-slide">
+                                    <a href="{{ path('packages_details', {'slug': rsPackage.getSlug()}) }}">
+                                        <img src="{{ asset('thumb.php') }}?src={{ asset(rsPackage.mainImageDir ~ rsPackage.mainImage) }}&w=500&h=300"
+                                             class="img-responsive lazy-load"
+                                             data-original="{{ asset('thumb.php') }}?src={{ asset(rsPackage.mainImageDir ~ rsPackage.mainImage) }}&w=500&h=300"
+                                        >
+                                        <div class="package-title">{{ rsPackage.getTitle()| raw }}</div>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div>
+                        <a class="image-box-view-more" href="{{ path('packages_index') }}">
+                            <span class="view-more-txt">{{ 'see_more'| trans }}</span>&nbsp;&nbsp;<span class="view-more-icon"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

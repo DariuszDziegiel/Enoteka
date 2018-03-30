@@ -1,0 +1,51 @@
+@import "../../_Common/css/partials/variables";
+@import "../../_Common/css/partials/mixins";
+@import "../../_Common/css/partials/image_box";
+@import "../../_Common/css/partials/page";
+@import "../../_Common/css/partials/shadows";
+@import "../../_Common/css/partials/facilities";
+
+
+.package-wrapper {
+  margin-top: 30px;
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .package-title {
+    padding: {
+      top: 10px;
+    }
+    text: {
+      decoration: none;
+    }
+    color: $theme-grey;
+    text-align: center;
+    font: {
+      size: 1.4em;
+      weight: bold;
+    }
+
+  }
+
+  .package-desc {
+    color: $theme-grey;
+    text-align: center;
+  }
+
+  .package-more {
+    padding: {
+      bottom: 10px;
+      top: 10px;
+    };
+    text: {
+      align: center;
+    }
+  }
+
+}
+
+

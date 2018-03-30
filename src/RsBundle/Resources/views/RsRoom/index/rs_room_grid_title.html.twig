@@ -1,0 +1,12 @@
+{# @var rsRoomEntity \RsBundle\Entity\RsRoom#}
+<div class="grid-title">
+    {{ rsRoomEntity.getTitle() }}
+</div>
+<div>
+    <dl class="dl-horizontal">
+        <dt><span class="glyphicon glyphicon-user"></span> {{ 'lbl.max_adults'| trans }}</dt>
+        <dd>{{ rsRoomEntity.maxAdults }}</dd>
+        {#<dt>{{ 'lbl.max_kids'| trans }}</dt>
+        <dd>{{ rsRoomEntity.maxKids }}</dd>#}
+    </dl>
+</div>

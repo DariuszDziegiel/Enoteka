@@ -1,0 +1,40 @@
+.categories-tree {
+  
+  .category {
+    .category-link {
+      color: #000;
+      display: block;
+    }
+
+    &:hover {
+      background: {
+        color: #EAEAEA;
+      };
+      .category-link {
+        color: #000000;
+      }
+    }
+
+  }
+
+  .parent-category {
+    font : {
+      weight: bold;
+      size: 1.1em;
+    }
+  }
+
+  .children-category {
+    padding-left: 5px;
+  }
+
+  .active-category {
+    background-color: #0C5193;
+    .category-link {
+      color: #FFFFFF;
+      font-weight: bold;
+    }
+
+  }
+
+}

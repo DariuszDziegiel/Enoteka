@@ -1,0 +1,37 @@
+{# @var cmsStaticPage \AdminBundle\Entity\CmsStaticPage #}
+<div class="section">
+    <div class="row row-no-margin">
+        <div class="col-xs-12 col-sm-6 no-padding-right no-padding-left">
+            <div class="image-box border-right-transparent">
+                <div class="image-box-pic image-box-pic-page-section" style="background-image: url('{{ asset('thumb.php') }}?src={{ asset(cmsStaticPage.mainImageDir ~ cmsStaticPage.mainImage) }}&w=824&h=468&q=90')">
+                    <div class="page-cell page-section-visible-xs">
+                        <div class="page-section">
+                            <div class="section-title">
+                                <span class="section-title-txt">{{ cmsStaticPage.title| raw }}</span>
+                            </div>
+                            {#<div class="page-section-title">{{ cmsStaticPage.title| raw }}</div> #}
+                            <div class="page-section-subtitle">{{ cmsStaticPage.subTitle| raw }}</div>
+                            <div class="page-section-description">{{ cmsStaticPage.descriptionShort| raw }}</div>
+                            {% block link_see_more %}{% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 hidden-xs text-cell-wrapper no-padding-right no-padding-left">
+            <div class="page-cell">
+                <div class="page-section">
+                    <div class="section-title">
+                        <span class="section-title-txt">{{ cmsStaticPage.title| raw }}</span>
+                    </div>
+                    {#<div class="page-section-title">{{ cmsStaticPage.title| raw }}</div> #}
+                    <div class="page-section-subtitle">{{ cmsStaticPage.subTitle| raw }}</div>
+                    <div class="page-section-description">
+                        {{ cmsStaticPage.descriptionShort| raw }}
+                    </div>
+                    {{ block('link_see_more') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

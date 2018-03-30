@@ -1,0 +1,16 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block js %}
+    {#<script src="{{ asset('bundles/rs/RsMeal/js/rs_meal.min.js') }}"></script> #}
+{% endblock %}
+
+{% block form %}
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_errors(form) }}
+        {{ form_row(form.isActive, {'label': 'lbl.is_active'| trans}) }}
+        {{ form_widget(form.translations, {'label': 'lbl_tlumaczenia'| trans}) }}
+        {% include '@Admin/_Common/partials/form_submit.html.twig' %}
+    {{ form_end(form) }}
+
+{% endblock %}

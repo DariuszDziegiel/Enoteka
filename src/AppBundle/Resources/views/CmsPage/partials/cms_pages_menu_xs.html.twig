@@ -1,0 +1,22 @@
+<nav>
+<div class="dropdown cms-page-dropdown">
+    <button class="btn btn-default btn-lg dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        {{ cmsPage.getTitle()| raw }}
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        {% for cmsPageMenu in cmsPages if cmsPages is not empty  %}
+            {% if cmsPage is defined %}
+                {% set isPageActive = (cmsPage.id == cmsPageMenu.id) %}
+            {% else %}
+                {% set isPageActive = null %}
+            {% endif %}
+            <li class="pages-list-item {% if isPageActive %}active{% endif %}">
+                <a href="{{ path('cms_page_details', {'cmsCategorySlug': cmsPageMenu.cmsCategory.getSlug(), 'cmsPageSlug': cmsPageMenu.getSlug()}) }}">
+                    {{ cmsPageMenu.getTitle()| raw }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+</nav>

@@ -1,0 +1,18 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}">
+{% endblock %}
+
+{% block datagrid %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="btn-group btn-group-md" role="group">
+                <a href="{{ path('rs_facility_item_add') }}" class="btn btn-success">
+                    <span class="glyphicon glyphicon-plus"></span> {{ 'rs_facility_item_add'|trans({}, 'menu') }}
+                </a>
+            </div>
+        </div>
+    </div>
+    {{ grid(grid) }}
+{% endblock %}

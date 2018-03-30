@@ -1,0 +1,225 @@
+<?php
+
+namespace AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
+/**
+ * ArenaPackage2ArenaPackageExtra
+ * @ORM\Table(name="arena_package_2_arena_package_extra")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\ArenaPackage2ArenaPackageExtraRepository")
+ * @UniqueEntity(fields={"arenaPackage", "arenaPackageExtra"})
+ */
+class ArenaPackage2ArenaPackageExtra
+{
+
+    /**
+     * @ORM\Id()
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\ArenaPackage")
+     */
+    private $arenaPackage;
+
+    /**
+     * @ORM\Id()
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\ArenaPackageExtra")
+     */
+    private $arenaPackageExtra;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $price;
+
+    /**
+     * @ORM\Column(type="boolean",)
+     * @Assert\Choice({0, 1})
+     */
+    private $isIncluded = 0;
+    
+    /**
+     * @ORM\Column(type="datetime", nullable=false)
+     * @Gedmo\Timestampable(on="create")
+     */
+    protected $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @Gedmo\Timestampable(on="update")
+     */
+    protected $updatedAt;
+
+
+
+    public function __construct()
+    {
+        
+    }
+
+
+    /**
+     * @Assert\IsTrue(message="Podana cena jest nieprawidłowa")
+     */
+    public function isPriceValid()
+    {
+        if (!$this->isIncluded && empty($this->price)) {
+            return false;
+        }
+        return true;
+    }
+
+
+    /**
+     * Get id
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set price
+     *
+     * @param string $price
+     *
+     * @return ArenaPackage2ArenaPackageExtra
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return string
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set isIncluded
+     *
+     * @param boolean $isIncluded
+     *
+     * @return ArenaPackage2ArenaPackageExtra
+     */
+    public function setIsIncluded($isIncluded)
+    {
+        $this->isIncluded = $isIncluded;
+
+        return $this;
+    }
+
+    /**
+     * Get isIncluded
+     *
+     * @return boolean
+     */
+    public function getIsIncluded()
+    {
+        return $this->isIncluded;
+    }
+
+    /**
+     * Set arenaPackage
+     *
+     * @param \AdminBundle\Entity\ArenaPackage $arenaPackage
+     *
+     * @return ArenaPackage2ArenaPackageExtra
+     */
+    public function setArenaPackage(\AdminBundle\Entity\ArenaPackage $arenaPackage)
+    {
+        $this->arenaPackage = $arenaPackage;
+
+        return $this;
+    }
+
+    /**
+     * Get arenaPackage
+     *
+     * @return \AdminBundle\Entity\ArenaPackage
+     */
+    public function getArenaPackage()
+    {
+        return $this->arenaPackage;
+    }
+
+    /**
+     * Set arenaPackageExtra
+     *
+     * @param \AdminBundle\Entity\ArenaPackageExtra $arenaPackageExtra
+     *
+     * @return ArenaPackage2ArenaPackageExtra
+     */
+    public function setArenaPackageExtra(\AdminBundle\Entity\ArenaPackageExtra $arenaPackageExtra)
+    {
+        $this->arenaPackageExtra = $arenaPackageExtra;
+
+        return $this;
+    }
+
+    /**
+     * Get arenaPackageExtra
+     *
+     * @return \AdminBundle\Entity\ArenaPackageExtra
+     */
+    public function getArenaPackageExtra()
+    {
+        return $this->arenaPackageExtra;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return ArenaPackage2ArenaPackageExtra
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return ArenaPackage2ArenaPackageExtra
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+}

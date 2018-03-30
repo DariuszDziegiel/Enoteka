@@ -1,0 +1,103 @@
+{% extends "@App/layout.html.twig" %}
+
+
+{% block js %}
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/google-maps-utility-library-v3/markerwithlabel/src/markerwithlabel_packed.js') }}"></script>
+    <script src="{{ asset('bundles/app/CmsStaticPage/js/page_localisation.min.js') }}"></script>
+{% endblock %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('bundles/app/CmsStaticPage/css/page_localisation.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/Contact/css/contact.css') }}">
+{% endblock %}
+
+{% block seo_title %}
+    {% spaceless %}
+        {% if cmsStaticPage.seoTitle| length %}
+            {{ cmsStaticPage.seoTitle| raw }}
+        {% else %}
+            {{ cmsStaticPage.title| raw }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}
+
+{% block seo_description %}
+    {% spaceless %}
+        {% if cmsStaticPage.seoDescription| length %}
+            {{ cmsStaticPage.seoDescription| raw }}
+        {% else %}
+            {{ page_config.value('seo_description') }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}
+
+{% block seo_keywords %}
+    {% spaceless %}
+        {% if cmsStaticPage.seoKeywords| length %}
+            {{ cmsStaticPage.seoKeywords| raw }}
+        {% else %}
+            {{ page_config.value('seo_keywords') }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}
+
+
+{% block content %}
+    <div class="image-box">
+        <div class="image-box-pic border-bottom-transparent" style="background-image: url({{ asset('thumb.php') }}?src={{ asset(cmsStaticPage.mainImageDir ~ cmsStaticPage.mainImage) }}&h=760&q=75)">
+            <div class="image-box-pic">
+                <div class="image-box-page-title-wrapper">
+                    <h1 class="img-box-title">{{ 'contact'| trans }}</h1>
+                    <h2 class="img-box-subtitle hidden-xs">{{ page_config.value('contact_subtitle')| raw }}</h2>
+                    <div class="img-box-breadcrumbs">
+                        <a href="{{ path('homepage') }}">{{ 'main_page'| trans }}</a>&nbsp;&nbsp;/&nbsp;
+                        <span class="img-box-breadcrumbs-active">{{ 'contact'| trans }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="contact-container">
+        <div class="container main-container">
+            <div>
+                {% set isFormSubmitted = false %}
+                {% if app.session.flashBag.get('form_submitted') %}
+                    {% set isFormSubmitted = true %}
+                {% endif %}
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" {% if not isFormSubmitted %}class="active"{% endif %}>
+                        <a href="#contact-data" aria-controls="contact-data" role="tab" data-toggle="tab">{{ 'contact_data'| trans }}</a>
+                    </li>
+                    <li role="presentation" {% if isFormSubmitted %}class="active"{% endif %}>
+                        <a href="#contact-form" aria-controls="contact-form" role="tab" data-toggle="tab">{{ 'contact_form'| trans }}</a>
+                    </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane {% if not isFormSubmitted %}active{% endif %}" id="contact-data">
+                        {{ cmsStaticPage.description| raw }}
+                    </div>
+                    <div role="tabpanel" class="tab-pane {% if isFormSubmitted %}active{% endif %}" id="contact-form">
+                        {% include '@App/Contact/partials/contact_form.html.twig' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="google-map">
+        <div class="map-loading-wrapper">
+            <div class="map-loading-content">
+                <img src="{{ asset('images/loading_circle.gif') }}" alt="">
+                <br />
+                {{ 'map_loading'| trans }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

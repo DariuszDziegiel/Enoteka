@@ -1,0 +1,128 @@
+{% extends "@Admin/layout.html.twig" %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('bundles/admin/Wine/css/wine_index.css') }}">
+{% endblock %}
+
+{% block content %}
+    <a href="{{ path('wine_add') }}" class="btn btn-lg btn-success">
+        <span class="glyphicon glyphicon-plus"></span> Dodaj nowe wino
+    </a>
+    <hr />
+
+    {% set wineColorId = null %}
+    {% set wineCountryId = null %}
+    {% set wineCountryRegionId = null %}
+    {% set wineCountrySubregionId = null %}
+
+    {% set tableHeader = '<thead>
+             <tr>
+                 <th><b>Nazwa</b></th>
+                 <th><b>Rocznik</b></th>
+                 <th><b>Cena 2,5 cl</b></th>
+                 <th><b>Cena 5 cl</b></th>
+                 <th><b>Cena 10 cl</b></th>
+                 <th><b>Cena 75 cl<br>(butelka)</b></th>
+                 <th>Wino <br /> aktywne</th>
+                 <th></th>
+             </tr>
+             </thead>'
+    %}
+
+
+     <div class="table-responsive">
+         <table class="table table-striped table-hover table-bordered table-condensed">
+             {% for wine in wines %}
+
+                 {# Wine Color #}
+                 {% if wine.wine_color_id != wineColorId  %}
+                     <tr>
+                         <td colspan="8" class="text-center bg-primary">
+                             <h1>{{ wine.wine_color }}</h1>
+                         </td>
+                     </tr>
+                 {% endif %}
+
+                 {% if wine.wine_color_id != wineColorId
+                    and wine.wine_country_id is empty
+                     and wine.wine_country_region_id is empty
+                     and wine.wine_country_subregion_id is empty
+                 %}
+                     {{ tableHeader|raw }}
+                 {% endif %}
+
+                 {# WINE COUNTRY #}
+                 {% if wine.wine_country_id != wineCountryId and  wine.wine_country_id is not empty  %}
+                     <tr>
+                         <td colspan="8" class="text-center bg-info">
+                             <h2>{{ wine.wine_country }}</h2>
+                         </td>
+                     </tr>
+                 {% endif %}
+
+                 {% if wine.wine_country_id != wineCountryId and wine.wine_country_region_id is empty and wine.wine_country_subregion_id is empty %}
+                     {{ tableHeader|raw }}
+                 {% endif %}
+
+
+                 {# WIne Country Region #}
+                 {% if wine.wine_country_region_id != wineCountryRegionId
+                     and wine.wine_country_region_id is not empty%}
+                     <tr>
+                         <td colspan="8" class="text-center text-uppercase">
+                             <h3>{{ wine.wine_country_region }}</h3>
+                         </td>
+                     </tr>
+                 {% endif %}
+
+                 {% if wine.wine_country_region_id != wineCountryRegionId and wine.wine_country_subregion_id is empty%}
+                     {{ tableHeader|raw }}
+                 {% endif %}
+
+                 {# Wine Country Subregion #}
+                 {% if wine.wine_country_subregion_id != wineCountrySubregionId  %}
+                     <tr>
+                         <td colspan="8" class="text">
+                             <h4><i>{{ wine.wine_country_subregion }}</i></h4>
+                         </td>
+                     </tr>
+                 {% endif %}
+                 {#
+                 {% if wine.wine_country_subregion_id != wineCountrySubregionId %}
+                    {{ tableHeader|raw }}
+                 {% endif %}
+                 #}
+                 <tr>
+                     <td>{{ wine.title }}</td>
+                     <td>{{ wine.year }}</td>
+                     <td>{{ wine.price2comma5cl }}</td>
+                     <td>{{ wine.price5cl }}</td>
+                     <td>{{ wine.price10cl }}</td>
+                     <td>{{ wine.price75cl }}</td>
+                     <td class="text-center">
+                         {% if wine.is_active %}
+                             <span class="text-success glyphicon glyphicon-ok"></span>
+                         {% else %}
+                             <span class="text-danger glyphicon glyphicon-remove"></span>
+                         {% endif %}
+                     </td>
+                     <td>
+                         <a href="{{ path('wine_edit', {'id': wine.id}) }}" class="btn btn-primary btn-sm" target="_blank" data-toggle="tooltip"
+                            title="Edytuj <b>{{ wine.title }}</b>" data-html="true">
+                             <span class="glyphicon glyphicon-pencil"></span>
+
+                         </a>
+                     </td>
+                 </tr>
+
+                 {% set wineColorId            = wine.wine_color_id %}
+                 {% set wineCountryId          = wine.wine_country_id %}
+                 {% set wineCountryRegionId    = wine.wine_country_region_id %}
+                 {% set wineCountrySubregionId = wine.wine_country_subregion_id %}
+
+             {% endfor %}
+         </table>
+     </div>
+
+{% endblock %}
+

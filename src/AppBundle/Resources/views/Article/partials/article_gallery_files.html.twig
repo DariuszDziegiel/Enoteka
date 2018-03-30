@@ -1,0 +1,16 @@
+{# gallery #}
+{% set imgFiles = article.filesByType('img') %}
+{% if imgFiles is not empty %}
+    <div class="row">
+        <div class="col-xs-12 gallery-files-wrapper">
+            {% for file in imgFiles %}
+                <a href="{{ asset(article.filesDir ~ file.fileName)  }}" class="img-gallery">
+                    <img src="{{ asset('thumb.php') }}?src={{ asset(article.filesDir ~ file.fileName)  }}&w=210&h=150"
+                         class="gallery-file img-responsive"
+                         data-original="{{ asset('thumb.php') }}?src={{ asset(article.filesDir ~ file.fileName)  }}&w=210&h=150"
+                    >
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

@@ -1,0 +1,135 @@
+#------VICH Uploader Bundle------------
+vich_uploader:
+    db_driver: orm # or mongodb or propel or phpcr
+    mappings:
+            cms_static_page_main_image:
+                uri_prefix:         /upload/cms_static_page/main_image
+                upload_destination: '%kernel.root_dir%/../web/upload/cms_static_page/main_image'
+                namer:              app.vich_namer
+
+            cms_page_main_image:
+                uri_prefix:         /upload/cms_page/main_image
+                upload_destination: '%kernel.root_dir%/../web/upload/cms_page/main_image'
+                namer:              app.vich_namer
+
+            cms_static_page_main_page_image:
+                uri_prefix:         /upload/cms_static_page/main_image
+                upload_destination: '%kernel.root_dir%/../web/upload/cms_static_page/main_image'
+                namer:              app.vich_namer
+
+            cms_article_main_image:
+                uri_prefix:         /upload/cms_article/main_image
+                upload_destination: '%kernel.root_dir%/../web/upload/cms_article/main_image'
+                namer:              app.vich_namer
+
+            cms_slider_image:
+                uri_prefix:         /upload/cms_slider
+                upload_destination: '%kernel.root_dir%/../web/upload/cms_slider'
+                namer:              app.vich_namer
+
+            cms_gallery_main_image:
+                uri_prefix:         /upload/cms_gallery
+                upload_destination: '%kernel.root_dir%/../web/upload/cms_gallery/main_image'
+                namer:              app.vich_namer
+
+            cms_config_image:
+                uri_prefix:         /upload/cms_config
+                upload_destination: '%kernel.root_dir%/../web/upload/cms_config/'
+                namer:              app.vich_namer
+
+            cms_config_file:
+                uri_prefix:         /upload/cms_config
+                upload_destination: '%kernel.root_dir%/../web/upload/cms_config/'
+                namer:              app.vich_namer
+
+            #------------- RS --------------------------------------
+            rs_room_main_image:
+                uri_prefix:          /upload/rs_room/main_image
+                upload_destination:  '%kernel.root_dir%/../web/upload/rs_room/main_image'
+                namer:               app.vich_namer
+
+            rs_package_main_image:
+                uri_prefix:          /upload/rs_package/main_image
+                upload_destination:  '%kernel.root_dir%/../web/upload/rs_package/main_image'
+                namer:               app.vich_namer
+
+            rs_package_details_image:
+                uri_prefix:          /upload/rs_package/details_image
+                upload_destination:  '%kernel.root_dir%/../web/upload/rs_package/details_image'
+                namer:               app.vich_namer
+
+            rs_facility_main_image:
+                uri_prefix:          /upload/rs_facility/main_image
+                upload_destination:  '%kernel.root_dir%/../web/upload/rs_facility/main_image'
+                namer:               app.vich_namer
+
+#-----ONEUP Uploader Bundle-----------
+oneup_uploader:
+    #orphanage:
+        #maxage: 86400
+        #directory: '%kernel.root_dir%/../web/upload/orphanage'
+    mappings:
+        #CmsStaticPage files
+        cms_static_page_file:
+            frontend: uploadify
+            storage:
+                directory: "%kernel.root_dir%/../web/upload/cms_static_page/files/"
+            #allowed_mimetypes: ['image/jpg', 'image/jpeg', 'image/png']
+            namer: admin.oneup_namer
+
+        cms_page_file:
+            frontend: uploadify
+            storage:
+                directory: "%kernel.root_dir%/../web/upload/cms_page/files/"
+            #allowed_mimetypes: ['image/jpg', 'image/jpeg', 'image/png']
+            namer: admin.oneup_namer
+
+        #CmsArticle files
+        cms_article_file:
+            frontend: uploadify
+            storage:
+                directory: "%kernel.root_dir%/../web/upload/cms_article/files/"
+            allowed_mimetypes: ['image/jpg', 'image/jpeg', 'image/png']
+            namer: admin.oneup_namer
+
+        #CmsGallery files
+        cms_gallery_file:
+            frontend: uploadify
+            storage:
+                directory: "%kernel.root_dir%/../web/upload/cms_gallery/files/"
+            allowed_mimetypes: ['image/jpg', 'image/jpeg', 'image/png']
+            namer: admin.oneup_namer
+
+        #RsRoomFile
+        rs_room_file:
+            frontend: uploadify
+            storage:
+                directory: "%kernel.root_dir%/../web/upload/rs_room/files/"
+            allowed_mimetypes: ['image/jpg', 'image/jpeg', 'image/png']
+            namer: admin.oneup_namer
+
+
+#------LIIP Imagine Bundle ----------------#
+liip_imagine:
+    # configure resolvers
+    resolvers:
+        # setup the default resolver
+        default:
+            # use the default web path
+            web_path: ~
+    # your filter sets are defined here
+    filter_sets:
+        # use the default cache configuration
+        cache: ~
+        # the name of the "filter set"
+        my_thumb:
+            # adjust the image quality to 75%
+            quality: 85
+            # list of transformations to apply (the "filters")
+            filters:
+                # create a thumbnail: set size to 120x90 and use the "outbound" mode
+                # to crop the image when the size ratio of the input differs
+                thumbnail: { size: [120, 120], mode: outbound }
+                # create a 2px black border: center the thumbnail on a black background
+                # 4px larger to create a 2px border around the final image
+                #background: { size: [300, 300], position: center, color: '#000000' }

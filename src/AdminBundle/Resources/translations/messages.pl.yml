@@ -1,0 +1,67 @@
+'form_save_success':        Dane zostały zapisane
+'form_save_error':          Błąd zapisu danych
+'record_add':               Dodaj
+'record_edit':              Edytuj
+'record_delete':            Usuń
+'lbl_title':                Nazwa
+'lbl_description':          Treść
+'lbl_tlumaczenia':          Tłumaczenia
+'lbl_save':                 Zapisz
+'default':                  Domyślny
+'rank':                     L.p
+'isActive':                 Aktywny
+'Actions':                  Akcje
+'date':                     Data
+'imageFile':                Obraz
+'name':                     Imię  i Nazwisko
+'email':                    Email
+'createdAt':                Data utworzenia
+'city':                     Miejscowość
+
+
+'category_select':              Wybór kategorii
+'arena_contest_description':    Dane konkursu
+'confirmation':                 Potwierdzenie
+
+'lbl':
+    'cms_category':             Kategoria
+    'is_active':                Aktywny
+    'main_image':               Obraz
+    'subTitle':                 Podtytuł
+    'descriptionShort':         Treść skrócona
+    'descriptionShortContent':  Opis skrócony
+    'content':                  Treść
+    'gallery_is_active':        Galeria aktywna
+    'description':              Opis
+    'article_date':             Data dodania
+
+
+#messages
+'msg':
+    'password_was_changed':     Hasło zostało zmienione
+    'file_remove_confirm':      Czy chcesz usunąć plik?
+    'file_remove_error':        Błąd kasowania pliku
+    'image_remove_error':       Błąd usuwania obrazu
+    'file_not_exists':          Wybrany plik nie istnieje
+
+
+#Form labels
+'lbl':
+    'old_password':             Stare hasło
+    'new_password':             Nowe hasło
+    'new_password_repeat':      Powtórz nowe hasło
+    'main_image':               Zdjęcie główne
+    'is_active':                Wpis aktywny
+    'description':              Opis
+    'content':                  Treść
+    'date':                     Data
+    'article_date':             Data wpisu
+
+'validation':
+    'password_equals_invalid':  Podane hasła muszą być jednakowe
+
+#Breadcrumbs translation
+'user_login':  Logowanie
+
+
+'mainPageImage':    Obraz strona główna

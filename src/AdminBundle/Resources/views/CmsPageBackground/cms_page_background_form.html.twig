@@ -1,0 +1,27 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+{# @var cmsPageBackground \AdminBundle\Entity\CmsPageBackground#}
+{% block js %}
+    {#<script src="{{ asset('bundles/app/CmsArticle/js/cms_article_form.min.js') }}"></script> #}
+{% endblock %}
+
+{% block form %}
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_row(form.isActive) }}
+    {{ form_row(form.sort) }}
+    {{ form_widget(form.imageFile) }}
+
+    {% if cmsPageBackground is defined and cmsPageBackground.image  %}
+        <div class="form-group">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-10">
+                <img src="{{ asset('thumb.php') }}?src={{ asset(cmsPageBackground.filesDir ~ cmsPageBackground.image) }}&h=400" class="img-responsive">
+            </div>
+        </div>
+    {% endif %}
+
+    {% include '@Admin/_Common/partials/form_submit.html.twig' %}
+    {{ form_end(form) }}
+
+{% endblock %}
+

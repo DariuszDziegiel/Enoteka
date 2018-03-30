@@ -1,0 +1,9 @@
+<script type="text/javascript">
+    (function($) {
+        $(window).load(function() { // czekamy, aż załaduje się cała strona
+            $('#status').fadeOut(); // efekt zanikania animowanej grafiki
+            $('#preloader').delay(350).fadeOut('slow'); // efekt zanikania warstwy zakrywającej stronę
+            $('body').delay(350).css({'overflow':'visible'}); // dopóki nasz div#preloader jest widoczny nie ma możliwości przewijania strony
+        });
+    })(jQuery)
+</script>

@@ -1,0 +1,50 @@
+{% extends "@Admin/layout.html.twig" %}
+
+
+{% block js %}
+    <script src="{{ asset('bundles/admin/CmsConfig/js/cms_config_form.min.js') }}"></script>
+{% endblock %}
+
+
+{% block form %}
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}} ) }}
+
+    {% if form.imageFile is defined %}
+        {{ form_widget(form.imageFile) }}
+        {% if cmsConfig is defined and cmsConfig.image %}
+            <div class="form-group">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10">
+                    <img src="{{ asset('thumb.php') }}?src={{ asset(cmsConfig.filesDir ~ cmsConfig.image) }}&w=300">
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+
+    {% if form.configValue is defined %}
+        {{ form_row(form.configValue) }}
+        {{ form_errors(form.configValue) }}
+    {% endif %}
+
+    {% if form.attachmentFile is defined %}
+        {{ form_widget(form.attachmentFile) }}
+        {{ form_errors(form.attachmentFile) }}
+        {% if cmsConfig is defined and cmsConfig.attachment %}
+            <div class="form-group">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10">
+                    <a href="{{ asset(cmsConfig.filesDir ~ cmsConfig.attachment) }}" target="_blank">{{ cmsConfig.attachment }}</a>
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+
+
+    {% if form.translations is defined %}
+        {{ form_widget(form.translations) }}
+    {% endif %}
+
+    {{ form_end(form) }}
+
+{% endblock %}

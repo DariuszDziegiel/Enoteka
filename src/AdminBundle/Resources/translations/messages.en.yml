@@ -1,0 +1,49 @@
+'form_save_success':        Form data was saved
+'form_save_error':          Form data saving error
+'record_add':               Add new
+'record_edit':              Edit
+'record_delete':            Delete
+'lbl_title':                Title
+'lbl_description':          Content
+'lbl_tlumaczenia':          Translations
+'lbl_save':                 Zapisz
+'default':                  Default
+'rank':                     No.
+
+
+'imageFile':                Image
+
+
+#Messages
+'msg':
+    'password_was_changed':   Password change success
+    'file_remove_confirm':    Do you want to delete the file?
+    'file_remove_error':      File remove error
+
+
+#form labels
+'lbl':
+    'old_password':               Old password
+    'new_password':               New password
+    'new_password_repeat':        Repeat new password
+    'main_image':                 Main image
+    'is_active':                  Is active
+    'description':                Description
+    'content':                    Content
+    'date':                       Date
+
+'validation':
+    'password_equals_invalid':  Your new password and confirmation of new password do not match
+
+'calendar':
+    'month_1':     Styczeń
+    'month_2':     Luty
+    'month_3':     Marzec
+    'month_4':     Kwiecień
+    'month_5':     Maj
+    'month_6':     Czerwiec
+    'month_7':     Lipiec
+    'month_8':     Sierpień
+    'month_9':     Wrzesień
+    'month_10':    Październik
+    'month_11':    Listopad

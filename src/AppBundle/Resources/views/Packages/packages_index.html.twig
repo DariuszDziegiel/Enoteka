@@ -1,0 +1,65 @@
+{% extends "@App/layout.html.twig" %}
+
+{% block js %}
+    <script src="{{ asset('vendor/slick-carousel/slick/slick.min.js') }}"></script>
+    {# <script src="{{ asset('bundles/app/_Common/js/common.classes.min.js') }}"></script> #}
+    <script src="{{ asset('bundles/app/Rooms/js/rooms.min.js') }}"></script>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/Packages/css/packages.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/Packages/css/packages_index.css') }}">
+{% endblock %}
+
+{% block seo_title %}{{ 'packages'| trans }}{% endblock %}
+
+{% block content %}
+    <div class="image-box">
+        {# @var configImagePackages \AdminBundle\Entity\CmsConfig #}
+        {% set configImagePackages = page_config.byKey('image_packages') %}
+        <div class="image-box-pic border-bottom-transparent" style="background-image: url({{ asset('thumb.php') }}?src={{ asset(configImagePackages.filesDir ~ configImagePackages.image) }}&w=1380&h=921&q=85)">
+
+            <div class="image-box-page-title-wrapper">
+                <h1 class="img-box-title">{{ 'packages'| trans }}</h1>
+                <h2 class="img-box-subtitle">{{ page_config.value('packages_subtitle') }}</h2>
+                <div class="img-box-breadcrumbs">
+                    <a href="{{ path('homepage') }}">{{ 'main_page'| trans }}</a>&nbsp;&nbsp;/&nbsp;
+                    <span class="img-box-breadcrumbs-active">{{ 'packages'| trans }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container main-container">
+        <div class="row">
+            {% for rsPackage in rsPackages if rsPackages is not empty  %}
+                {# @var rsPackage \RsBundle\Entity\RsPackage #}
+                <div class="col-md-4">
+                    <div class="package-wrapper">
+                        <a href="{{ path('packages_details', {'slug': rsPackage.getSlug()}) }}">
+                            <div class="drop-shadow lifted package-image">
+                                <img src="{{ asset('thumb.php') }}?src={{  asset(rsPackage.mainImageDir ~ rsPackage.mainImage) }}&w=768&h=368"
+                                     data-original="{{ asset('thumb.php') }}?src={{  asset(rsPackage.mainImageDir ~ rsPackage.mainImage)  }}&w=768&h=368"
+                                     class="img-responsive lazy-load" />
+                                <div class="package-price drop-shadow lifted">{{ rsPackage.price| replace({'\.00': ''}) }} PLN</div>
+                            </div>
+                            <div class="package-title">
+                                {{ rsPackage.getTitle()| raw }}
+                            </div>
+                            <div class="package-more">
+                                <button class="btn more-btn">
+                                    {{ 'package_more'| trans }}
+                                </button>
+                            </div>
+                            {#<div class="package-desc">
+                                {{ rsPackage.getDescriptionShort()| raw }}
+                            </div>#}
+                            <hr />
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,134 @@
+@import "../../_Common/css/partials/mixins";
+@import "../../_Common/css/partials/variables";
+
+.gallery-slider-wrapper {
+  position: relative;
+}
+.gallery-slider {
+  //position: relative;
+  //overflow: hidden;
+  height: 100vh !important;
+
+  .gallery-slide {
+   position: relative;
+    outline: none;
+    img {
+      height: 100vh;
+    }
+  }
+
+  .slick-next {
+    right: 30px;
+  }
+
+  .slick-prev {
+    left: 25px;
+  }
+
+  .slick-prev, .slick-next {
+    width: 40px;
+    height: 40px;
+    z-index: 10;
+    top: 54%;
+    font-size: 3em;
+    color: #FFF;
+  }
+  .slick-prev:before, .slick-next:before {
+    content: '';
+  }
+}
+
+.gallery-slide:not(.slick-current):before {
+  content: '';
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.gallery-categories-menu {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: {
+    top: 1px;
+  }
+}
+
+.gallery-categories-list {
+  list-style: none;
+  padding: 0;
+  li {
+    @include border-radius-all(5px, 5px, 0, 0);
+    float: left;
+    background-color: rgba(256, 256, 256, 0.8);
+    margin-right: 2px;
+    border: {
+      right: 1px solid #ababab;
+      top: 1px solid #ababab;
+      left: 1px solid #ababab;
+    }
+    a {
+      display: block;
+      text-transform: uppercase;
+      color: #000;
+      text-decoration: none;
+      padding: 5px;
+      text-shadow: 0px 0px 1px #666;
+      &:hover {
+        color: #FFF;
+      }
+    }
+    &:hover {
+      background-color: $theme-red;
+    }
+  }
+
+  li.gallery-category-active {
+    background-color: $theme-red;
+    a {
+      color: #FFF;
+      //text-decoration: underline;
+    }
+  }
+}
+
+
+.loading-gallery-overlay {
+
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 11;
+  background-color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+
+  .loading-gallery-txt {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    color: #FFF;
+    text-align: center;
+    font-weight: bold;
+  }
+
+}
+
+.virtual-tour-iframe {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  margin-top: -75px;
+  iframe {
+    //padding-top: 80px;
+    width: 100%;
+    height: 100vh;
+  }
+}

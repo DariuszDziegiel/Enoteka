@@ -1,0 +1,43 @@
+{# @var slide \AdminBundle\Entity\CmsSlider #}
+<div id="carousel-example-generic" class="carousel slide main-carousel" data-ride="carousel" data-interval="false" >
+    <!-- Indicators -->
+    {#<ol class="carousel-indicators">
+        {% for slide in sliders %}
+            <li data-target="#carousel-example-generic" data-slide-to="{{ loop.index0 }}" {% if loop.index0 == 0 %}class="active"{% endif %}></li>
+        {% endfor %}
+    </ol>#}
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        {% for slide in sliders %}
+            <div class="item {% if loop.index0 == 0 %}active{% endif %}">
+                <img src="{{ asset('thumb.php') }}?src={{ asset(slide.filesDir ~ slide.image) }}&w=1500&h=500"
+                     class="img-responsive"
+                     alt="">
+                <div class="carousel-caption">
+                    <div class="carousel-caption-text">
+                        <span class="carousel-caption-title">Instalacje Multiroom</span>
+                        <br />
+                        <span class="carousel-caption-desc">Przykładowy tekst Cras justo odio, dapibus ac facilisis in, egestas eget quam. </span>
+                    </div>
+                    {#<p><a class="btn btn-default" href="#" role="button">Więcej</a></p> #}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Controls -->
+    {% if sliders| length > 1 %}
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Poprzedni slajd</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Następny slajd</span>
+        </a>
+    {% endif %}
+</div>
+
+
+
+

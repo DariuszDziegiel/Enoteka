@@ -1,0 +1,41 @@
+{% extends '@App/layout.html.twig' %}
+
+
+{% block content %}
+
+    <div class="container">
+
+        {% include '@App/_Common/app_breadcrumbs.html.twig' %}
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="well">
+                    {% if is_granted('ROLE_AUTOR') %}
+                        Rodzaj konta: <b>Grafik</b>
+                    {% endif %}
+                    {% if is_granted('ROLE_ORGANIZER') %}
+                        Rodzaj konta: <b>Organizator</b>
+                    {% endif %}
+                    <br />
+                    <a href="{{ path('user_profile_edit') }}">Edytuj dane profilu</a>
+                    {% if not app.user.isSocialAccount() %}
+                        | <a href="{{ path('user_password_change') }}">Zmień hasło</a>
+                    {% endif %}
+                </div>
+
+                {# User  Organizer links #}
+                {% if is_granted('ROLE_ORGANIZER') %}
+                    {% include '@App/UserOrganizer/partials/user_profile/user_organizer_options.html.twig' %}
+                {% endif %}
+
+                {# User author links #}
+                {% if is_granted('ROLE_AUTOR') %}
+                    {% include '@App/UserAuthor/partials/user_profile/user_author_options.html.twig' %}
+                {% endif %}
+
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

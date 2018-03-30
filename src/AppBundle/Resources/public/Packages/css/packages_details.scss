@@ -1,0 +1,54 @@
+@import "../../_Common/css/partials/variables";
+@import "../../_Common/css/partials/mixins";
+
+
+.image-box-pic {
+  position: relative;
+  height: 50vh !important;
+  @include box-shadow(0, 0, 2px, 0, #000000);
+}
+
+.return-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+}
+
+.package-reservation-btn {
+  position: relative;
+  margin-bottom: 15px;
+}
+.package-reservation-btn:after {
+  position: absolute;
+  content: '';
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  border: 1px solid #FFF;
+}
+
+.info-values {
+  font-size: 1.5em;
+}
+
+.info-desc {
+  padding: {
+    bottom: 10px;
+  }
+}
+
+
+/*Small height screen*/
+@media screen and (max-height: 768px) {
+  .img-box-txt {
+    font-size: .95em;
+    position: absolute;
+    bottom: 15px;
+    top: auto;
+    -webkit-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    transform: translateY(0%);
+  }
+}

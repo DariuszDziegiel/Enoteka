@@ -1,0 +1,53 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block js %}
+    <script src="{{ asset('vendor/jquery-ui/ui/widgets/sortable.js') }}"></script>
+    <script src="{{ asset('bundles/rs/RsRoom/js/rs_room.min.js') }}"></script>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/rs/RsRoom/css/rs_room_form.css') }}">
+{% endblock %}
+
+{% block form %}
+
+    {% if formErrors.count %}
+        <div class="alert alert-danger">{{ 'form_save_error'|trans  }}. Popraw formularz zgodnie z wyświetlonymi komunikatami</div>
+    {% endif %}
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    <div class="is-active-wrapper ">
+        {{ form_row(form.isActive, {'label': 'lbl.room_is_active'| trans}) }}
+    </div>
+    <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs nav-pills nav-tabs-main" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#room_description" role="tab" data-toggle="tab">Opis</a>
+            </li>
+            <li role="presentation">
+                <a href="#room_params" role="tab" data-toggle="tab">Parametry pokoju</a>
+            </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="room_description">
+                {% include '@Rs/RsRoom/form/rs_room_description.html.twig' %}
+            </div>
+            <div role="tabpanel" class="tab-pane" id="room_params">
+                {% include '@Rs/RsRoom/form/rs_room_params.html.twig' %}
+            </div>
+        </div>
+    </div>
+
+    {{ form_widget(form._token) }}
+    {% include '@Admin/_Common/partials/form_submit.html.twig' %}
+    {{ form_end(form, {'render_rest': false}) }}
+
+
+    {% if rsRoomEntity is defined %}
+        {% include '@Rs/RsRoom/form/rs_room_uploadify_script.html.twig' %}
+    {% endif %}
+
+{% endblock %}

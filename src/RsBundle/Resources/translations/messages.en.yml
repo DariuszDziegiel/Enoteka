@@ -1,0 +1,87 @@
+'lbl':
+    'is_active':                  Is active
+    'price':                      Price
+    'description_cancellation':   Cancellation rules
+    'min_stay_days':              Min. stay [days]
+    'max_stay_days':              Max. stay [days]
+    'min_release_days':           Min. wyprzedzenie rezerwacji [dni]
+    'max_release_days':           Max. wyprzedzenie rezerwacji [dni]
+    'is_cancellation_allowed':    Allow Cancellation
+    'free_cancellation_days':     Free Cancellation [days]
+    'rate_plan_is_active':        Rate plan is active
+    'is_package':                 Package plan
+    'package_items':              Extras
+    'meals':                      Meals
+    'base_price_rate_plan':         Bazowy plan do wylicznia ceny
+    'base_availability_rate_plan':  Bazowy plan dla dostępności
+    'max_adults':                   Max. adults
+    'max_kids':                     Max. kids
+    'default_allotment':            Allotment
+    'max_allotment':                Max. allotment
+    'min_price':                    Min. price
+    'base_room':                    Base room
+    'room_is_active':               Room is active
+    'title_package':                Promotional text
+    'object_title':                 Property name
+    'description_regulations':      Property rules
+    'description_reservation_regulations':      Reservation rules
+    'country':               Country
+    'parter':                Ground floor
+    'single_beds':           Single beds
+    'double_beds':           Double beds
+    'additional_beds':       Additional beds
+    'rooms':                 Rooms
+    'bathrooms':             Bathrooms
+    'area':                  Area [m2]
+    'facility_items':        Equipment
+    'formula_type':          Operation
+    'formula_value':         Value
+    'formula_unit':          Unit
+    'base_rate_plan':        Base rate plan
+    'add':                   Add
+    'subtract':              Subtract
+    'percent':               Percent
+    'price_value':           Price value
+    'value':                 Value
+    'title':                 Title
+    'price_room':            Price / room
+
+'calendar':
+    'day_short_1':    Pn
+    'day_short_2':    Wt
+    'day_short_3':    Śr
+    'day_short_4':    Cz
+    'day_short_5':    Pt
+    'day_short_6':    Sb
+    'day_short_7':    Nd
+    'day_1':   Poniedziałek
+    'day_2':   Wtorek
+    'day_3':   Środa
+    'day_4':   Czwartek
+    'day_5':   Piątek
+    'day_6':   Sobota
+    'day_7':   Niedziela
+    'month_short_1':    Sty
+    'month_short_2':    Lut
+    'month_short_3':    Mar
+    'month_short_4':    Kwi
+    'month_short_5':    Maj
+    'month_short_6':    Cze
+    'month_short_7':    Lip
+    'month_short_8':    Sie
+    'month_short_9':    Wrz
+    'month_short_10':   Paź
+    'month_short_11':   Lis
+    'month_short_12':   Gru
+    'month_1':     January
+    'month_2':     February
+    'month_3':     March
+    'month_4':     April
+    'month_5':     May
+    'month_6':     June
+    'month_7':     July
+    'month_8':     August
+    'month_9':     September
+    'month_10':    October
+    'month_11':    November
+    'month_12':    December
