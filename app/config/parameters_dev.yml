@@ -2,7 +2,7 @@ parameters:
     #MAILER
     mailer_transport: smtp
     mailer_user:      nadawca@enotekapergamin.pl
-    mailer_password:  enoNAD1!
+    mailer_password:  ~
     mailer_host:      enotekapergamin.pl
 
     mailer_from_mail:  nadawca@enotekapergamin.pl
@@ -15,16 +15,16 @@ parameters:
     database_host: localhost
     database_port: null
     database_name: enoteka
-    database_user: root
-    database_password: passwd
+    database_user: ~
+    database_password: ~
 
     #facebook login
-    facebook_client_id: 123
-    facebook_client_secret: 123
+    facebook_client_id: ~
+    facebook_client_secret: ~
 
     #google login
-    google_client_id: 123
-    google_client_secret: 123
+    google_client_id: ~
+    google_client_secret: ~
 
     #google maps
-    google_maps_api_key: AIzaSyCJVuM9IplH7Ds-tU7ZxKI5MrAqxT2y4_8
+    google_maps_api_key: ~
